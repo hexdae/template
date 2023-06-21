@@ -1,0 +1,5 @@
+build --enable_bzlmod
+build --incompatible_strict_action_env
+
+build:quiet --ui_event_filters=-info,-stdout,-stderr
+build:quiet --noshow_progress

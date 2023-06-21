@@ -1,0 +1,16 @@
+module(
+    name = "template",
+    compatibility_level = 1,
+    version = "0.0.0",
+)
+
+bazel_dep(name = "rules_python", version = "0.23.0")
+
+pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
+
+pip.parse(
+    name = "pip_deps",
+    requirements_lock = "//toolchain/python:requirements_lock.txt",
+)
+
+use_repo(pip, "pip_deps")
