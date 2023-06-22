@@ -1,5 +1,7 @@
-build --enable_bzlmod
-build --incompatible_strict_action_env
+common --enable_bzlmod
+common --registry=file://%workspace%/registry
+common --registry=https://bcr.bazel.build
+common --incompatible_strict_action_env
 
 build:quiet --ui_event_filters=-info,-stdout,-stderr
 build:quiet --noshow_progress
