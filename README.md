@@ -5,10 +5,10 @@ A template to start a bazel project.
 ## Toolchains
 
 - Python
-- iPython (Jupyter Notebook)
+- Jupyter
 - Rust
 - C
 
 ## Tools
 
-- Pre Commit hooks
+- Pre Commit: `bazel run pre-commit`
