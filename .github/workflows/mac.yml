@@ -1,0 +1,21 @@
+name: macOS
+
+on: [push]
+
+jobs:
+  build:
+    name: Build
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: build examples
+        run: |
+          bazelisk build //...
+  test:
+    name: Test
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: test examples
+        run: |
+          bazelisk test //...
