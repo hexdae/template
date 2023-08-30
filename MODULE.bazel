@@ -8,12 +8,18 @@ use_repo(cc, cc_toolchains = "zig_sdk")
 
 register_toolchains("@cc_toolchains//toolchain:all")
 
-py = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
-py.parse(
+py = use_extension("@rules_python//python/extensions:python.bzl", "python")
+py.toolchain(
+    python_version = "3.11",
+    is_default = True,
+)
+
+pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
+pip.parse(
     name = "pip",
     requirements_lock = "//toolchain/python:requirements_lock.txt",
 )
-use_repo(py, "pip")
+use_repo(pip, "pip")
 
 rs = use_extension("@rules_rust//rust:extensions.bzl", "rust")
 rs.toolchain(

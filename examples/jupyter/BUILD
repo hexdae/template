@@ -1,5 +1,5 @@
-load("//toolchain/ipython:jupyter.bzl", "jupyter_notebook")
 load("@pip//:requirements.bzl", "requirement")
+load("//toolchain/python:jupyter.bzl", "jupyter_notebook")
 
 jupyter_notebook(
     name = "notebook",

@@ -10,6 +10,11 @@ alias(
 )
 
 alias(
+    name = "ipython",
+    actual = "//toolchain/python:ipython",
+)
+
+alias(
     name = "pip-install",
     actual = "//toolchain/python:requirements.update",
 )
@@ -17,4 +22,9 @@ alias(
 alias(
     name = "pre-commit",
     actual = "//tools/pre-commit",
+)
+
+alias(
+    name = "python",
+    actual = "//toolchain/python",
 )
