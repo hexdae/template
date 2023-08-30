@@ -1,7 +1,12 @@
-load("@pip//:requirements.bzl", "entry_point")
+load("@pip//:requirements.bzl", "requirement")
+load("@rules_python//python:defs.bzl", "py_binary")
 
-alias(
+py_binary(
     name = "black",
-    actual = entry_point("black", "black"),
+    srcs = ["black.py"],
     visibility = ["//visibility:public"],
+    deps = [
+        requirement("black"),
+        requirement("jupyter-black"),
+    ],
 )

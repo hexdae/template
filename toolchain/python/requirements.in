@@ -2,6 +2,7 @@ pre-commit==3.3.3
 notebook==6.5.5
 numpy==1.25.2
 black==23.7.0
+jupyter-black==0.3.4
 
 
 exceptiongroup==1.1.3
