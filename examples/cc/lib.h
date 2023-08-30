@@ -1,6 +1,7 @@
+// Copyright 2023 Davide Asnaghi
 
-#ifndef EXAMPLES_C_LIB_H_
-#define EXAMPLES_C_LIB_H_
+#ifndef EXAMPLES_CC_LIB_H_
+#define EXAMPLES_CC_LIB_H_
 
 #include <stdint.h>
 
@@ -15,4 +16,4 @@ int32_t function(void);
 }  // extern "C"
 #endif
 
-#endif  // EXAMPLES_C_LIB_H_
+#endif  // EXAMPLES_CC_LIB_H_
