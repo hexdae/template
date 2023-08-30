@@ -1,3 +1,4 @@
 pre-commit==3.3.3
 notebook==6.5.5
 numpy==1.25.2
+exceptiongroup==1.1.3
