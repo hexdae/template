@@ -26,14 +26,10 @@ pip.parse(
     name = "pip",
     requirements_lock = "//toolchain/python:requirements_lock.txt",
 )
-
 use_repo(pip, "pip")
 
 rust = use_extension("@rules_rust//rust:extensions.bzl", "rust")
 rust.toolchain(edition = "2021")
-use_repo(
-    rust,
-    "rust_toolchains",
-)
+use_repo(rust, "rust_toolchains")
 
 register_toolchains("@rust_toolchains//:all")
