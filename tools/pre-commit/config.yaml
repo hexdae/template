@@ -1,20 +1,17 @@
 repos:
-    - repo: https://github.com/pre-commit/pre-commit-hooks
-      rev: v4.4.0
-      hooks:
-      - id: trailing-whitespace
-      - id: end-of-file-fixer
-      - id: check-yaml
-      - id: check-added-large-files
-
-    - repo: https://github.com/FelixSeptem/pre-commit-golang
-      rev: 12f5442f51377b10b26651ad745206bbe1500ad6
-      hooks:
-        - id: bazel-buildifier
-          files: 'BUILD.bazel|BUILD|MODULE.bazel|WORKSPACE'
-
-    - repo: https://github.com/psf/black
-      rev: 23.3.0
-      hooks:
+  - repo: local
+    hooks:
       - id: black
-      - id: black-jupyter
+        name: black
+        description: "Black: The uncompromising Python code formatter"
+        entry: bazel run black
+        language: python
+        minimum_pre_commit_version: 2.9.2
+        require_serial: true
+        types_or: [python, pyi, jupyter]
+      - id: cpplint
+        name: cpplint
+        entry: bazel run cpplint
+        description: "Static code analysis of C/C++ files"
+        language: python
+        files: \.(h\+\+|h|hh|hxx|hpp|cuh|c|cc|cpp|cu|c\+\+|cxx|tpp|txx)$

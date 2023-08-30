@@ -1,3 +1,4 @@
+// Copyright 2023 Davide Asnaghi
 
 #include "examples/cc/lib.h"
 

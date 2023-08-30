@@ -18,4 +18,7 @@ A template to start a bazel project.
 
 ## Tools
 
+- Black (Python): `bazel run black`
+- Cpplint (C/C++): `bazel run cpplint`
 - Pre Commit: `bazel run pre-commit`
+- Pip install (Python): `bazel run pip-install`
