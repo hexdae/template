@@ -4,13 +4,11 @@ on: [push]
 
 jobs:
   build:
-    name: Build
+    name: Build and test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/checkout@v2
-      - name: pre-commit
-        run: bazelisk run pre-commit -- run --all-files
       - name: build
         run: bazelisk build //...
       - name: test

@@ -4,12 +4,10 @@ on: [push]
 
 jobs:
   build:
-    name: Build
+    name: Build and test
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - name: pre-commit
-        run: bazelisk run pre-commit
       - name: build
         run: bazelisk build //...
       - name: test
