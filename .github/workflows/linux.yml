@@ -8,14 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: build examples
-        run: |
-          bazelisk build //...
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
       - uses: actions/checkout@v2
-      - name: test examples
-        run: |
-          bazelisk test //...
+      - name: build
+        run: bazelisk build //...
+      - name: pre-commit
+        run: bazelisk run pre-commit
+      - name: test
+        run: bazelisk test //...
