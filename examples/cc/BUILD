@@ -12,3 +12,9 @@ cc_binary(
     srcs = ["main.c"],
     deps = [":lib"],
 )
+
+cc_binary(
+    name = "cc",
+    srcs = ["main.cc"],
+    deps = [":lib"],
+)

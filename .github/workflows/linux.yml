@@ -4,18 +4,12 @@ on: [push]
 
 jobs:
   build:
-    name: Build
+    name: Build and test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: build examples
-        run: |
-          bazelisk build //...
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
       - uses: actions/checkout@v2
-      - name: test examples
-        run: |
-          bazelisk test //...
+      - name: build
+        run: bazelisk build //...
+      - name: test
+        run: bazelisk test //...
