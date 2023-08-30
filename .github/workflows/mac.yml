@@ -7,9 +7,9 @@ jobs:
     name: Build and test
     runs-on: macos-latest
     steps:
+      - uses: actions/checkout@v2
       - name: pre-commit
         run: bazelisk run pre-commit -- run --all-files
-      - uses: actions/checkout@v2
       - name: build
         run: bazelisk build //...
       - name: test
