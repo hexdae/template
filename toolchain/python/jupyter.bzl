@@ -16,8 +16,8 @@ def jupyter_notebook(name, notebook, deps = [], data = [], **kwargs):
 
     py_binary(
         name = name,
-        main = "//toolchain/ipython:jupyter.py",
-        srcs = ["//toolchain/ipython:jupyter.py"],
+        main = "//toolchain/python:jupyter.py",
+        srcs = ["//toolchain/python:jupyter.py"],
         args = ["$(location {})".format(notebook)],
         deps = deps + [requirement("notebook")],
         data = data + [notebook],

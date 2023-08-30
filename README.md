@@ -12,9 +12,9 @@ A template to start a bazel project.
 ## Toolchains
 
 - C/C++ (hermetic toolchain)
-- Python
-- Jupyter
-- Rust
+- Python (hermetic toolchain)
+- Jupyter (hermetic pip dep)
+- Rust (hermetic toolchain)
 
 ## Tools
 

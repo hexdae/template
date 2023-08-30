@@ -1,4 +1,5 @@
 load("@rules_python//python:pip.bzl", "compile_pip_requirements")
+load("@pip//:requirements.bzl", "all_requirements")
 
 # This rule adds a convenient way to update the requirements file.
 compile_pip_requirements(
@@ -13,3 +14,14 @@ compile_pip_requirements(
     visibility = ["//visibility:public"],
     tags = ["manual"],
 )
+
+py_binary(
+    name = "python",
+    srcs = ["python.py"],
+    deps = all_requirements,
+    visibility = ["//visibility:public"],
+)
+
+exports_files([
+    "jupyter.py",
+])
