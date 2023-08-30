@@ -1,6 +1,6 @@
 """Rules to launch IPython shells and Jupyter notebooks"""
 
-load("@pip_deps//:requirements.bzl", "requirement")
+load("@pip//:requirements.bzl", "requirement")
 load("@rules_python//python:defs.bzl", "py_binary")
 
 def jupyter_notebook(name, notebook, deps = [], data = [], **kwargs):
