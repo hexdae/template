@@ -3,7 +3,7 @@
 load("@pip_deps//:requirements.bzl", "requirement")
 load("@rules_python//python:defs.bzl", "py_binary")
 
-def jupyter_notebook(name, notebook, deps =[], data=[], **kwargs):
+def jupyter_notebook(name, notebook, deps = [], data = [], **kwargs):
     """ Creates a Macro to launch a Jupyter notebook.
 
     Args:
