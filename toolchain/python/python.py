@@ -1,3 +1,5 @@
+"""Simple module to start an Python REPL from within Bazel."""
+
 import subprocess
 import argparse
 import sys

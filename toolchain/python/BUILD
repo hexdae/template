@@ -22,6 +22,13 @@ py_binary(
     visibility = ["//visibility:public"],
 )
 
+py_binary(
+    name = "ipython",
+    srcs = ["ipython.py"],
+    deps = all_requirements,
+    visibility = ["//visibility:public"],
+)
+
 exports_files([
     "jupyter.py",
 ])
