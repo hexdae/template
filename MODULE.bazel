@@ -1,26 +1,35 @@
 module(
     name = "template",
-    compatibility_level = 1,
     version = "0.0.0",
+    compatibility_level = 1,
 )
 
+bazel_dep(name = "rules_cc", version = "0.0.4")
+bazel_dep(name = "hermetic_cc_toolchain", version = "2.0.0")
 bazel_dep(name = "rules_python", version = "0.23.0")
 bazel_dep(name = "rules_rust", version = "0.24.1")
-bazel_dep(name = "rules_cc", version = "0.0.4")
+
+toolchains = use_extension("@hermetic_cc_toolchain//toolchain:ext.bzl", "toolchains")
+use_repo(toolchains, "zig_sdk")
+
+register_toolchains(
+    "@zig_sdk//toolchain:linux_amd64_gnu.2.19",
+    "@zig_sdk//toolchain:linux_arm64_gnu.2.19",
+    "@zig_sdk//toolchain:darwin_amd64",
+    "@zig_sdk//toolchain:darwin_arm64",
+    "@zig_sdk//toolchain:windows_amd64",
+    "@zig_sdk//toolchain:windows_arm64",
+)
 
 pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
-
 pip.parse(
     name = "pip_deps",
     requirements_lock = "//toolchain/python:requirements_lock.txt",
 )
-
 use_repo(pip, "pip_deps")
 
 rust = use_extension("@rules_rust//rust:extensions.bzl", "rust")
-
 rust.toolchain(edition = "2021")
-
 use_repo(
     rust,
     "rust_toolchains",
