@@ -10,4 +10,5 @@ compile_pip_requirements(
     ],
     requirements_in = "requirements.in",
     requirements_txt = "requirements_lock.txt",
+    tags = ["manual"],
 )
