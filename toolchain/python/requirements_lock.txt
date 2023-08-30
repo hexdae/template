@@ -175,6 +175,10 @@ comm==0.1.4 \
     --hash=sha256:354e40a59c9dd6db50c5cc6b4acc887d82e9603787f83b68c01a80a923984d15 \
     --hash=sha256:6d52794cba11b36ed9860999cd10fd02d6b2eac177068fdd585e1e2f8a96e67a
     # via ipykernel
+cpplint==1.6.1 \
+    --hash=sha256:00ddc86d6e4de2a9dcfa272402dcbe21593363a93b7c475bc391e335062f34b1 \
+    --hash=sha256:d430ce8f67afc1839340e60daa89e90de08b874bc27149833077bba726dfc13a
+    # via -r toolchain/python/requirements.in
 debugpy==1.6.7.post1 \
     --hash=sha256:038c51268367c9c935905a90b1c2d2dbfe304037c27ba9d19fe7409f8cdc710c \
     --hash=sha256:1093a5c541af079c13ac8c70ab8b24d1d35c8cacb676306cf11e57f699c02926 \

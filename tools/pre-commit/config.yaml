@@ -9,3 +9,9 @@ repos:
         minimum_pre_commit_version: 2.9.2
         require_serial: true
         types_or: [python, pyi, jupyter]
+      - id: cpplint
+        name: cpplint
+        entry: bazel run cpplint
+        description: "Static code analysis of C/C++ files"
+        language: python
+        files: \.(h\+\+|h|hh|hxx|hpp|cuh|c|cc|cpp|cu|c\+\+|cxx|tpp|txx)$
