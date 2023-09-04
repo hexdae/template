@@ -1,4 +1,4 @@
-load("@pip//:requirements.bzl", "requirement")
+load("@poetry//:requirements.bzl", "requirement")
 load("//toolchain/python:jupyter.bzl", "jupyter_notebook")
 
 jupyter_notebook(

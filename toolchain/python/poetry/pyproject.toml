@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "python_toolchain"
+version = "0.1"
+description = "python toolchain dependencies"
+authors = []
+
+[tool.poetry.dependencies]
+python = "~=3.9"
+
+ipython = "=8.0.1"
+numpy = "=1.22.3"
+notebook = "=6.4.11"
+pre-commit = "=3.3.3"
+black = "=23.7.0"
+jupyter-black = "=0.3.4"
+cpplint = "=1.6.1"
