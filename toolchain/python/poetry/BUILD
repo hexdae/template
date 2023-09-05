@@ -71,34 +71,23 @@ pycross_lock_file(
     ],
 )
 
-_GENERATED = {
-    "toolchain/python/poetry/lock.bzl": "//toolchain/python/poetry:lock.bzl",
-}
-
 write_file(
     name = "gen_update",
     out = "update.sh",
     content = [
         "#!/usr/bin/env bash",
         "cd $BUILD_WORKSPACE_DIRECTORY",
-        "bazel-bin/external/poetry_bin/poetry_bin -C toolchain/python/poetry lock"
-    ] + [
-        "cp -fv bazel-bin/{1} {0}".format(
-            path,
-            label.replace(":", "/"),
-        )
-        for [
-            path,
-            label,
-        ] in _GENERATED.items()
+        "set -eu",
+        "bazel-bin/external/poetry_bin/poetry_bin -C toolchain/python/poetry lock",
+        "cp -fv bazel-bin/toolchain/python/poetry/lock.bzl toolchain/python/poetry/lock.bzl",
     ],
 )
 
-# This is what you can `bazel run` and it can write to the source folder
 sh_binary(
     name = "update",
     srcs = ["update.sh"],
-    data = _GENERATED.values() + [
+    data = [
+        "//toolchain/python/poetry:lock.bzl",
         "@poetry_bin//:poetry",
     ],
     visibility = ["//visibility:public"],
@@ -109,13 +98,13 @@ write_file(
     out = "poetry.sh",
     content = [
         "#!/usr/bin/env bash",
+        "set -eu",
         "cd $BUILD_WORKSPACE_DIRECTORY",
         "bazel-bin/external/poetry_bin/poetry_bin -C toolchain/python/poetry $@",
-        "bazel-bin/toolchain/python/poetry/update.sh",
+        "./bazel-bin/toolchain/python/poetry/update.sh",
     ],
 )
 
-# This is what you can `bazel run` and it can write to the source folder
 sh_binary(
     name = "poetry",
     srcs = ["poetry.sh"],
