@@ -1,16 +1,16 @@
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
 git_repository(
-    name = "rules_pycross",
+    name = "jvolkman_rules_pycross",
     remote = "https://github.com/jvolkman/rules_pycross",
     commit = "757033ff8afeb5f7090b1320759f6f03d9c4615c",
 )
 
-load("@rules_pycross//pycross:repositories.bzl", "rules_pycross_dependencies")
+load("@jvolkman_rules_pycross//pycross:repositories.bzl", "rules_pycross_dependencies")
 
 rules_pycross_dependencies()
 
-load("@rules_pycross//pycross:defs.bzl", "pycross_lock_repo")
+load("@jvolkman_rules_pycross//pycross:defs.bzl", "pycross_lock_repo")
 
 pycross_lock_repo(
     name = "poetry",

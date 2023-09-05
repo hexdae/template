@@ -3,7 +3,7 @@
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_file")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
-load("@rules_pycross//pycross:defs.bzl", "pycross_wheel_build", "pycross_wheel_library", "pypi_file")
+load("@jvolkman_rules_pycross//pycross:defs.bzl", "pycross_wheel_build", "pycross_wheel_library", "pypi_file")
 
 PINS = {
     "appnope": "appnope_0.1.3",
@@ -120,15 +120,24 @@ def targets():
         ],
     )
 
+    native.config_setting(
+        name = "_env_python_windows_x86_64",
+        constraint_values = [
+            "@platforms//os:windows",
+            "@platforms//cpu:x86_64",
+        ],
+    )
+
     _target = select({
         ":_env_python_darwin_arm64": "@//toolchain/python/poetry:python_darwin_arm64",
         ":_env_python_darwin_x86_64": "@//toolchain/python/poetry:python_darwin_x86_64",
         ":_env_python_linux_x86_64": "@//toolchain/python/poetry:python_linux_x86_64",
+        ":_env_python_windows_x86_64": "@//toolchain/python/poetry:python_windows_x86_64",
     })
 
     pycross_wheel_library(
         name = "appnope_0.1.3",
-        wheel = "@example_lock_wheel_appnope_0.1.3_py2.py3_none_any//file",
+        wheel = "@poetry_lock_wheel_appnope_0.1.3_py2.py3_none_any//file",
     )
 
     _argon2_cffi_23_1_0_deps = [
@@ -138,7 +147,7 @@ def targets():
     pycross_wheel_library(
         name = "argon2_cffi_23.1.0",
         deps = _argon2_cffi_23_1_0_deps,
-        wheel = "@example_lock_wheel_argon2_cffi_23.1.0_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_argon2_cffi_23.1.0_py3_none_any//file",
     )
 
     _argon2_cffi_bindings_21_2_0_deps = [
@@ -149,9 +158,10 @@ def targets():
         name = "argon2_cffi_bindings_21.2.0",
         deps = _argon2_cffi_bindings_21_2_0_deps,
         wheel = select({
-            ":_env_python_darwin_arm64": "@example_lock_wheel_argon2_cffi_bindings_21.2.0_cp38_abi3_macosx_10_9_universal2//file",
-            ":_env_python_darwin_x86_64": "@example_lock_wheel_argon2_cffi_bindings_21.2.0_cp38_abi3_macosx_10_9_universal2//file",
-            ":_env_python_linux_x86_64": "@example_lock_wheel_argon2_cffi_bindings_21.2.0_cp36_abi3_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
+            ":_env_python_darwin_arm64": "@poetry_lock_wheel_argon2_cffi_bindings_21.2.0_cp38_abi3_macosx_10_9_universal2//file",
+            ":_env_python_darwin_x86_64": "@poetry_lock_wheel_argon2_cffi_bindings_21.2.0_cp38_abi3_macosx_10_9_universal2//file",
+            ":_env_python_linux_x86_64": "@poetry_lock_wheel_argon2_cffi_bindings_21.2.0_cp36_abi3_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
+            ":_env_python_windows_x86_64": "@poetry_lock_wheel_argon2_cffi_bindings_21.2.0_cp38_abi3_macosx_10_9_universal2//file",
         }),
     )
 
@@ -162,17 +172,17 @@ def targets():
     pycross_wheel_library(
         name = "asttokens_2.4.0",
         deps = _asttokens_2_4_0_deps,
-        wheel = "@example_lock_wheel_asttokens_2.4.0_py2.py3_none_any//file",
+        wheel = "@poetry_lock_wheel_asttokens_2.4.0_py2.py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "attrs_23.1.0",
-        wheel = "@example_lock_wheel_attrs_23.1.0_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_attrs_23.1.0_py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "backcall_0.2.0",
-        wheel = "@example_lock_wheel_backcall_0.2.0_py2.py3_none_any//file",
+        wheel = "@poetry_lock_wheel_backcall_0.2.0_py2.py3_none_any//file",
     )
 
     _beautifulsoup4_4_12_2_deps = [
@@ -182,7 +192,7 @@ def targets():
     pycross_wheel_library(
         name = "beautifulsoup4_4.12.2",
         deps = _beautifulsoup4_4_12_2_deps,
-        wheel = "@example_lock_wheel_beautifulsoup4_4.12.2_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_beautifulsoup4_4.12.2_py3_none_any//file",
     )
 
     _black_23_7_0_deps = [
@@ -199,9 +209,10 @@ def targets():
         name = "black_23.7.0",
         deps = _black_23_7_0_deps,
         wheel = select({
-            ":_env_python_darwin_arm64": "@example_lock_wheel_black_23.7.0_cp39_cp39_macosx_10_16_universal2//file",
-            ":_env_python_darwin_x86_64": "@example_lock_wheel_black_23.7.0_cp39_cp39_macosx_10_16_x86_64//file",
-            ":_env_python_linux_x86_64": "@example_lock_wheel_black_23.7.0_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
+            ":_env_python_darwin_arm64": "@poetry_lock_wheel_black_23.7.0_cp39_cp39_macosx_10_16_universal2//file",
+            ":_env_python_darwin_x86_64": "@poetry_lock_wheel_black_23.7.0_cp39_cp39_macosx_10_16_x86_64//file",
+            ":_env_python_linux_x86_64": "@poetry_lock_wheel_black_23.7.0_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
+            ":_env_python_windows_x86_64": "@poetry_lock_wheel_black_23.7.0_cp39_cp39_macosx_10_16_universal2//file",
         }),
     )
 
@@ -213,7 +224,7 @@ def targets():
     pycross_wheel_library(
         name = "bleach_6.0.0",
         deps = _bleach_6_0_0_deps,
-        wheel = "@example_lock_wheel_bleach_6.0.0_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_bleach_6.0.0_py3_none_any//file",
     )
 
     _cffi_1_15_1_deps = [
@@ -224,20 +235,21 @@ def targets():
         name = "cffi_1.15.1",
         deps = _cffi_1_15_1_deps,
         wheel = select({
-            ":_env_python_darwin_arm64": "@example_lock_wheel_cffi_1.15.1_cp39_cp39_macosx_11_0_arm64//file",
-            ":_env_python_darwin_x86_64": "@example_lock_wheel_cffi_1.15.1_cp39_cp39_macosx_10_9_x86_64//file",
-            ":_env_python_linux_x86_64": "@example_lock_wheel_cffi_1.15.1_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
+            ":_env_python_darwin_arm64": "@poetry_lock_wheel_cffi_1.15.1_cp39_cp39_macosx_11_0_arm64//file",
+            ":_env_python_darwin_x86_64": "@poetry_lock_wheel_cffi_1.15.1_cp39_cp39_macosx_10_9_x86_64//file",
+            ":_env_python_linux_x86_64": "@poetry_lock_wheel_cffi_1.15.1_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
+            ":_env_python_windows_x86_64": "@poetry_lock_wheel_cffi_1.15.1_cp39_cp39_macosx_11_0_arm64//file",
         }),
     )
 
     pycross_wheel_library(
         name = "cfgv_3.4.0",
-        wheel = "@example_lock_wheel_cfgv_3.4.0_py2.py3_none_any//file",
+        wheel = "@poetry_lock_wheel_cfgv_3.4.0_py2.py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "click_8.1.7",
-        wheel = "@example_lock_wheel_click_8.1.7_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_click_8.1.7_py3_none_any//file",
     )
 
     _comm_0_1_4_deps = [
@@ -247,46 +259,47 @@ def targets():
     pycross_wheel_library(
         name = "comm_0.1.4",
         deps = _comm_0_1_4_deps,
-        wheel = "@example_lock_wheel_comm_0.1.4_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_comm_0.1.4_py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "cpplint_1.6.1",
-        wheel = "@example_lock_wheel_cpplint_1.6.1_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_cpplint_1.6.1_py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "debugpy_1.6.7.post1",
         wheel = select({
-            ":_env_python_darwin_arm64": "@example_lock_wheel_debugpy_1.6.7.post1_py2.py3_none_any//file",
-            ":_env_python_darwin_x86_64": "@example_lock_wheel_debugpy_1.6.7.post1_cp39_cp39_macosx_11_0_x86_64//file",
-            ":_env_python_linux_x86_64": "@example_lock_wheel_debugpy_1.6.7.post1_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
+            ":_env_python_darwin_arm64": "@poetry_lock_wheel_debugpy_1.6.7.post1_py2.py3_none_any//file",
+            ":_env_python_darwin_x86_64": "@poetry_lock_wheel_debugpy_1.6.7.post1_cp39_cp39_macosx_11_0_x86_64//file",
+            ":_env_python_linux_x86_64": "@poetry_lock_wheel_debugpy_1.6.7.post1_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
+            ":_env_python_windows_x86_64": "@poetry_lock_wheel_debugpy_1.6.7.post1_py2.py3_none_any//file",
         }),
     )
 
     pycross_wheel_library(
         name = "decorator_5.1.1",
-        wheel = "@example_lock_wheel_decorator_5.1.1_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_decorator_5.1.1_py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "defusedxml_0.7.1",
-        wheel = "@example_lock_wheel_defusedxml_0.7.1_py2.py3_none_any//file",
+        wheel = "@poetry_lock_wheel_defusedxml_0.7.1_py2.py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "distlib_0.3.7",
-        wheel = "@example_lock_wheel_distlib_0.3.7_py2.py3_none_any//file",
+        wheel = "@poetry_lock_wheel_distlib_0.3.7_py2.py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "executing_1.2.0",
-        wheel = "@example_lock_wheel_executing_1.2.0_py2.py3_none_any//file",
+        wheel = "@poetry_lock_wheel_executing_1.2.0_py2.py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "fastjsonschema_2.18.0",
-        wheel = "@example_lock_wheel_fastjsonschema_2.18.0_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_fastjsonschema_2.18.0_py3_none_any//file",
     )
 
     _filelock_3_12_3_deps = [
@@ -296,12 +309,12 @@ def targets():
     pycross_wheel_library(
         name = "filelock_3.12.3",
         deps = _filelock_3_12_3_deps,
-        wheel = "@example_lock_wheel_filelock_3.12.3_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_filelock_3.12.3_py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "identify_2.5.27",
-        wheel = "@example_lock_wheel_identify_2.5.27_py2.py3_none_any//file",
+        wheel = "@poetry_lock_wheel_identify_2.5.27_py2.py3_none_any//file",
     )
 
     _importlib_metadata_6_8_0_deps = [
@@ -311,7 +324,7 @@ def targets():
     pycross_wheel_library(
         name = "importlib_metadata_6.8.0",
         deps = _importlib_metadata_6_8_0_deps,
-        wheel = "@example_lock_wheel_importlib_metadata_6.8.0_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_importlib_metadata_6.8.0_py3_none_any//file",
     )
 
     _ipykernel_6_25_2_deps = [
@@ -340,7 +353,7 @@ def targets():
     pycross_wheel_library(
         name = "ipykernel_6.25.2",
         deps = _ipykernel_6_25_2_deps,
-        wheel = "@example_lock_wheel_ipykernel_6.25.2_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_ipykernel_6.25.2_py3_none_any//file",
     )
 
     _ipython_8_0_1_deps = [
@@ -369,12 +382,12 @@ def targets():
     pycross_wheel_library(
         name = "ipython_8.0.1",
         deps = _ipython_8_0_1_deps,
-        wheel = "@example_lock_wheel_ipython_8.0.1_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_ipython_8.0.1_py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "ipython_genutils_0.2.0",
-        wheel = "@example_lock_wheel_ipython_genutils_0.2.0_py2.py3_none_any//file",
+        wheel = "@poetry_lock_wheel_ipython_genutils_0.2.0_py2.py3_none_any//file",
     )
 
     _jedi_0_19_0_deps = [
@@ -384,7 +397,7 @@ def targets():
     pycross_wheel_library(
         name = "jedi_0.19.0",
         deps = _jedi_0_19_0_deps,
-        wheel = "@example_lock_wheel_jedi_0.19.0_py2.py3_none_any//file",
+        wheel = "@poetry_lock_wheel_jedi_0.19.0_py2.py3_none_any//file",
     )
 
     _jinja2_3_1_2_deps = [
@@ -394,7 +407,7 @@ def targets():
     pycross_wheel_library(
         name = "jinja2_3.1.2",
         deps = _jinja2_3_1_2_deps,
-        wheel = "@example_lock_wheel_jinja2_3.1.2_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_jinja2_3.1.2_py3_none_any//file",
     )
 
     _jsonschema_4_19_0_deps = [
@@ -407,7 +420,7 @@ def targets():
     pycross_wheel_library(
         name = "jsonschema_4.19.0",
         deps = _jsonschema_4_19_0_deps,
-        wheel = "@example_lock_wheel_jsonschema_4.19.0_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_jsonschema_4.19.0_py3_none_any//file",
     )
 
     _jsonschema_specifications_2023_7_1_deps = [
@@ -417,7 +430,7 @@ def targets():
     pycross_wheel_library(
         name = "jsonschema_specifications_2023.7.1",
         deps = _jsonschema_specifications_2023_7_1_deps,
-        wheel = "@example_lock_wheel_jsonschema_specifications_2023.7.1_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_jsonschema_specifications_2023.7.1_py3_none_any//file",
     )
 
     _jupyter_black_0_3_4_deps = [
@@ -429,7 +442,7 @@ def targets():
     pycross_wheel_library(
         name = "jupyter_black_0.3.4",
         deps = _jupyter_black_0_3_4_deps,
-        wheel = "@example_lock_wheel_jupyter_black_0.3.4_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_jupyter_black_0.3.4_py3_none_any//file",
     )
 
     _jupyter_client_8_3_1_deps = [
@@ -444,7 +457,7 @@ def targets():
     pycross_wheel_library(
         name = "jupyter_client_8.3.1",
         deps = _jupyter_client_8_3_1_deps,
-        wheel = "@example_lock_wheel_jupyter_client_8.3.1_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_jupyter_client_8.3.1_py3_none_any//file",
     )
 
     _jupyter_core_5_3_1_deps = [
@@ -455,20 +468,21 @@ def targets():
     pycross_wheel_library(
         name = "jupyter_core_5.3.1",
         deps = _jupyter_core_5_3_1_deps,
-        wheel = "@example_lock_wheel_jupyter_core_5.3.1_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_jupyter_core_5.3.1_py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "jupyterlab_pygments_0.2.2",
-        wheel = "@example_lock_wheel_jupyterlab_pygments_0.2.2_py2.py3_none_any//file",
+        wheel = "@poetry_lock_wheel_jupyterlab_pygments_0.2.2_py2.py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "markupsafe_2.1.3",
         wheel = select({
-            ":_env_python_darwin_arm64": "@example_lock_wheel_markupsafe_2.1.3_cp39_cp39_macosx_10_9_universal2//file",
-            ":_env_python_darwin_x86_64": "@example_lock_wheel_markupsafe_2.1.3_cp39_cp39_macosx_10_9_x86_64//file",
-            ":_env_python_linux_x86_64": "@example_lock_wheel_markupsafe_2.1.3_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
+            ":_env_python_darwin_arm64": "@poetry_lock_wheel_markupsafe_2.1.3_cp39_cp39_macosx_10_9_universal2//file",
+            ":_env_python_darwin_x86_64": "@poetry_lock_wheel_markupsafe_2.1.3_cp39_cp39_macosx_10_9_x86_64//file",
+            ":_env_python_linux_x86_64": "@poetry_lock_wheel_markupsafe_2.1.3_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
+            ":_env_python_windows_x86_64": "@poetry_lock_wheel_markupsafe_2.1.3_cp39_cp39_macosx_10_9_universal2//file",
         }),
     )
 
@@ -479,17 +493,17 @@ def targets():
     pycross_wheel_library(
         name = "matplotlib_inline_0.1.6",
         deps = _matplotlib_inline_0_1_6_deps,
-        wheel = "@example_lock_wheel_matplotlib_inline_0.1.6_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_matplotlib_inline_0.1.6_py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "mistune_3.0.1",
-        wheel = "@example_lock_wheel_mistune_3.0.1_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_mistune_3.0.1_py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "mypy_extensions_1.0.0",
-        wheel = "@example_lock_wheel_mypy_extensions_1.0.0_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_mypy_extensions_1.0.0_py3_none_any//file",
     )
 
     _nbclient_0_8_0_deps = [
@@ -502,7 +516,7 @@ def targets():
     pycross_wheel_library(
         name = "nbclient_0.8.0",
         deps = _nbclient_0_8_0_deps,
-        wheel = "@example_lock_wheel_nbclient_0.8.0_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_nbclient_0.8.0_py3_none_any//file",
     )
 
     _nbconvert_7_8_0_deps = [
@@ -527,7 +541,7 @@ def targets():
     pycross_wheel_library(
         name = "nbconvert_7.8.0",
         deps = _nbconvert_7_8_0_deps,
-        wheel = "@example_lock_wheel_nbconvert_7.8.0_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_nbconvert_7.8.0_py3_none_any//file",
     )
 
     _nbformat_5_9_2_deps = [
@@ -540,12 +554,12 @@ def targets():
     pycross_wheel_library(
         name = "nbformat_5.9.2",
         deps = _nbformat_5_9_2_deps,
-        wheel = "@example_lock_wheel_nbformat_5.9.2_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_nbformat_5.9.2_py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "nest_asyncio_1.5.7",
-        wheel = "@example_lock_wheel_nest_asyncio_1.5.7_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_nest_asyncio_1.5.7_py3_none_any//file",
     )
 
     _nodeenv_1_8_0_deps = [
@@ -555,7 +569,7 @@ def targets():
     pycross_wheel_library(
         name = "nodeenv_1.8.0",
         deps = _nodeenv_1_8_0_deps,
-        wheel = "@example_lock_wheel_nodeenv_1.8.0_py2.py3_none_any//file",
+        wheel = "@poetry_lock_wheel_nodeenv_1.8.0_py2.py3_none_any//file",
     )
 
     _notebook_6_4_11_deps = [
@@ -579,36 +593,37 @@ def targets():
     pycross_wheel_library(
         name = "notebook_6.4.11",
         deps = _notebook_6_4_11_deps,
-        wheel = "@example_lock_wheel_notebook_6.4.11_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_notebook_6.4.11_py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "numpy_1.22.3",
         wheel = select({
-            ":_env_python_darwin_arm64": "@example_lock_wheel_numpy_1.22.3_cp39_cp39_macosx_11_0_arm64//file",
-            ":_env_python_darwin_x86_64": "@example_lock_wheel_numpy_1.22.3_cp39_cp39_macosx_10_14_x86_64//file",
-            ":_env_python_linux_x86_64": "@example_lock_wheel_numpy_1.22.3_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
+            ":_env_python_darwin_arm64": "@poetry_lock_wheel_numpy_1.22.3_cp39_cp39_macosx_11_0_arm64//file",
+            ":_env_python_darwin_x86_64": "@poetry_lock_wheel_numpy_1.22.3_cp39_cp39_macosx_10_14_x86_64//file",
+            ":_env_python_linux_x86_64": "@poetry_lock_wheel_numpy_1.22.3_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
+            ":_env_python_windows_x86_64": "@poetry_lock_wheel_numpy_1.22.3_cp39_cp39_macosx_11_0_arm64//file",
         }),
     )
 
     pycross_wheel_library(
         name = "packaging_23.1",
-        wheel = "@example_lock_wheel_packaging_23.1_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_packaging_23.1_py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "pandocfilters_1.5.0",
-        wheel = "@example_lock_wheel_pandocfilters_1.5.0_py2.py3_none_any//file",
+        wheel = "@poetry_lock_wheel_pandocfilters_1.5.0_py2.py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "parso_0.8.3",
-        wheel = "@example_lock_wheel_parso_0.8.3_py2.py3_none_any//file",
+        wheel = "@poetry_lock_wheel_parso_0.8.3_py2.py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "pathspec_0.11.2",
-        wheel = "@example_lock_wheel_pathspec_0.11.2_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_pathspec_0.11.2_py3_none_any//file",
     )
 
     _pexpect_4_8_0_deps = [
@@ -618,17 +633,17 @@ def targets():
     pycross_wheel_library(
         name = "pexpect_4.8.0",
         deps = _pexpect_4_8_0_deps,
-        wheel = "@example_lock_wheel_pexpect_4.8.0_py2.py3_none_any//file",
+        wheel = "@poetry_lock_wheel_pexpect_4.8.0_py2.py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "pickleshare_0.7.5",
-        wheel = "@example_lock_wheel_pickleshare_0.7.5_py2.py3_none_any//file",
+        wheel = "@poetry_lock_wheel_pickleshare_0.7.5_py2.py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "platformdirs_3.10.0",
-        wheel = "@example_lock_wheel_platformdirs_3.10.0_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_platformdirs_3.10.0_py3_none_any//file",
     )
 
     _pre_commit_3_3_3_deps = [
@@ -642,12 +657,12 @@ def targets():
     pycross_wheel_library(
         name = "pre_commit_3.3.3",
         deps = _pre_commit_3_3_3_deps,
-        wheel = "@example_lock_wheel_pre_commit_3.3.3_py2.py3_none_any//file",
+        wheel = "@poetry_lock_wheel_pre_commit_3.3.3_py2.py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "prometheus_client_0.17.1",
-        wheel = "@example_lock_wheel_prometheus_client_0.17.1_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_prometheus_client_0.17.1_py3_none_any//file",
     )
 
     _prompt_toolkit_3_0_39_deps = [
@@ -657,36 +672,37 @@ def targets():
     pycross_wheel_library(
         name = "prompt_toolkit_3.0.39",
         deps = _prompt_toolkit_3_0_39_deps,
-        wheel = "@example_lock_wheel_prompt_toolkit_3.0.39_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_prompt_toolkit_3.0.39_py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "psutil_5.9.5",
         wheel = select({
-            ":_env_python_darwin_arm64": "@example_lock_wheel_psutil_5.9.5_cp38_abi3_macosx_11_0_arm64//file",
-            ":_env_python_darwin_x86_64": "@example_lock_wheel_psutil_5.9.5_cp36_abi3_macosx_10_9_x86_64//file",
-            ":_env_python_linux_x86_64": "@example_lock_wheel_psutil_5.9.5_cp36_abi3_manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64//file",
+            ":_env_python_darwin_arm64": "@poetry_lock_wheel_psutil_5.9.5_cp38_abi3_macosx_11_0_arm64//file",
+            ":_env_python_darwin_x86_64": "@poetry_lock_wheel_psutil_5.9.5_cp36_abi3_macosx_10_9_x86_64//file",
+            ":_env_python_linux_x86_64": "@poetry_lock_wheel_psutil_5.9.5_cp36_abi3_manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64//file",
+            ":_env_python_windows_x86_64": "@poetry_lock_wheel_psutil_5.9.5_cp38_abi3_macosx_11_0_arm64//file",
         }),
     )
 
     pycross_wheel_library(
         name = "ptyprocess_0.7.0",
-        wheel = "@example_lock_wheel_ptyprocess_0.7.0_py2.py3_none_any//file",
+        wheel = "@poetry_lock_wheel_ptyprocess_0.7.0_py2.py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "pure_eval_0.2.2",
-        wheel = "@example_lock_wheel_pure_eval_0.2.2_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_pure_eval_0.2.2_py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "pycparser_2.21",
-        wheel = "@example_lock_wheel_pycparser_2.21_py2.py3_none_any//file",
+        wheel = "@poetry_lock_wheel_pycparser_2.21_py2.py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "pygments_2.16.1",
-        wheel = "@example_lock_wheel_pygments_2.16.1_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_pygments_2.16.1_py3_none_any//file",
     )
 
     _python_dateutil_2_8_2_deps = [
@@ -696,24 +712,26 @@ def targets():
     pycross_wheel_library(
         name = "python_dateutil_2.8.2",
         deps = _python_dateutil_2_8_2_deps,
-        wheel = "@example_lock_wheel_python_dateutil_2.8.2_py2.py3_none_any//file",
+        wheel = "@poetry_lock_wheel_python_dateutil_2.8.2_py2.py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "pyyaml_6.0.1",
         wheel = select({
-            ":_env_python_darwin_arm64": "@example_lock_wheel_pyyaml_6.0.1_cp39_cp39_macosx_11_0_arm64//file",
-            ":_env_python_darwin_x86_64": "@example_lock_wheel_pyyaml_6.0.1_cp39_cp39_macosx_10_9_x86_64//file",
-            ":_env_python_linux_x86_64": "@example_lock_wheel_pyyaml_6.0.1_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
+            ":_env_python_darwin_arm64": "@poetry_lock_wheel_pyyaml_6.0.1_cp39_cp39_macosx_11_0_arm64//file",
+            ":_env_python_darwin_x86_64": "@poetry_lock_wheel_pyyaml_6.0.1_cp39_cp39_macosx_10_9_x86_64//file",
+            ":_env_python_linux_x86_64": "@poetry_lock_wheel_pyyaml_6.0.1_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
+            ":_env_python_windows_x86_64": "@poetry_lock_wheel_pyyaml_6.0.1_cp39_cp39_macosx_11_0_arm64//file",
         }),
     )
 
     pycross_wheel_library(
         name = "pyzmq_25.1.1",
         wheel = select({
-            ":_env_python_darwin_arm64": "@example_lock_wheel_pyzmq_25.1.1_cp39_cp39_macosx_10_15_universal2//file",
-            ":_env_python_darwin_x86_64": "@example_lock_wheel_pyzmq_25.1.1_cp39_cp39_macosx_10_15_universal2//file",
-            ":_env_python_linux_x86_64": "@example_lock_wheel_pyzmq_25.1.1_cp39_cp39_manylinux_2_12_x86_64.manylinux2010_x86_64//file",
+            ":_env_python_darwin_arm64": "@poetry_lock_wheel_pyzmq_25.1.1_cp39_cp39_macosx_10_15_universal2//file",
+            ":_env_python_darwin_x86_64": "@poetry_lock_wheel_pyzmq_25.1.1_cp39_cp39_macosx_10_15_universal2//file",
+            ":_env_python_linux_x86_64": "@poetry_lock_wheel_pyzmq_25.1.1_cp39_cp39_manylinux_2_12_x86_64.manylinux2010_x86_64//file",
+            ":_env_python_windows_x86_64": "@poetry_lock_wheel_pyzmq_25.1.1_cp39_cp39_macosx_10_15_universal2//file",
         }),
     )
 
@@ -725,36 +743,37 @@ def targets():
     pycross_wheel_library(
         name = "referencing_0.30.2",
         deps = _referencing_0_30_2_deps,
-        wheel = "@example_lock_wheel_referencing_0.30.2_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_referencing_0.30.2_py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "rpds_py_0.10.2",
         wheel = select({
-            ":_env_python_darwin_arm64": "@example_lock_wheel_rpds_py_0.10.2_cp39_cp39_macosx_11_0_arm64//file",
-            ":_env_python_darwin_x86_64": "@example_lock_wheel_rpds_py_0.10.2_cp39_cp39_macosx_10_7_x86_64//file",
-            ":_env_python_linux_x86_64": "@example_lock_wheel_rpds_py_0.10.2_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
+            ":_env_python_darwin_arm64": "@poetry_lock_wheel_rpds_py_0.10.2_cp39_cp39_macosx_11_0_arm64//file",
+            ":_env_python_darwin_x86_64": "@poetry_lock_wheel_rpds_py_0.10.2_cp39_cp39_macosx_10_7_x86_64//file",
+            ":_env_python_linux_x86_64": "@poetry_lock_wheel_rpds_py_0.10.2_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
+            ":_env_python_windows_x86_64": "@poetry_lock_wheel_rpds_py_0.10.2_cp39_cp39_macosx_11_0_arm64//file",
         }),
     )
 
     pycross_wheel_library(
         name = "send2trash_1.8.2",
-        wheel = "@example_lock_wheel_send2trash_1.8.2_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_send2trash_1.8.2_py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "setuptools_68.1.2",
-        wheel = "@example_lock_wheel_setuptools_68.1.2_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_setuptools_68.1.2_py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "six_1.16.0",
-        wheel = "@example_lock_wheel_six_1.16.0_py2.py3_none_any//file",
+        wheel = "@poetry_lock_wheel_six_1.16.0_py2.py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "soupsieve_2.5",
-        wheel = "@example_lock_wheel_soupsieve_2.5_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_soupsieve_2.5_py3_none_any//file",
     )
 
     _stack_data_0_6_2_deps = [
@@ -766,7 +785,7 @@ def targets():
     pycross_wheel_library(
         name = "stack_data_0.6.2",
         deps = _stack_data_0_6_2_deps,
-        wheel = "@example_lock_wheel_stack_data_0.6.2_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_stack_data_0.6.2_py3_none_any//file",
     )
 
     _terminado_0_17_1_deps = [
@@ -777,7 +796,7 @@ def targets():
     pycross_wheel_library(
         name = "terminado_0.17.1",
         deps = _terminado_0_17_1_deps,
-        wheel = "@example_lock_wheel_terminado_0.17.1_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_terminado_0.17.1_py3_none_any//file",
     )
 
     _tinycss2_1_2_1_deps = [
@@ -787,36 +806,37 @@ def targets():
     pycross_wheel_library(
         name = "tinycss2_1.2.1",
         deps = _tinycss2_1_2_1_deps,
-        wheel = "@example_lock_wheel_tinycss2_1.2.1_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_tinycss2_1.2.1_py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "tokenize_rt_5.2.0",
-        wheel = "@example_lock_wheel_tokenize_rt_5.2.0_py2.py3_none_any//file",
+        wheel = "@poetry_lock_wheel_tokenize_rt_5.2.0_py2.py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "tomli_2.0.1",
-        wheel = "@example_lock_wheel_tomli_2.0.1_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_tomli_2.0.1_py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "tornado_6.3.3",
         wheel = select({
-            ":_env_python_darwin_arm64": "@example_lock_wheel_tornado_6.3.3_cp38_abi3_macosx_10_9_universal2//file",
-            ":_env_python_darwin_x86_64": "@example_lock_wheel_tornado_6.3.3_cp38_abi3_macosx_10_9_x86_64//file",
-            ":_env_python_linux_x86_64": "@example_lock_wheel_tornado_6.3.3_cp38_abi3_manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64//file",
+            ":_env_python_darwin_arm64": "@poetry_lock_wheel_tornado_6.3.3_cp38_abi3_macosx_10_9_universal2//file",
+            ":_env_python_darwin_x86_64": "@poetry_lock_wheel_tornado_6.3.3_cp38_abi3_macosx_10_9_x86_64//file",
+            ":_env_python_linux_x86_64": "@poetry_lock_wheel_tornado_6.3.3_cp38_abi3_manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64//file",
+            ":_env_python_windows_x86_64": "@poetry_lock_wheel_tornado_6.3.3_cp38_abi3_macosx_10_9_universal2//file",
         }),
     )
 
     pycross_wheel_library(
         name = "traitlets_5.9.0",
-        wheel = "@example_lock_wheel_traitlets_5.9.0_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_traitlets_5.9.0_py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "typing_extensions_4.7.1",
-        wheel = "@example_lock_wheel_typing_extensions_4.7.1_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_typing_extensions_4.7.1_py3_none_any//file",
     )
 
     _virtualenv_20_24_4_deps = [
@@ -828,28 +848,28 @@ def targets():
     pycross_wheel_library(
         name = "virtualenv_20.24.4",
         deps = _virtualenv_20_24_4_deps,
-        wheel = "@example_lock_wheel_virtualenv_20.24.4_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_virtualenv_20.24.4_py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "wcwidth_0.2.6",
-        wheel = "@example_lock_wheel_wcwidth_0.2.6_py2.py3_none_any//file",
+        wheel = "@poetry_lock_wheel_wcwidth_0.2.6_py2.py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "webencodings_0.5.1",
-        wheel = "@example_lock_wheel_webencodings_0.5.1_py2.py3_none_any//file",
+        wheel = "@poetry_lock_wheel_webencodings_0.5.1_py2.py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "zipp_3.16.2",
-        wheel = "@example_lock_wheel_zipp_3.16.2_py3_none_any//file",
+        wheel = "@poetry_lock_wheel_zipp_3.16.2_py3_none_any//file",
     )
 
 def repositories():
     maybe(
         pypi_file,
-        name = "example_lock_wheel_appnope_0.1.3_py2.py3_none_any",
+        name = "poetry_lock_wheel_appnope_0.1.3_py2.py3_none_any",
         package_name = "appnope",
         package_version = "0.1.3",
         filename = "appnope-0.1.3-py2.py3-none-any.whl",
@@ -859,7 +879,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_argon2_cffi_23.1.0_py3_none_any",
+        name = "poetry_lock_wheel_argon2_cffi_23.1.0_py3_none_any",
         package_name = "argon2-cffi",
         package_version = "23.1.0",
         filename = "argon2_cffi-23.1.0-py3-none-any.whl",
@@ -869,7 +889,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_argon2_cffi_bindings_21.2.0_cp36_abi3_manylinux_2_17_x86_64.manylinux2014_x86_64",
+        name = "poetry_lock_wheel_argon2_cffi_bindings_21.2.0_cp36_abi3_manylinux_2_17_x86_64.manylinux2014_x86_64",
         package_name = "argon2-cffi-bindings",
         package_version = "21.2.0",
         filename = "argon2_cffi_bindings-21.2.0-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
@@ -879,7 +899,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_argon2_cffi_bindings_21.2.0_cp38_abi3_macosx_10_9_universal2",
+        name = "poetry_lock_wheel_argon2_cffi_bindings_21.2.0_cp38_abi3_macosx_10_9_universal2",
         package_name = "argon2-cffi-bindings",
         package_version = "21.2.0",
         filename = "argon2_cffi_bindings-21.2.0-cp38-abi3-macosx_10_9_universal2.whl",
@@ -889,7 +909,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_asttokens_2.4.0_py2.py3_none_any",
+        name = "poetry_lock_wheel_asttokens_2.4.0_py2.py3_none_any",
         package_name = "asttokens",
         package_version = "2.4.0",
         filename = "asttokens-2.4.0-py2.py3-none-any.whl",
@@ -899,7 +919,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_attrs_23.1.0_py3_none_any",
+        name = "poetry_lock_wheel_attrs_23.1.0_py3_none_any",
         package_name = "attrs",
         package_version = "23.1.0",
         filename = "attrs-23.1.0-py3-none-any.whl",
@@ -909,7 +929,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_backcall_0.2.0_py2.py3_none_any",
+        name = "poetry_lock_wheel_backcall_0.2.0_py2.py3_none_any",
         package_name = "backcall",
         package_version = "0.2.0",
         filename = "backcall-0.2.0-py2.py3-none-any.whl",
@@ -919,7 +939,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_beautifulsoup4_4.12.2_py3_none_any",
+        name = "poetry_lock_wheel_beautifulsoup4_4.12.2_py3_none_any",
         package_name = "beautifulsoup4",
         package_version = "4.12.2",
         filename = "beautifulsoup4-4.12.2-py3-none-any.whl",
@@ -929,7 +949,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_black_23.7.0_cp39_cp39_macosx_10_16_universal2",
+        name = "poetry_lock_wheel_black_23.7.0_cp39_cp39_macosx_10_16_universal2",
         package_name = "black",
         package_version = "23.7.0",
         filename = "black-23.7.0-cp39-cp39-macosx_10_16_universal2.whl",
@@ -939,7 +959,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_black_23.7.0_cp39_cp39_macosx_10_16_x86_64",
+        name = "poetry_lock_wheel_black_23.7.0_cp39_cp39_macosx_10_16_x86_64",
         package_name = "black",
         package_version = "23.7.0",
         filename = "black-23.7.0-cp39-cp39-macosx_10_16_x86_64.whl",
@@ -949,7 +969,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_black_23.7.0_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64",
+        name = "poetry_lock_wheel_black_23.7.0_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64",
         package_name = "black",
         package_version = "23.7.0",
         filename = "black-23.7.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
@@ -959,7 +979,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_bleach_6.0.0_py3_none_any",
+        name = "poetry_lock_wheel_bleach_6.0.0_py3_none_any",
         package_name = "bleach",
         package_version = "6.0.0",
         filename = "bleach-6.0.0-py3-none-any.whl",
@@ -969,7 +989,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_cffi_1.15.1_cp39_cp39_macosx_10_9_x86_64",
+        name = "poetry_lock_wheel_cffi_1.15.1_cp39_cp39_macosx_10_9_x86_64",
         package_name = "cffi",
         package_version = "1.15.1",
         filename = "cffi-1.15.1-cp39-cp39-macosx_10_9_x86_64.whl",
@@ -979,7 +999,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_cffi_1.15.1_cp39_cp39_macosx_11_0_arm64",
+        name = "poetry_lock_wheel_cffi_1.15.1_cp39_cp39_macosx_11_0_arm64",
         package_name = "cffi",
         package_version = "1.15.1",
         filename = "cffi-1.15.1-cp39-cp39-macosx_11_0_arm64.whl",
@@ -989,7 +1009,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_cffi_1.15.1_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64",
+        name = "poetry_lock_wheel_cffi_1.15.1_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64",
         package_name = "cffi",
         package_version = "1.15.1",
         filename = "cffi-1.15.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
@@ -999,7 +1019,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_cfgv_3.4.0_py2.py3_none_any",
+        name = "poetry_lock_wheel_cfgv_3.4.0_py2.py3_none_any",
         package_name = "cfgv",
         package_version = "3.4.0",
         filename = "cfgv-3.4.0-py2.py3-none-any.whl",
@@ -1009,7 +1029,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_click_8.1.7_py3_none_any",
+        name = "poetry_lock_wheel_click_8.1.7_py3_none_any",
         package_name = "click",
         package_version = "8.1.7",
         filename = "click-8.1.7-py3-none-any.whl",
@@ -1019,7 +1039,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_comm_0.1.4_py3_none_any",
+        name = "poetry_lock_wheel_comm_0.1.4_py3_none_any",
         package_name = "comm",
         package_version = "0.1.4",
         filename = "comm-0.1.4-py3-none-any.whl",
@@ -1029,7 +1049,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_cpplint_1.6.1_py3_none_any",
+        name = "poetry_lock_wheel_cpplint_1.6.1_py3_none_any",
         package_name = "cpplint",
         package_version = "1.6.1",
         filename = "cpplint-1.6.1-py3-none-any.whl",
@@ -1039,7 +1059,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_debugpy_1.6.7.post1_cp39_cp39_macosx_11_0_x86_64",
+        name = "poetry_lock_wheel_debugpy_1.6.7.post1_cp39_cp39_macosx_11_0_x86_64",
         package_name = "debugpy",
         package_version = "1.6.7.post1",
         filename = "debugpy-1.6.7.post1-cp39-cp39-macosx_11_0_x86_64.whl",
@@ -1049,7 +1069,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_debugpy_1.6.7.post1_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64",
+        name = "poetry_lock_wheel_debugpy_1.6.7.post1_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64",
         package_name = "debugpy",
         package_version = "1.6.7.post1",
         filename = "debugpy-1.6.7.post1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
@@ -1059,7 +1079,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_debugpy_1.6.7.post1_py2.py3_none_any",
+        name = "poetry_lock_wheel_debugpy_1.6.7.post1_py2.py3_none_any",
         package_name = "debugpy",
         package_version = "1.6.7.post1",
         filename = "debugpy-1.6.7.post1-py2.py3-none-any.whl",
@@ -1069,7 +1089,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_decorator_5.1.1_py3_none_any",
+        name = "poetry_lock_wheel_decorator_5.1.1_py3_none_any",
         package_name = "decorator",
         package_version = "5.1.1",
         filename = "decorator-5.1.1-py3-none-any.whl",
@@ -1079,7 +1099,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_defusedxml_0.7.1_py2.py3_none_any",
+        name = "poetry_lock_wheel_defusedxml_0.7.1_py2.py3_none_any",
         package_name = "defusedxml",
         package_version = "0.7.1",
         filename = "defusedxml-0.7.1-py2.py3-none-any.whl",
@@ -1089,7 +1109,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_distlib_0.3.7_py2.py3_none_any",
+        name = "poetry_lock_wheel_distlib_0.3.7_py2.py3_none_any",
         package_name = "distlib",
         package_version = "0.3.7",
         filename = "distlib-0.3.7-py2.py3-none-any.whl",
@@ -1099,7 +1119,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_executing_1.2.0_py2.py3_none_any",
+        name = "poetry_lock_wheel_executing_1.2.0_py2.py3_none_any",
         package_name = "executing",
         package_version = "1.2.0",
         filename = "executing-1.2.0-py2.py3-none-any.whl",
@@ -1109,7 +1129,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_fastjsonschema_2.18.0_py3_none_any",
+        name = "poetry_lock_wheel_fastjsonschema_2.18.0_py3_none_any",
         package_name = "fastjsonschema",
         package_version = "2.18.0",
         filename = "fastjsonschema-2.18.0-py3-none-any.whl",
@@ -1119,7 +1139,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_filelock_3.12.3_py3_none_any",
+        name = "poetry_lock_wheel_filelock_3.12.3_py3_none_any",
         package_name = "filelock",
         package_version = "3.12.3",
         filename = "filelock-3.12.3-py3-none-any.whl",
@@ -1129,7 +1149,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_identify_2.5.27_py2.py3_none_any",
+        name = "poetry_lock_wheel_identify_2.5.27_py2.py3_none_any",
         package_name = "identify",
         package_version = "2.5.27",
         filename = "identify-2.5.27-py2.py3-none-any.whl",
@@ -1139,7 +1159,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_importlib_metadata_6.8.0_py3_none_any",
+        name = "poetry_lock_wheel_importlib_metadata_6.8.0_py3_none_any",
         package_name = "importlib-metadata",
         package_version = "6.8.0",
         filename = "importlib_metadata-6.8.0-py3-none-any.whl",
@@ -1149,7 +1169,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_ipykernel_6.25.2_py3_none_any",
+        name = "poetry_lock_wheel_ipykernel_6.25.2_py3_none_any",
         package_name = "ipykernel",
         package_version = "6.25.2",
         filename = "ipykernel-6.25.2-py3-none-any.whl",
@@ -1159,7 +1179,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_ipython_8.0.1_py3_none_any",
+        name = "poetry_lock_wheel_ipython_8.0.1_py3_none_any",
         package_name = "ipython",
         package_version = "8.0.1",
         filename = "ipython-8.0.1-py3-none-any.whl",
@@ -1169,7 +1189,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_ipython_genutils_0.2.0_py2.py3_none_any",
+        name = "poetry_lock_wheel_ipython_genutils_0.2.0_py2.py3_none_any",
         package_name = "ipython-genutils",
         package_version = "0.2.0",
         filename = "ipython_genutils-0.2.0-py2.py3-none-any.whl",
@@ -1179,7 +1199,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_jedi_0.19.0_py2.py3_none_any",
+        name = "poetry_lock_wheel_jedi_0.19.0_py2.py3_none_any",
         package_name = "jedi",
         package_version = "0.19.0",
         filename = "jedi-0.19.0-py2.py3-none-any.whl",
@@ -1189,7 +1209,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_jinja2_3.1.2_py3_none_any",
+        name = "poetry_lock_wheel_jinja2_3.1.2_py3_none_any",
         package_name = "jinja2",
         package_version = "3.1.2",
         filename = "Jinja2-3.1.2-py3-none-any.whl",
@@ -1199,7 +1219,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_jsonschema_4.19.0_py3_none_any",
+        name = "poetry_lock_wheel_jsonschema_4.19.0_py3_none_any",
         package_name = "jsonschema",
         package_version = "4.19.0",
         filename = "jsonschema-4.19.0-py3-none-any.whl",
@@ -1209,7 +1229,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_jsonschema_specifications_2023.7.1_py3_none_any",
+        name = "poetry_lock_wheel_jsonschema_specifications_2023.7.1_py3_none_any",
         package_name = "jsonschema-specifications",
         package_version = "2023.7.1",
         filename = "jsonschema_specifications-2023.7.1-py3-none-any.whl",
@@ -1219,7 +1239,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_jupyter_black_0.3.4_py3_none_any",
+        name = "poetry_lock_wheel_jupyter_black_0.3.4_py3_none_any",
         package_name = "jupyter-black",
         package_version = "0.3.4",
         filename = "jupyter_black-0.3.4-py3-none-any.whl",
@@ -1229,7 +1249,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_jupyter_client_8.3.1_py3_none_any",
+        name = "poetry_lock_wheel_jupyter_client_8.3.1_py3_none_any",
         package_name = "jupyter-client",
         package_version = "8.3.1",
         filename = "jupyter_client-8.3.1-py3-none-any.whl",
@@ -1239,7 +1259,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_jupyter_core_5.3.1_py3_none_any",
+        name = "poetry_lock_wheel_jupyter_core_5.3.1_py3_none_any",
         package_name = "jupyter-core",
         package_version = "5.3.1",
         filename = "jupyter_core-5.3.1-py3-none-any.whl",
@@ -1249,7 +1269,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_jupyterlab_pygments_0.2.2_py2.py3_none_any",
+        name = "poetry_lock_wheel_jupyterlab_pygments_0.2.2_py2.py3_none_any",
         package_name = "jupyterlab-pygments",
         package_version = "0.2.2",
         filename = "jupyterlab_pygments-0.2.2-py2.py3-none-any.whl",
@@ -1259,7 +1279,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_markupsafe_2.1.3_cp39_cp39_macosx_10_9_universal2",
+        name = "poetry_lock_wheel_markupsafe_2.1.3_cp39_cp39_macosx_10_9_universal2",
         package_name = "markupsafe",
         package_version = "2.1.3",
         filename = "MarkupSafe-2.1.3-cp39-cp39-macosx_10_9_universal2.whl",
@@ -1269,7 +1289,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_markupsafe_2.1.3_cp39_cp39_macosx_10_9_x86_64",
+        name = "poetry_lock_wheel_markupsafe_2.1.3_cp39_cp39_macosx_10_9_x86_64",
         package_name = "markupsafe",
         package_version = "2.1.3",
         filename = "MarkupSafe-2.1.3-cp39-cp39-macosx_10_9_x86_64.whl",
@@ -1279,7 +1299,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_markupsafe_2.1.3_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64",
+        name = "poetry_lock_wheel_markupsafe_2.1.3_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64",
         package_name = "markupsafe",
         package_version = "2.1.3",
         filename = "MarkupSafe-2.1.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
@@ -1289,7 +1309,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_matplotlib_inline_0.1.6_py3_none_any",
+        name = "poetry_lock_wheel_matplotlib_inline_0.1.6_py3_none_any",
         package_name = "matplotlib-inline",
         package_version = "0.1.6",
         filename = "matplotlib_inline-0.1.6-py3-none-any.whl",
@@ -1299,7 +1319,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_mistune_3.0.1_py3_none_any",
+        name = "poetry_lock_wheel_mistune_3.0.1_py3_none_any",
         package_name = "mistune",
         package_version = "3.0.1",
         filename = "mistune-3.0.1-py3-none-any.whl",
@@ -1309,7 +1329,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_mypy_extensions_1.0.0_py3_none_any",
+        name = "poetry_lock_wheel_mypy_extensions_1.0.0_py3_none_any",
         package_name = "mypy-extensions",
         package_version = "1.0.0",
         filename = "mypy_extensions-1.0.0-py3-none-any.whl",
@@ -1319,7 +1339,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_nbclient_0.8.0_py3_none_any",
+        name = "poetry_lock_wheel_nbclient_0.8.0_py3_none_any",
         package_name = "nbclient",
         package_version = "0.8.0",
         filename = "nbclient-0.8.0-py3-none-any.whl",
@@ -1329,7 +1349,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_nbconvert_7.8.0_py3_none_any",
+        name = "poetry_lock_wheel_nbconvert_7.8.0_py3_none_any",
         package_name = "nbconvert",
         package_version = "7.8.0",
         filename = "nbconvert-7.8.0-py3-none-any.whl",
@@ -1339,7 +1359,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_nbformat_5.9.2_py3_none_any",
+        name = "poetry_lock_wheel_nbformat_5.9.2_py3_none_any",
         package_name = "nbformat",
         package_version = "5.9.2",
         filename = "nbformat-5.9.2-py3-none-any.whl",
@@ -1349,7 +1369,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_nest_asyncio_1.5.7_py3_none_any",
+        name = "poetry_lock_wheel_nest_asyncio_1.5.7_py3_none_any",
         package_name = "nest-asyncio",
         package_version = "1.5.7",
         filename = "nest_asyncio-1.5.7-py3-none-any.whl",
@@ -1359,7 +1379,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_nodeenv_1.8.0_py2.py3_none_any",
+        name = "poetry_lock_wheel_nodeenv_1.8.0_py2.py3_none_any",
         package_name = "nodeenv",
         package_version = "1.8.0",
         filename = "nodeenv-1.8.0-py2.py3-none-any.whl",
@@ -1369,7 +1389,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_notebook_6.4.11_py3_none_any",
+        name = "poetry_lock_wheel_notebook_6.4.11_py3_none_any",
         package_name = "notebook",
         package_version = "6.4.11",
         filename = "notebook-6.4.11-py3-none-any.whl",
@@ -1379,7 +1399,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_numpy_1.22.3_cp39_cp39_macosx_10_14_x86_64",
+        name = "poetry_lock_wheel_numpy_1.22.3_cp39_cp39_macosx_10_14_x86_64",
         package_name = "numpy",
         package_version = "1.22.3",
         filename = "numpy-1.22.3-cp39-cp39-macosx_10_14_x86_64.whl",
@@ -1389,7 +1409,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_numpy_1.22.3_cp39_cp39_macosx_11_0_arm64",
+        name = "poetry_lock_wheel_numpy_1.22.3_cp39_cp39_macosx_11_0_arm64",
         package_name = "numpy",
         package_version = "1.22.3",
         filename = "numpy-1.22.3-cp39-cp39-macosx_11_0_arm64.whl",
@@ -1399,7 +1419,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_numpy_1.22.3_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64",
+        name = "poetry_lock_wheel_numpy_1.22.3_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64",
         package_name = "numpy",
         package_version = "1.22.3",
         filename = "numpy-1.22.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
@@ -1409,7 +1429,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_packaging_23.1_py3_none_any",
+        name = "poetry_lock_wheel_packaging_23.1_py3_none_any",
         package_name = "packaging",
         package_version = "23.1",
         filename = "packaging-23.1-py3-none-any.whl",
@@ -1419,7 +1439,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_pandocfilters_1.5.0_py2.py3_none_any",
+        name = "poetry_lock_wheel_pandocfilters_1.5.0_py2.py3_none_any",
         package_name = "pandocfilters",
         package_version = "1.5.0",
         filename = "pandocfilters-1.5.0-py2.py3-none-any.whl",
@@ -1429,7 +1449,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_parso_0.8.3_py2.py3_none_any",
+        name = "poetry_lock_wheel_parso_0.8.3_py2.py3_none_any",
         package_name = "parso",
         package_version = "0.8.3",
         filename = "parso-0.8.3-py2.py3-none-any.whl",
@@ -1439,7 +1459,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_pathspec_0.11.2_py3_none_any",
+        name = "poetry_lock_wheel_pathspec_0.11.2_py3_none_any",
         package_name = "pathspec",
         package_version = "0.11.2",
         filename = "pathspec-0.11.2-py3-none-any.whl",
@@ -1449,7 +1469,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_pexpect_4.8.0_py2.py3_none_any",
+        name = "poetry_lock_wheel_pexpect_4.8.0_py2.py3_none_any",
         package_name = "pexpect",
         package_version = "4.8.0",
         filename = "pexpect-4.8.0-py2.py3-none-any.whl",
@@ -1459,7 +1479,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_pickleshare_0.7.5_py2.py3_none_any",
+        name = "poetry_lock_wheel_pickleshare_0.7.5_py2.py3_none_any",
         package_name = "pickleshare",
         package_version = "0.7.5",
         filename = "pickleshare-0.7.5-py2.py3-none-any.whl",
@@ -1469,7 +1489,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_platformdirs_3.10.0_py3_none_any",
+        name = "poetry_lock_wheel_platformdirs_3.10.0_py3_none_any",
         package_name = "platformdirs",
         package_version = "3.10.0",
         filename = "platformdirs-3.10.0-py3-none-any.whl",
@@ -1479,7 +1499,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_pre_commit_3.3.3_py2.py3_none_any",
+        name = "poetry_lock_wheel_pre_commit_3.3.3_py2.py3_none_any",
         package_name = "pre-commit",
         package_version = "3.3.3",
         filename = "pre_commit-3.3.3-py2.py3-none-any.whl",
@@ -1489,7 +1509,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_prometheus_client_0.17.1_py3_none_any",
+        name = "poetry_lock_wheel_prometheus_client_0.17.1_py3_none_any",
         package_name = "prometheus-client",
         package_version = "0.17.1",
         filename = "prometheus_client-0.17.1-py3-none-any.whl",
@@ -1499,7 +1519,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_prompt_toolkit_3.0.39_py3_none_any",
+        name = "poetry_lock_wheel_prompt_toolkit_3.0.39_py3_none_any",
         package_name = "prompt-toolkit",
         package_version = "3.0.39",
         filename = "prompt_toolkit-3.0.39-py3-none-any.whl",
@@ -1509,7 +1529,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_psutil_5.9.5_cp36_abi3_macosx_10_9_x86_64",
+        name = "poetry_lock_wheel_psutil_5.9.5_cp36_abi3_macosx_10_9_x86_64",
         package_name = "psutil",
         package_version = "5.9.5",
         filename = "psutil-5.9.5-cp36-abi3-macosx_10_9_x86_64.whl",
@@ -1519,7 +1539,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_psutil_5.9.5_cp36_abi3_manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64",
+        name = "poetry_lock_wheel_psutil_5.9.5_cp36_abi3_manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64",
         package_name = "psutil",
         package_version = "5.9.5",
         filename = "psutil-5.9.5-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
@@ -1529,7 +1549,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_psutil_5.9.5_cp38_abi3_macosx_11_0_arm64",
+        name = "poetry_lock_wheel_psutil_5.9.5_cp38_abi3_macosx_11_0_arm64",
         package_name = "psutil",
         package_version = "5.9.5",
         filename = "psutil-5.9.5-cp38-abi3-macosx_11_0_arm64.whl",
@@ -1539,7 +1559,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_ptyprocess_0.7.0_py2.py3_none_any",
+        name = "poetry_lock_wheel_ptyprocess_0.7.0_py2.py3_none_any",
         package_name = "ptyprocess",
         package_version = "0.7.0",
         filename = "ptyprocess-0.7.0-py2.py3-none-any.whl",
@@ -1549,7 +1569,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_pure_eval_0.2.2_py3_none_any",
+        name = "poetry_lock_wheel_pure_eval_0.2.2_py3_none_any",
         package_name = "pure-eval",
         package_version = "0.2.2",
         filename = "pure_eval-0.2.2-py3-none-any.whl",
@@ -1559,7 +1579,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_pycparser_2.21_py2.py3_none_any",
+        name = "poetry_lock_wheel_pycparser_2.21_py2.py3_none_any",
         package_name = "pycparser",
         package_version = "2.21",
         filename = "pycparser-2.21-py2.py3-none-any.whl",
@@ -1569,7 +1589,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_pygments_2.16.1_py3_none_any",
+        name = "poetry_lock_wheel_pygments_2.16.1_py3_none_any",
         package_name = "pygments",
         package_version = "2.16.1",
         filename = "Pygments-2.16.1-py3-none-any.whl",
@@ -1579,7 +1599,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_python_dateutil_2.8.2_py2.py3_none_any",
+        name = "poetry_lock_wheel_python_dateutil_2.8.2_py2.py3_none_any",
         package_name = "python-dateutil",
         package_version = "2.8.2",
         filename = "python_dateutil-2.8.2-py2.py3-none-any.whl",
@@ -1589,7 +1609,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_pyyaml_6.0.1_cp39_cp39_macosx_10_9_x86_64",
+        name = "poetry_lock_wheel_pyyaml_6.0.1_cp39_cp39_macosx_10_9_x86_64",
         package_name = "pyyaml",
         package_version = "6.0.1",
         filename = "PyYAML-6.0.1-cp39-cp39-macosx_10_9_x86_64.whl",
@@ -1599,7 +1619,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_pyyaml_6.0.1_cp39_cp39_macosx_11_0_arm64",
+        name = "poetry_lock_wheel_pyyaml_6.0.1_cp39_cp39_macosx_11_0_arm64",
         package_name = "pyyaml",
         package_version = "6.0.1",
         filename = "PyYAML-6.0.1-cp39-cp39-macosx_11_0_arm64.whl",
@@ -1609,7 +1629,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_pyyaml_6.0.1_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64",
+        name = "poetry_lock_wheel_pyyaml_6.0.1_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64",
         package_name = "pyyaml",
         package_version = "6.0.1",
         filename = "PyYAML-6.0.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
@@ -1619,7 +1639,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_pyzmq_25.1.1_cp39_cp39_macosx_10_15_universal2",
+        name = "poetry_lock_wheel_pyzmq_25.1.1_cp39_cp39_macosx_10_15_universal2",
         package_name = "pyzmq",
         package_version = "25.1.1",
         filename = "pyzmq-25.1.1-cp39-cp39-macosx_10_15_universal2.whl",
@@ -1629,7 +1649,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_pyzmq_25.1.1_cp39_cp39_manylinux_2_12_x86_64.manylinux2010_x86_64",
+        name = "poetry_lock_wheel_pyzmq_25.1.1_cp39_cp39_manylinux_2_12_x86_64.manylinux2010_x86_64",
         package_name = "pyzmq",
         package_version = "25.1.1",
         filename = "pyzmq-25.1.1-cp39-cp39-manylinux_2_12_x86_64.manylinux2010_x86_64.whl",
@@ -1639,7 +1659,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_referencing_0.30.2_py3_none_any",
+        name = "poetry_lock_wheel_referencing_0.30.2_py3_none_any",
         package_name = "referencing",
         package_version = "0.30.2",
         filename = "referencing-0.30.2-py3-none-any.whl",
@@ -1649,7 +1669,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_rpds_py_0.10.2_cp39_cp39_macosx_10_7_x86_64",
+        name = "poetry_lock_wheel_rpds_py_0.10.2_cp39_cp39_macosx_10_7_x86_64",
         package_name = "rpds-py",
         package_version = "0.10.2",
         filename = "rpds_py-0.10.2-cp39-cp39-macosx_10_7_x86_64.whl",
@@ -1659,7 +1679,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_rpds_py_0.10.2_cp39_cp39_macosx_11_0_arm64",
+        name = "poetry_lock_wheel_rpds_py_0.10.2_cp39_cp39_macosx_11_0_arm64",
         package_name = "rpds-py",
         package_version = "0.10.2",
         filename = "rpds_py-0.10.2-cp39-cp39-macosx_11_0_arm64.whl",
@@ -1669,7 +1689,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_rpds_py_0.10.2_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64",
+        name = "poetry_lock_wheel_rpds_py_0.10.2_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64",
         package_name = "rpds-py",
         package_version = "0.10.2",
         filename = "rpds_py-0.10.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
@@ -1679,7 +1699,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_send2trash_1.8.2_py3_none_any",
+        name = "poetry_lock_wheel_send2trash_1.8.2_py3_none_any",
         package_name = "send2trash",
         package_version = "1.8.2",
         filename = "Send2Trash-1.8.2-py3-none-any.whl",
@@ -1689,7 +1709,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_setuptools_68.1.2_py3_none_any",
+        name = "poetry_lock_wheel_setuptools_68.1.2_py3_none_any",
         package_name = "setuptools",
         package_version = "68.1.2",
         filename = "setuptools-68.1.2-py3-none-any.whl",
@@ -1699,7 +1719,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_six_1.16.0_py2.py3_none_any",
+        name = "poetry_lock_wheel_six_1.16.0_py2.py3_none_any",
         package_name = "six",
         package_version = "1.16.0",
         filename = "six-1.16.0-py2.py3-none-any.whl",
@@ -1709,7 +1729,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_soupsieve_2.5_py3_none_any",
+        name = "poetry_lock_wheel_soupsieve_2.5_py3_none_any",
         package_name = "soupsieve",
         package_version = "2.5",
         filename = "soupsieve-2.5-py3-none-any.whl",
@@ -1719,7 +1739,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_stack_data_0.6.2_py3_none_any",
+        name = "poetry_lock_wheel_stack_data_0.6.2_py3_none_any",
         package_name = "stack-data",
         package_version = "0.6.2",
         filename = "stack_data-0.6.2-py3-none-any.whl",
@@ -1729,7 +1749,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_terminado_0.17.1_py3_none_any",
+        name = "poetry_lock_wheel_terminado_0.17.1_py3_none_any",
         package_name = "terminado",
         package_version = "0.17.1",
         filename = "terminado-0.17.1-py3-none-any.whl",
@@ -1739,7 +1759,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_tinycss2_1.2.1_py3_none_any",
+        name = "poetry_lock_wheel_tinycss2_1.2.1_py3_none_any",
         package_name = "tinycss2",
         package_version = "1.2.1",
         filename = "tinycss2-1.2.1-py3-none-any.whl",
@@ -1749,7 +1769,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_tokenize_rt_5.2.0_py2.py3_none_any",
+        name = "poetry_lock_wheel_tokenize_rt_5.2.0_py2.py3_none_any",
         package_name = "tokenize-rt",
         package_version = "5.2.0",
         filename = "tokenize_rt-5.2.0-py2.py3-none-any.whl",
@@ -1759,7 +1779,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_tomli_2.0.1_py3_none_any",
+        name = "poetry_lock_wheel_tomli_2.0.1_py3_none_any",
         package_name = "tomli",
         package_version = "2.0.1",
         filename = "tomli-2.0.1-py3-none-any.whl",
@@ -1769,7 +1789,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_tornado_6.3.3_cp38_abi3_macosx_10_9_universal2",
+        name = "poetry_lock_wheel_tornado_6.3.3_cp38_abi3_macosx_10_9_universal2",
         package_name = "tornado",
         package_version = "6.3.3",
         filename = "tornado-6.3.3-cp38-abi3-macosx_10_9_universal2.whl",
@@ -1779,7 +1799,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_tornado_6.3.3_cp38_abi3_macosx_10_9_x86_64",
+        name = "poetry_lock_wheel_tornado_6.3.3_cp38_abi3_macosx_10_9_x86_64",
         package_name = "tornado",
         package_version = "6.3.3",
         filename = "tornado-6.3.3-cp38-abi3-macosx_10_9_x86_64.whl",
@@ -1789,7 +1809,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_tornado_6.3.3_cp38_abi3_manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64",
+        name = "poetry_lock_wheel_tornado_6.3.3_cp38_abi3_manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64",
         package_name = "tornado",
         package_version = "6.3.3",
         filename = "tornado-6.3.3-cp38-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
@@ -1799,7 +1819,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_traitlets_5.9.0_py3_none_any",
+        name = "poetry_lock_wheel_traitlets_5.9.0_py3_none_any",
         package_name = "traitlets",
         package_version = "5.9.0",
         filename = "traitlets-5.9.0-py3-none-any.whl",
@@ -1809,7 +1829,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_typing_extensions_4.7.1_py3_none_any",
+        name = "poetry_lock_wheel_typing_extensions_4.7.1_py3_none_any",
         package_name = "typing-extensions",
         package_version = "4.7.1",
         filename = "typing_extensions-4.7.1-py3-none-any.whl",
@@ -1819,7 +1839,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_virtualenv_20.24.4_py3_none_any",
+        name = "poetry_lock_wheel_virtualenv_20.24.4_py3_none_any",
         package_name = "virtualenv",
         package_version = "20.24.4",
         filename = "virtualenv-20.24.4-py3-none-any.whl",
@@ -1829,7 +1849,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_wcwidth_0.2.6_py2.py3_none_any",
+        name = "poetry_lock_wheel_wcwidth_0.2.6_py2.py3_none_any",
         package_name = "wcwidth",
         package_version = "0.2.6",
         filename = "wcwidth-0.2.6-py2.py3-none-any.whl",
@@ -1839,7 +1859,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_webencodings_0.5.1_py2.py3_none_any",
+        name = "poetry_lock_wheel_webencodings_0.5.1_py2.py3_none_any",
         package_name = "webencodings",
         package_version = "0.5.1",
         filename = "webencodings-0.5.1-py2.py3-none-any.whl",
@@ -1849,7 +1869,7 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "example_lock_wheel_zipp_3.16.2_py3_none_any",
+        name = "poetry_lock_wheel_zipp_3.16.2_py3_none_any",
         package_name = "zipp",
         package_version = "3.16.2",
         filename = "zipp-3.16.2-py3-none-any.whl",
