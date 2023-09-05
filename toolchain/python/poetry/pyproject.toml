@@ -8,7 +8,7 @@ authors = []
 python = "~=3.9"
 
 ipython = "=8.0.1"
-numpy = "=1.22.3"
+numpy = "=1.25.2"
 notebook = "=6.4.11"
 pre-commit = "=3.3.3"
 black = "=23.7.0"

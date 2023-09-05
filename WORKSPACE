@@ -1,4 +1,5 @@
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 git_repository(
     name = "jvolkman_rules_pycross",
@@ -20,3 +21,7 @@ pycross_lock_repo(
 load("@poetry//:requirements.bzl", "install_deps")
 
 install_deps()
+
+load("//toolchain/python/poetry:poetry.bzl", "poetry_bin_workspace")
+
+poetry_bin_workspace(name = "poetry_bin")

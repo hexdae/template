@@ -15,8 +15,8 @@ alias(
 )
 
 alias(
-    name = "poetry-lock",
-    actual = "//toolchain/python/poetry:update",
+    name = "poetry",
+    actual = "//toolchain/python/poetry",
 )
 
 alias(
