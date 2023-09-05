@@ -1,4 +1,3 @@
-load("@bazel_skylib//rules:native_binary.bzl", "native_binary")
 load("//platform:platform.bzl", "constraints")
 load("@bazel_skylib//rules:write_file.bzl", "write_file")
 load(
@@ -11,7 +10,7 @@ load(
 pycross_target_environment(
     name = "python_windows_x86_64",
     abis = ["cp39"],
-    # platforms = ["windows"],
+    platforms = ["windows"],
     python_compatible_with = constraints.windows_x86_64,
     version = "3.9.12",
     visibility = ["//visibility:public"],
@@ -67,7 +66,7 @@ pycross_lock_file(
         ":python_darwin_x86_64",
         ":python_darwin_arm64",
         ":python_linux_x86_64",
-        ":python_windows_x86_64",
+        # ":python_windows_x86_64", #TODO: enable
     ],
 )
 
@@ -87,8 +86,8 @@ sh_binary(
     name = "update",
     srcs = ["update.sh"],
     data = [
-        "//toolchain/python/poetry:lock.bzl",
         "@poetry_bin//:poetry",
+        ":lock.bzl",
     ],
     visibility = ["//visibility:public"],
 )
@@ -108,6 +107,9 @@ write_file(
 sh_binary(
     name = "poetry",
     srcs = ["poetry.sh"],
-    data = ["@poetry_bin//:poetry", ":update.sh"],
+    data = [
+        "@poetry_bin//:poetry",
+        ":update",
+    ],
     visibility = ["//visibility:public"],
 )

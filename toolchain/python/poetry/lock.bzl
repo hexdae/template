@@ -50,7 +50,7 @@ PINS = {
     "nest_asyncio": "nest_asyncio_1.5.7",
     "nodeenv": "nodeenv_1.8.0",
     "notebook": "notebook_6.4.11",
-    "numpy": "numpy_1.22.3",
+    "numpy": "numpy_1.25.2",
     "packaging": "packaging_23.1",
     "pandocfilters": "pandocfilters_1.5.0",
     "parso": "parso_0.8.3",
@@ -120,19 +120,10 @@ def targets():
         ],
     )
 
-    native.config_setting(
-        name = "_env_python_windows_x86_64",
-        constraint_values = [
-            "@platforms//os:windows",
-            "@platforms//cpu:x86_64",
-        ],
-    )
-
     _target = select({
         ":_env_python_darwin_arm64": "@//toolchain/python/poetry:python_darwin_arm64",
         ":_env_python_darwin_x86_64": "@//toolchain/python/poetry:python_darwin_x86_64",
         ":_env_python_linux_x86_64": "@//toolchain/python/poetry:python_linux_x86_64",
-        ":_env_python_windows_x86_64": "@//toolchain/python/poetry:python_windows_x86_64",
     })
 
     pycross_wheel_library(
@@ -161,7 +152,6 @@ def targets():
             ":_env_python_darwin_arm64": "@poetry_lock_wheel_argon2_cffi_bindings_21.2.0_cp38_abi3_macosx_10_9_universal2//file",
             ":_env_python_darwin_x86_64": "@poetry_lock_wheel_argon2_cffi_bindings_21.2.0_cp38_abi3_macosx_10_9_universal2//file",
             ":_env_python_linux_x86_64": "@poetry_lock_wheel_argon2_cffi_bindings_21.2.0_cp36_abi3_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
-            ":_env_python_windows_x86_64": "@poetry_lock_wheel_argon2_cffi_bindings_21.2.0_cp38_abi3_macosx_10_9_universal2//file",
         }),
     )
 
@@ -212,7 +202,6 @@ def targets():
             ":_env_python_darwin_arm64": "@poetry_lock_wheel_black_23.7.0_cp39_cp39_macosx_10_16_universal2//file",
             ":_env_python_darwin_x86_64": "@poetry_lock_wheel_black_23.7.0_cp39_cp39_macosx_10_16_x86_64//file",
             ":_env_python_linux_x86_64": "@poetry_lock_wheel_black_23.7.0_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
-            ":_env_python_windows_x86_64": "@poetry_lock_wheel_black_23.7.0_cp39_cp39_macosx_10_16_universal2//file",
         }),
     )
 
@@ -238,7 +227,6 @@ def targets():
             ":_env_python_darwin_arm64": "@poetry_lock_wheel_cffi_1.15.1_cp39_cp39_macosx_11_0_arm64//file",
             ":_env_python_darwin_x86_64": "@poetry_lock_wheel_cffi_1.15.1_cp39_cp39_macosx_10_9_x86_64//file",
             ":_env_python_linux_x86_64": "@poetry_lock_wheel_cffi_1.15.1_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
-            ":_env_python_windows_x86_64": "@poetry_lock_wheel_cffi_1.15.1_cp39_cp39_macosx_11_0_arm64//file",
         }),
     )
 
@@ -273,7 +261,6 @@ def targets():
             ":_env_python_darwin_arm64": "@poetry_lock_wheel_debugpy_1.6.7.post1_py2.py3_none_any//file",
             ":_env_python_darwin_x86_64": "@poetry_lock_wheel_debugpy_1.6.7.post1_cp39_cp39_macosx_11_0_x86_64//file",
             ":_env_python_linux_x86_64": "@poetry_lock_wheel_debugpy_1.6.7.post1_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
-            ":_env_python_windows_x86_64": "@poetry_lock_wheel_debugpy_1.6.7.post1_py2.py3_none_any//file",
         }),
     )
 
@@ -482,7 +469,6 @@ def targets():
             ":_env_python_darwin_arm64": "@poetry_lock_wheel_markupsafe_2.1.3_cp39_cp39_macosx_10_9_universal2//file",
             ":_env_python_darwin_x86_64": "@poetry_lock_wheel_markupsafe_2.1.3_cp39_cp39_macosx_10_9_x86_64//file",
             ":_env_python_linux_x86_64": "@poetry_lock_wheel_markupsafe_2.1.3_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
-            ":_env_python_windows_x86_64": "@poetry_lock_wheel_markupsafe_2.1.3_cp39_cp39_macosx_10_9_universal2//file",
         }),
     )
 
@@ -597,12 +583,11 @@ def targets():
     )
 
     pycross_wheel_library(
-        name = "numpy_1.22.3",
+        name = "numpy_1.25.2",
         wheel = select({
-            ":_env_python_darwin_arm64": "@poetry_lock_wheel_numpy_1.22.3_cp39_cp39_macosx_11_0_arm64//file",
-            ":_env_python_darwin_x86_64": "@poetry_lock_wheel_numpy_1.22.3_cp39_cp39_macosx_10_14_x86_64//file",
-            ":_env_python_linux_x86_64": "@poetry_lock_wheel_numpy_1.22.3_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
-            ":_env_python_windows_x86_64": "@poetry_lock_wheel_numpy_1.22.3_cp39_cp39_macosx_11_0_arm64//file",
+            ":_env_python_darwin_arm64": "@poetry_lock_wheel_numpy_1.25.2_cp39_cp39_macosx_11_0_arm64//file",
+            ":_env_python_darwin_x86_64": "@poetry_lock_wheel_numpy_1.25.2_cp39_cp39_macosx_10_9_x86_64//file",
+            ":_env_python_linux_x86_64": "@poetry_lock_wheel_numpy_1.25.2_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
         }),
     )
 
@@ -681,7 +666,6 @@ def targets():
             ":_env_python_darwin_arm64": "@poetry_lock_wheel_psutil_5.9.5_cp38_abi3_macosx_11_0_arm64//file",
             ":_env_python_darwin_x86_64": "@poetry_lock_wheel_psutil_5.9.5_cp36_abi3_macosx_10_9_x86_64//file",
             ":_env_python_linux_x86_64": "@poetry_lock_wheel_psutil_5.9.5_cp36_abi3_manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64//file",
-            ":_env_python_windows_x86_64": "@poetry_lock_wheel_psutil_5.9.5_cp38_abi3_macosx_11_0_arm64//file",
         }),
     )
 
@@ -721,7 +705,6 @@ def targets():
             ":_env_python_darwin_arm64": "@poetry_lock_wheel_pyyaml_6.0.1_cp39_cp39_macosx_11_0_arm64//file",
             ":_env_python_darwin_x86_64": "@poetry_lock_wheel_pyyaml_6.0.1_cp39_cp39_macosx_10_9_x86_64//file",
             ":_env_python_linux_x86_64": "@poetry_lock_wheel_pyyaml_6.0.1_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
-            ":_env_python_windows_x86_64": "@poetry_lock_wheel_pyyaml_6.0.1_cp39_cp39_macosx_11_0_arm64//file",
         }),
     )
 
@@ -731,7 +714,6 @@ def targets():
             ":_env_python_darwin_arm64": "@poetry_lock_wheel_pyzmq_25.1.1_cp39_cp39_macosx_10_15_universal2//file",
             ":_env_python_darwin_x86_64": "@poetry_lock_wheel_pyzmq_25.1.1_cp39_cp39_macosx_10_15_universal2//file",
             ":_env_python_linux_x86_64": "@poetry_lock_wheel_pyzmq_25.1.1_cp39_cp39_manylinux_2_12_x86_64.manylinux2010_x86_64//file",
-            ":_env_python_windows_x86_64": "@poetry_lock_wheel_pyzmq_25.1.1_cp39_cp39_macosx_10_15_universal2//file",
         }),
     )
 
@@ -752,7 +734,6 @@ def targets():
             ":_env_python_darwin_arm64": "@poetry_lock_wheel_rpds_py_0.10.2_cp39_cp39_macosx_11_0_arm64//file",
             ":_env_python_darwin_x86_64": "@poetry_lock_wheel_rpds_py_0.10.2_cp39_cp39_macosx_10_7_x86_64//file",
             ":_env_python_linux_x86_64": "@poetry_lock_wheel_rpds_py_0.10.2_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
-            ":_env_python_windows_x86_64": "@poetry_lock_wheel_rpds_py_0.10.2_cp39_cp39_macosx_11_0_arm64//file",
         }),
     )
 
@@ -825,7 +806,6 @@ def targets():
             ":_env_python_darwin_arm64": "@poetry_lock_wheel_tornado_6.3.3_cp38_abi3_macosx_10_9_universal2//file",
             ":_env_python_darwin_x86_64": "@poetry_lock_wheel_tornado_6.3.3_cp38_abi3_macosx_10_9_x86_64//file",
             ":_env_python_linux_x86_64": "@poetry_lock_wheel_tornado_6.3.3_cp38_abi3_manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64//file",
-            ":_env_python_windows_x86_64": "@poetry_lock_wheel_tornado_6.3.3_cp38_abi3_macosx_10_9_universal2//file",
         }),
     )
 
@@ -1399,31 +1379,31 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_numpy_1.22.3_cp39_cp39_macosx_10_14_x86_64",
+        name = "poetry_lock_wheel_numpy_1.25.2_cp39_cp39_macosx_10_9_x86_64",
         package_name = "numpy",
-        package_version = "1.22.3",
-        filename = "numpy-1.22.3-cp39-cp39-macosx_10_14_x86_64.whl",
-        sha256 = "2c10a93606e0b4b95c9b04b77dc349b398fdfbda382d2a39ba5a822f669a0123",
+        package_version = "1.25.2",
+        filename = "numpy-1.25.2-cp39-cp39-macosx_10_9_x86_64.whl",
+        sha256 = "b79e513d7aac42ae918db3ad1341a015488530d0bb2a6abcbdd10a3a829ccfd3",
         index = "https://pypi.org",
     )
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_numpy_1.22.3_cp39_cp39_macosx_11_0_arm64",
+        name = "poetry_lock_wheel_numpy_1.25.2_cp39_cp39_macosx_11_0_arm64",
         package_name = "numpy",
-        package_version = "1.22.3",
-        filename = "numpy-1.22.3-cp39-cp39-macosx_11_0_arm64.whl",
-        sha256 = "fade0d4f4d292b6f39951b6836d7a3c7ef5b2347f3c420cd9820a1d90d794802",
+        package_version = "1.25.2",
+        filename = "numpy-1.25.2-cp39-cp39-macosx_11_0_arm64.whl",
+        sha256 = "eb942bfb6f84df5ce05dbf4b46673ffed0d3da59f13635ea9b926af3deb76926",
         index = "https://pypi.org",
     )
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_numpy_1.22.3_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64",
+        name = "poetry_lock_wheel_numpy_1.25.2_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64",
         package_name = "numpy",
-        package_version = "1.22.3",
-        filename = "numpy-1.22.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
-        sha256 = "97098b95aa4e418529099c26558eeb8486e66bd1e53a6b606d684d0c3616b168",
+        package_version = "1.25.2",
+        filename = "numpy-1.25.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        sha256 = "d7806500e4f5bdd04095e849265e55de20d8cc4b661b038957354327f6d9b295",
         index = "https://pypi.org",
     )
 

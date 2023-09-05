@@ -48,19 +48,19 @@ ARCHS = RELEASE.keys()
      config_setting(
         name = "config_{{}}".format(arch),
         constraint_values = constraints,
-    ) 
+    )
     for arch, constraints in RELEASE.items()
 ]
 
 native_binary(
     name = "poetry",
     src = select({{
-        ":config_{{arch}}".format(arch=arch): 
-        "@{name}_{{arch}}//:poetry".format(arch = arch) 
+        ":config_{{arch}}".format(arch=arch):
+        "@{name}_{{arch}}//:poetry".format(arch = arch)
         for arch in ARCHS
     }}),
     data = select({{
-        "config_{{arch}}".format(arch=arch): 
+        "config_{{arch}}".format(arch=arch):
         ["@{name}_{{arch}}//:files".format(arch = arch)]
         for arch in ARCHS
     }}),
@@ -110,7 +110,7 @@ def poetry_bin_workspace(name = "poetry_bin", version = "1.6.0-1", releases = RE
     poetry_bin_repo(
         name = name,
         release = {
-            arch: release.get("constraints") 
+            arch: release.get("constraints")
             for arch, release in releases.get(version).items()
         },
     )
