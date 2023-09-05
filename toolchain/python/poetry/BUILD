@@ -1,4 +1,4 @@
-load("//platform/constraint:constraint.bzl", "darwin_arm64", "darwin_x86_64", "linux_x86_64")
+load("//platform:platform.bzl", "constraints")
 load("@bazel_skylib//rules:write_file.bzl", "write_file")
 load(
     "@rules_pycross//pycross:defs.bzl",
@@ -8,10 +8,20 @@ load(
 )
 
 pycross_target_environment(
+    name = "python_windows_x86_64",
+    abis = ["cp39"],
+    platforms = ["windows_11_x86_64"],
+    python_compatible_with = constraints.windows_x86_64,
+    version = "3.9.12",
+    visibility = ["//visibility:public"],
+)
+
+
+pycross_target_environment(
     name = "python_darwin_x86_64",
     abis = ["cp39"],
     platforms = ["macosx_12_0_x86_64"],
-    python_compatible_with = darwin_x86_64,
+    python_compatible_with = constraints.darwin_x86_64,
     version = "3.9.12",
     visibility = ["//visibility:public"],
 )
@@ -20,7 +30,7 @@ pycross_target_environment(
     name = "python_darwin_arm64",
     abis = ["cp39"],
     platforms = ["macosx_12_0_arm64"],
-    python_compatible_with = darwin_arm64,
+    python_compatible_with = constraints.darwin_arm64,
     version = "3.9.12",
     visibility = ["//visibility:public"],
 )
@@ -35,7 +45,7 @@ pycross_target_environment(
         "manylinux_2_%s_x86_64" % str(i)
         for i in range(17, 25)
     ],
-    python_compatible_with = linux_x86_64,
+    python_compatible_with = constraints.linux_x86_64,
     version = "3.9.12",
     visibility = ["//visibility:public"],
 )
@@ -56,6 +66,7 @@ pycross_lock_file(
         ":python_darwin_x86_64",
         ":python_darwin_arm64",
         ":python_linux_x86_64",
+        ":python_windows_x86_64",
     ],
 )
 
