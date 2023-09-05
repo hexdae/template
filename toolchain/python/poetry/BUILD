@@ -99,8 +99,11 @@ write_file(
         "#!/usr/bin/env bash",
         "set -eu",
         "cd $BUILD_WORKSPACE_DIRECTORY",
-        "bazel-bin/external/poetry_bin/poetry_bin -C toolchain/python/poetry $@",
-        "./bazel-bin/toolchain/python/poetry/update.sh",
+        "POETRY=bazel-bin/external/poetry_bin/poetry_bin",
+        "$POETRY -C toolchain/python/poetry $@",
+        "$POETRY -C toolchain/python/poetry lock",
+        "bazel build --config=quiet toolchain/python/poetry:poetry_lock",
+        "cp -fv bazel-bin/toolchain/python/poetry/lock.bzl toolchain/python/poetry/lock.bzl",
     ],
 )
 
@@ -109,7 +112,9 @@ sh_binary(
     srcs = ["poetry.sh"],
     data = [
         "@poetry_bin//:poetry",
-        ":update",
+        ":lock.bzl",
+        ":pyproject.toml",
+        ":poetry.lock",
     ],
     visibility = ["//visibility:public"],
 )
