@@ -21,24 +21,11 @@ RELEASES = {
         "x86_64-pc-windows-msvc": {
             "sha256": "c88c7ff3fe6c3e2dc8df7fa335080389fdf31959658bf5a7bb49595e30d6136a",
             "constraints": ["@platforms//os:windows", "@platforms//cpu:x86_64"],
-        }
+        },
     },
 }
 
-ARCHIVE_BUILD = """
-filegroup(
-    name = "files",
-    srcs = glob([
-        "assets/**",
-        "lib/**",
-    ]),
-    visibility = ["//visibility:public"],
-)
-
-exports_files(["poetry"])
-"""
-
-REPO_BUILD = """
+BUILD = """
 load("@bazel_skylib//rules:native_binary.bzl", "native_binary")
 
 RELEASE = {release}
@@ -59,11 +46,6 @@ native_binary(
         "@{name}_{{arch}}//:poetry".format(arch = arch)
         for arch in ARCHS
     }}),
-    data = select({{
-        "config_{{arch}}".format(arch=arch):
-        ["@{name}_{{arch}}//:files".format(arch = arch)]
-        for arch in ARCHS
-    }}),
     out = "poetry_bin",
     visibility = ["//visibility:public"],
 )
@@ -72,7 +54,7 @@ native_binary(
 def _poetry_bin_repo_impl(ctx):
     ctx.file(
         "BUILD.bazel",
-        REPO_BUILD.format(
+        BUILD.format(
             name = ctx.name,
             release = ctx.attr.release,
         ),
@@ -104,7 +86,7 @@ def poetry_bin_workspace(name = "poetry_bin", version = "1.6.0-1", releases = RE
             name = "{}_{}".format(name, arch),
             url = template.format(version = version, arch = arch),
             sha256 = release.get("sha256"),
-            build_file_content = ARCHIVE_BUILD,
+            build_file_content = "exports_files(['poetry'])",
         )
 
     poetry_bin_repo(
