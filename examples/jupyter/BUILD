@@ -1,4 +1,3 @@
-load("@poetry//:requirements.bzl", "requirement")
 load("//toolchain/python:jupyter.bzl", "jupyter_notebook")
 
 jupyter_notebook(
@@ -6,6 +5,5 @@ jupyter_notebook(
     notebook = "notebook.ipynb",
     deps = [
         "//examples/python:library",
-        requirement("numpy"),
     ],
 )
