@@ -3,7 +3,8 @@
     "maintainers": [],
     "repository": ["github:bazelbuild/rules_rust"],
     "versions": [
-        "0.24.1"
+        "0.24.1",
+        "0.27.0"
     ],
     "yanked_versions": {}
 }

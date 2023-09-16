@@ -2,7 +2,7 @@ bazel_dep(name = "bazel_skylib", version = "1.4.2")
 bazel_dep(name = "hermetic_cc_toolchain", version = "2.0.0")
 bazel_dep(name = "rules_cc", version = "0.0.4")
 bazel_dep(name = "rules_python", version = "0.23.0")
-bazel_dep(name = "rules_rust", version = "0.24.1")
+bazel_dep(name = "rules_rust", version = "0.27.0")
 
 cc = use_extension("@hermetic_cc_toolchain//toolchain:ext.bzl", "toolchains")
 use_repo(cc, cc_toolchains = "zig_sdk")

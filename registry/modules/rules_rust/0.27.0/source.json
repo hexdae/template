@@ -1,0 +1,6 @@
+{
+    "integrity": "sha256-24kTX00eqgR7n1UYukA3KEtD/Ic4bQjB0f6RcI43MK4=",
+    "patch_strip": 1,
+    "patches": {},
+    "url": "https://github.com/bazelbuild/rules_rust/releases/download/0.27.0/rules_rust-v0.27.0.tar.gz"
+}
