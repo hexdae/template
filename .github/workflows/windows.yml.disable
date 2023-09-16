@@ -8,14 +8,9 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
-      - name: build examples
-        run: |
-          bazelisk build //...
-  test:
-    name: Test
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: test examples
-        run: |
-          bazelisk test //...
+      # - name: pre-commit
+        # run: bazelisk run pre-commit -- run --all-files
+      - name: build
+        run: bazelisk build //...
+      - name: test
+        run: bazelisk test //...

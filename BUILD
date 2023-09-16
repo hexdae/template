@@ -15,8 +15,8 @@ alias(
 )
 
 alias(
-    name = "pip-install",
-    actual = "//toolchain/python:requirements.update",
+    name = "poetry",
+    actual = "//toolchain/python/poetry",
 )
 
 alias(

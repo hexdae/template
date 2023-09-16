@@ -1,5 +1,6 @@
-bazel_dep(name = "rules_cc", version = "0.0.4")
+bazel_dep(name = "bazel_skylib", version = "1.4.2")
 bazel_dep(name = "hermetic_cc_toolchain", version = "2.0.0")
+bazel_dep(name = "rules_cc", version = "0.0.4")
 bazel_dep(name = "rules_python", version = "0.23.0")
 bazel_dep(name = "rules_rust", version = "0.24.1")
 
@@ -10,16 +11,9 @@ register_toolchains("@cc_toolchains//toolchain:all")
 
 py = use_extension("@rules_python//python/extensions:python.bzl", "python")
 py.toolchain(
-    python_version = "3.11",
+    python_version = "3.9",
     is_default = True,
 )
-
-pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
-pip.parse(
-    name = "pip",
-    requirements_lock = "//toolchain/python:requirements_lock.txt",
-)
-use_repo(pip, "pip")
 
 rs = use_extension("@rules_rust//rust:extensions.bzl", "rust")
 rs.toolchain(
