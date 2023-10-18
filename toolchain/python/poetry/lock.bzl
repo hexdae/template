@@ -6,87 +6,116 @@ load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 load("@jvolkman_rules_pycross//pycross:defs.bzl", "pycross_wheel_build", "pycross_wheel_library", "pypi_file")
 
 PINS = {
+    "anyio": "anyio_4.0.0",
     "appnope": "appnope_0.1.3",
     "argon2_cffi": "argon2_cffi_23.1.0",
     "argon2_cffi_bindings": "argon2_cffi_bindings_21.2.0",
+    "arrow": "arrow_1.3.0",
     "asttokens": "asttokens_2.4.0",
+    "async_lru": "async_lru_2.0.4",
     "attrs": "attrs_23.1.0",
+    "babel": "babel_2.13.0",
     "backcall": "backcall_0.2.0",
     "beautifulsoup4": "beautifulsoup4_4.12.2",
     "black": "black_23.7.0",
-    "bleach": "bleach_6.0.0",
-    "cffi": "cffi_1.15.1",
+    "bleach": "bleach_6.1.0",
+    "certifi": "certifi_2023.7.22",
+    "cffi": "cffi_1.16.0",
     "cfgv": "cfgv_3.4.0",
+    "charset_normalizer": "charset_normalizer_3.3.0",
     "click": "click_8.1.7",
     "comm": "comm_0.1.4",
     "cpplint": "cpplint_1.6.1",
-    "debugpy": "debugpy_1.6.7.post1",
+    "debugpy": "debugpy_1.8.0",
     "decorator": "decorator_5.1.1",
     "defusedxml": "defusedxml_0.7.1",
     "distlib": "distlib_0.3.7",
-    "executing": "executing_1.2.0",
-    "fastjsonschema": "fastjsonschema_2.18.0",
-    "filelock": "filelock_3.12.3",
-    "identify": "identify_2.5.27",
+    "exceptiongroup": "exceptiongroup_1.1.3",
+    "executing": "executing_2.0.0",
+    "fastjsonschema": "fastjsonschema_2.18.1",
+    "filelock": "filelock_3.12.4",
+    "fqdn": "fqdn_1.5.1",
+    "identify": "identify_2.5.30",
+    "idna": "idna_3.4",
     "importlib_metadata": "importlib_metadata_6.8.0",
     "ipykernel": "ipykernel_6.25.2",
     "ipython": "ipython_8.0.1",
-    "ipython_genutils": "ipython_genutils_0.2.0",
-    "jedi": "jedi_0.19.0",
+    "isoduration": "isoduration_20.11.0",
+    "jedi": "jedi_0.19.1",
     "jinja2": "jinja2_3.1.2",
-    "jsonschema": "jsonschema_4.19.0",
+    "json5": "json5_0.9.14",
+    "jsonpointer": "jsonpointer_2.4",
+    "jsonschema": "jsonschema_4.19.1",
     "jsonschema_specifications": "jsonschema_specifications_2023.7.1",
     "jupyter_black": "jupyter_black_0.3.4",
-    "jupyter_client": "jupyter_client_8.3.1",
-    "jupyter_core": "jupyter_core_5.3.1",
+    "jupyter_client": "jupyter_client_8.4.0",
+    "jupyter_core": "jupyter_core_5.4.0",
+    "jupyter_events": "jupyter_events_0.8.0",
+    "jupyter_lsp": "jupyter_lsp_2.2.0",
+    "jupyter_server": "jupyter_server_2.8.0",
+    "jupyter_server_terminals": "jupyter_server_terminals_0.4.4",
+    "jupyterlab": "jupyterlab_4.0.7",
     "jupyterlab_pygments": "jupyterlab_pygments_0.2.2",
+    "jupyterlab_server": "jupyterlab_server_2.25.0",
     "markupsafe": "markupsafe_2.1.3",
     "matplotlib_inline": "matplotlib_inline_0.1.6",
-    "mistune": "mistune_3.0.1",
+    "mistune": "mistune_3.0.2",
     "mypy_extensions": "mypy_extensions_1.0.0",
     "nbclient": "nbclient_0.8.0",
-    "nbconvert": "nbconvert_7.8.0",
+    "nbconvert": "nbconvert_7.9.2",
     "nbformat": "nbformat_5.9.2",
-    "nest_asyncio": "nest_asyncio_1.5.7",
+    "nest_asyncio": "nest_asyncio_1.5.8",
     "nodeenv": "nodeenv_1.8.0",
-    "notebook": "notebook_6.4.11",
+    "notebook": "notebook_7.0.6",
+    "notebook_shim": "notebook_shim_0.2.3",
     "numpy": "numpy_1.25.2",
-    "packaging": "packaging_23.1",
+    "overrides": "overrides_7.4.0",
+    "packaging": "packaging_23.2",
     "pandocfilters": "pandocfilters_1.5.0",
     "parso": "parso_0.8.3",
     "pathspec": "pathspec_0.11.2",
     "pexpect": "pexpect_4.8.0",
     "pickleshare": "pickleshare_0.7.5",
-    "platformdirs": "platformdirs_3.10.0",
+    "platformdirs": "platformdirs_3.11.0",
     "pre_commit": "pre_commit_3.3.3",
     "prometheus_client": "prometheus_client_0.17.1",
     "prompt_toolkit": "prompt_toolkit_3.0.39",
-    "psutil": "psutil_5.9.5",
+    "psutil": "psutil_5.9.6",
     "ptyprocess": "ptyprocess_0.7.0",
     "pure_eval": "pure_eval_0.2.2",
     "pycparser": "pycparser_2.21",
     "pygments": "pygments_2.16.1",
     "python_dateutil": "python_dateutil_2.8.2",
+    "python_json_logger": "python_json_logger_2.0.7",
     "pyyaml": "pyyaml_6.0.1",
     "pyzmq": "pyzmq_25.1.1",
     "referencing": "referencing_0.30.2",
-    "rpds_py": "rpds_py_0.10.2",
+    "requests": "requests_2.31.0",
+    "rfc3339_validator": "rfc3339_validator_0.1.4",
+    "rfc3986_validator": "rfc3986_validator_0.1.1",
+    "rpds_py": "rpds_py_0.10.6",
     "send2trash": "send2trash_1.8.2",
-    "setuptools": "setuptools_68.1.2",
+    "setuptools": "setuptools_68.2.2",
     "six": "six_1.16.0",
+    "sniffio": "sniffio_1.3.0",
     "soupsieve": "soupsieve_2.5",
-    "stack_data": "stack_data_0.6.2",
+    "stack_data": "stack_data_0.6.3",
     "terminado": "terminado_0.17.1",
     "tinycss2": "tinycss2_1.2.1",
     "tokenize_rt": "tokenize_rt_5.2.0",
     "tomli": "tomli_2.0.1",
     "tornado": "tornado_6.3.3",
-    "traitlets": "traitlets_5.9.0",
-    "typing_extensions": "typing_extensions_4.7.1",
-    "virtualenv": "virtualenv_20.24.4",
-    "wcwidth": "wcwidth_0.2.6",
+    "traitlets": "traitlets_5.11.2",
+    "types_python_dateutil": "types_python_dateutil_2.8.19.14",
+    "typing_extensions": "typing_extensions_4.8.0",
+    "uri_template": "uri_template_1.3.0",
+    "urllib3": "urllib3_2.0.7",
+    "virtualenv": "virtualenv_20.24.5",
+    "wcwidth": "wcwidth_0.2.8",
+    "webcolors": "webcolors_1.13",
     "webencodings": "webencodings_0.5.1",
-    "zipp": "zipp_3.16.2",
+    "websocket_client": "websocket_client_1.6.4",
+    "zipp": "zipp_3.17.0",
 }
 
 def targets():
@@ -126,6 +155,18 @@ def targets():
         ":_env_python_linux_x86_64": "@//toolchain/python/poetry:python_linux_x86_64",
     })
 
+    _anyio_4_0_0_deps = [
+        ":exceptiongroup_1.1.3",
+        ":idna_3.4",
+        ":sniffio_1.3.0",
+    ]
+
+    pycross_wheel_library(
+        name = "anyio_4.0.0",
+        deps = _anyio_4_0_0_deps,
+        wheel = "@poetry_lock_wheel_anyio_4.0.0_py3_none_any//file",
+    )
+
     pycross_wheel_library(
         name = "appnope_0.1.3",
         wheel = "@poetry_lock_wheel_appnope_0.1.3_py2.py3_none_any//file",
@@ -142,7 +183,7 @@ def targets():
     )
 
     _argon2_cffi_bindings_21_2_0_deps = [
-        ":cffi_1.15.1",
+        ":cffi_1.16.0",
     ]
 
     pycross_wheel_library(
@@ -155,6 +196,17 @@ def targets():
         }),
     )
 
+    _arrow_1_3_0_deps = [
+        ":python_dateutil_2.8.2",
+        ":types_python_dateutil_2.8.19.14",
+    ]
+
+    pycross_wheel_library(
+        name = "arrow_1.3.0",
+        deps = _arrow_1_3_0_deps,
+        wheel = "@poetry_lock_wheel_arrow_1.3.0_py3_none_any//file",
+    )
+
     _asttokens_2_4_0_deps = [
         ":six_1.16.0",
     ]
@@ -165,9 +217,24 @@ def targets():
         wheel = "@poetry_lock_wheel_asttokens_2.4.0_py2.py3_none_any//file",
     )
 
+    _async_lru_2_0_4_deps = [
+        ":typing_extensions_4.8.0",
+    ]
+
+    pycross_wheel_library(
+        name = "async_lru_2.0.4",
+        deps = _async_lru_2_0_4_deps,
+        wheel = "@poetry_lock_wheel_async_lru_2.0.4_py3_none_any//file",
+    )
+
     pycross_wheel_library(
         name = "attrs_23.1.0",
         wheel = "@poetry_lock_wheel_attrs_23.1.0_py3_none_any//file",
+    )
+
+    pycross_wheel_library(
+        name = "babel_2.13.0",
+        wheel = "@poetry_lock_wheel_babel_2.13.0_py3_none_any//file",
     )
 
     pycross_wheel_library(
@@ -188,11 +255,11 @@ def targets():
     _black_23_7_0_deps = [
         ":click_8.1.7",
         ":mypy_extensions_1.0.0",
-        ":packaging_23.1",
+        ":packaging_23.2",
         ":pathspec_0.11.2",
-        ":platformdirs_3.10.0",
+        ":platformdirs_3.11.0",
         ":tomli_2.0.1",
-        ":typing_extensions_4.7.1",
+        ":typing_extensions_4.8.0",
     ]
 
     pycross_wheel_library(
@@ -205,28 +272,33 @@ def targets():
         }),
     )
 
-    _bleach_6_0_0_deps = [
+    _bleach_6_1_0_deps = [
         ":six_1.16.0",
         ":webencodings_0.5.1",
     ]
 
     pycross_wheel_library(
-        name = "bleach_6.0.0",
-        deps = _bleach_6_0_0_deps,
-        wheel = "@poetry_lock_wheel_bleach_6.0.0_py3_none_any//file",
+        name = "bleach_6.1.0",
+        deps = _bleach_6_1_0_deps,
+        wheel = "@poetry_lock_wheel_bleach_6.1.0_py3_none_any//file",
     )
 
-    _cffi_1_15_1_deps = [
+    pycross_wheel_library(
+        name = "certifi_2023.7.22",
+        wheel = "@poetry_lock_wheel_certifi_2023.7.22_py3_none_any//file",
+    )
+
+    _cffi_1_16_0_deps = [
         ":pycparser_2.21",
     ]
 
     pycross_wheel_library(
-        name = "cffi_1.15.1",
-        deps = _cffi_1_15_1_deps,
+        name = "cffi_1.16.0",
+        deps = _cffi_1_16_0_deps,
         wheel = select({
-            ":_env_python_darwin_arm64": "@poetry_lock_wheel_cffi_1.15.1_cp39_cp39_macosx_11_0_arm64//file",
-            ":_env_python_darwin_x86_64": "@poetry_lock_wheel_cffi_1.15.1_cp39_cp39_macosx_10_9_x86_64//file",
-            ":_env_python_linux_x86_64": "@poetry_lock_wheel_cffi_1.15.1_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
+            ":_env_python_darwin_arm64": "@poetry_lock_wheel_cffi_1.16.0_cp39_cp39_macosx_11_0_arm64//file",
+            ":_env_python_darwin_x86_64": "@poetry_lock_wheel_cffi_1.16.0_cp39_cp39_macosx_10_9_x86_64//file",
+            ":_env_python_linux_x86_64": "@poetry_lock_wheel_cffi_1.16.0_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
         }),
     )
 
@@ -236,12 +308,21 @@ def targets():
     )
 
     pycross_wheel_library(
+        name = "charset_normalizer_3.3.0",
+        wheel = select({
+            ":_env_python_darwin_arm64": "@poetry_lock_wheel_charset_normalizer_3.3.0_cp39_cp39_macosx_11_0_arm64//file",
+            ":_env_python_darwin_x86_64": "@poetry_lock_wheel_charset_normalizer_3.3.0_cp39_cp39_macosx_10_9_x86_64//file",
+            ":_env_python_linux_x86_64": "@poetry_lock_wheel_charset_normalizer_3.3.0_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
+        }),
+    )
+
+    pycross_wheel_library(
         name = "click_8.1.7",
         wheel = "@poetry_lock_wheel_click_8.1.7_py3_none_any//file",
     )
 
     _comm_0_1_4_deps = [
-        ":traitlets_5.9.0",
+        ":traitlets_5.11.2",
     ]
 
     pycross_wheel_library(
@@ -256,11 +337,11 @@ def targets():
     )
 
     pycross_wheel_library(
-        name = "debugpy_1.6.7.post1",
+        name = "debugpy_1.8.0",
         wheel = select({
-            ":_env_python_darwin_arm64": "@poetry_lock_wheel_debugpy_1.6.7.post1_py2.py3_none_any//file",
-            ":_env_python_darwin_x86_64": "@poetry_lock_wheel_debugpy_1.6.7.post1_cp39_cp39_macosx_11_0_x86_64//file",
-            ":_env_python_linux_x86_64": "@poetry_lock_wheel_debugpy_1.6.7.post1_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
+            ":_env_python_darwin_arm64": "@poetry_lock_wheel_debugpy_1.8.0_py2.py3_none_any//file",
+            ":_env_python_darwin_x86_64": "@poetry_lock_wheel_debugpy_1.8.0_cp39_cp39_macosx_11_0_x86_64//file",
+            ":_env_python_linux_x86_64": "@poetry_lock_wheel_debugpy_1.8.0_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
         }),
     )
 
@@ -280,32 +361,42 @@ def targets():
     )
 
     pycross_wheel_library(
-        name = "executing_1.2.0",
-        wheel = "@poetry_lock_wheel_executing_1.2.0_py2.py3_none_any//file",
+        name = "exceptiongroup_1.1.3",
+        wheel = "@poetry_lock_wheel_exceptiongroup_1.1.3_py3_none_any//file",
     )
 
     pycross_wheel_library(
-        name = "fastjsonschema_2.18.0",
-        wheel = "@poetry_lock_wheel_fastjsonschema_2.18.0_py3_none_any//file",
-    )
-
-    _filelock_3_12_3_deps = [
-        ":typing_extensions_4.7.1",
-    ]
-
-    pycross_wheel_library(
-        name = "filelock_3.12.3",
-        deps = _filelock_3_12_3_deps,
-        wheel = "@poetry_lock_wheel_filelock_3.12.3_py3_none_any//file",
+        name = "executing_2.0.0",
+        wheel = "@poetry_lock_wheel_executing_2.0.0_py2.py3_none_any//file",
     )
 
     pycross_wheel_library(
-        name = "identify_2.5.27",
-        wheel = "@poetry_lock_wheel_identify_2.5.27_py2.py3_none_any//file",
+        name = "fastjsonschema_2.18.1",
+        wheel = "@poetry_lock_wheel_fastjsonschema_2.18.1_py3_none_any//file",
+    )
+
+    pycross_wheel_library(
+        name = "filelock_3.12.4",
+        wheel = "@poetry_lock_wheel_filelock_3.12.4_py3_none_any//file",
+    )
+
+    pycross_wheel_library(
+        name = "fqdn_1.5.1",
+        wheel = "@poetry_lock_wheel_fqdn_1.5.1_py3_none_any//file",
+    )
+
+    pycross_wheel_library(
+        name = "identify_2.5.30",
+        wheel = "@poetry_lock_wheel_identify_2.5.30_py2.py3_none_any//file",
+    )
+
+    pycross_wheel_library(
+        name = "idna_3.4",
+        wheel = "@poetry_lock_wheel_idna_3.4_py3_none_any//file",
     )
 
     _importlib_metadata_6_8_0_deps = [
-        ":zipp_3.16.2",
+        ":zipp_3.17.0",
     ]
 
     pycross_wheel_library(
@@ -316,17 +407,17 @@ def targets():
 
     _ipykernel_6_25_2_deps = [
         ":comm_0.1.4",
-        ":debugpy_1.6.7.post1",
+        ":debugpy_1.8.0",
         ":ipython_8.0.1",
-        ":jupyter_client_8.3.1",
-        ":jupyter_core_5.3.1",
+        ":jupyter_client_8.4.0",
+        ":jupyter_core_5.4.0",
         ":matplotlib_inline_0.1.6",
-        ":nest_asyncio_1.5.7",
-        ":packaging_23.1",
-        ":psutil_5.9.5",
+        ":nest_asyncio_1.5.8",
+        ":packaging_23.2",
+        ":psutil_5.9.6",
         ":pyzmq_25.1.1",
         ":tornado_6.3.3",
-        ":traitlets_5.9.0",
+        ":traitlets_5.11.2",
     ] + select({
         ":_env_python_darwin_arm64": [
             ":appnope_0.1.3",
@@ -347,15 +438,15 @@ def targets():
         ":backcall_0.2.0",
         ":black_23.7.0",
         ":decorator_5.1.1",
-        ":jedi_0.19.0",
+        ":jedi_0.19.1",
         ":matplotlib_inline_0.1.6",
         ":pexpect_4.8.0",
         ":pickleshare_0.7.5",
         ":prompt_toolkit_3.0.39",
         ":pygments_2.16.1",
-        ":setuptools_68.1.2",
-        ":stack_data_0.6.2",
-        ":traitlets_5.9.0",
+        ":setuptools_68.2.2",
+        ":stack_data_0.6.3",
+        ":traitlets_5.11.2",
     ] + select({
         ":_env_python_darwin_arm64": [
             ":appnope_0.1.3",
@@ -372,19 +463,24 @@ def targets():
         wheel = "@poetry_lock_wheel_ipython_8.0.1_py3_none_any//file",
     )
 
+    _isoduration_20_11_0_deps = [
+        ":arrow_1.3.0",
+    ]
+
     pycross_wheel_library(
-        name = "ipython_genutils_0.2.0",
-        wheel = "@poetry_lock_wheel_ipython_genutils_0.2.0_py2.py3_none_any//file",
+        name = "isoduration_20.11.0",
+        deps = _isoduration_20_11_0_deps,
+        wheel = "@poetry_lock_wheel_isoduration_20.11.0_py3_none_any//file",
     )
 
-    _jedi_0_19_0_deps = [
+    _jedi_0_19_1_deps = [
         ":parso_0.8.3",
     ]
 
     pycross_wheel_library(
-        name = "jedi_0.19.0",
-        deps = _jedi_0_19_0_deps,
-        wheel = "@poetry_lock_wheel_jedi_0.19.0_py2.py3_none_any//file",
+        name = "jedi_0.19.1",
+        deps = _jedi_0_19_1_deps,
+        wheel = "@poetry_lock_wheel_jedi_0.19.1_py2.py3_none_any//file",
     )
 
     _jinja2_3_1_2_deps = [
@@ -397,17 +493,35 @@ def targets():
         wheel = "@poetry_lock_wheel_jinja2_3.1.2_py3_none_any//file",
     )
 
-    _jsonschema_4_19_0_deps = [
+    pycross_wheel_library(
+        name = "json5_0.9.14",
+        wheel = "@poetry_lock_wheel_json5_0.9.14_py2.py3_none_any//file",
+    )
+
+    pycross_wheel_library(
+        name = "jsonpointer_2.4",
+        wheel = "@poetry_lock_wheel_jsonpointer_2.4_py2.py3_none_any//file",
+    )
+
+    _jsonschema_4_19_1_deps = [
         ":attrs_23.1.0",
+        ":fqdn_1.5.1",
+        ":idna_3.4",
+        ":isoduration_20.11.0",
+        ":jsonpointer_2.4",
         ":jsonschema_specifications_2023.7.1",
         ":referencing_0.30.2",
-        ":rpds_py_0.10.2",
+        ":rfc3339_validator_0.1.4",
+        ":rfc3986_validator_0.1.1",
+        ":rpds_py_0.10.6",
+        ":uri_template_1.3.0",
+        ":webcolors_1.13",
     ]
 
     pycross_wheel_library(
-        name = "jsonschema_4.19.0",
-        deps = _jsonschema_4_19_0_deps,
-        wheel = "@poetry_lock_wheel_jsonschema_4.19.0_py3_none_any//file",
+        name = "jsonschema_4.19.1",
+        deps = _jsonschema_4_19_1_deps,
+        wheel = "@poetry_lock_wheel_jsonschema_4.19.1_py3_none_any//file",
     )
 
     _jsonschema_specifications_2023_7_1_deps = [
@@ -432,35 +546,138 @@ def targets():
         wheel = "@poetry_lock_wheel_jupyter_black_0.3.4_py3_none_any//file",
     )
 
-    _jupyter_client_8_3_1_deps = [
+    _jupyter_client_8_4_0_deps = [
         ":importlib_metadata_6.8.0",
-        ":jupyter_core_5.3.1",
+        ":jupyter_core_5.4.0",
         ":python_dateutil_2.8.2",
         ":pyzmq_25.1.1",
         ":tornado_6.3.3",
-        ":traitlets_5.9.0",
+        ":traitlets_5.11.2",
     ]
 
     pycross_wheel_library(
-        name = "jupyter_client_8.3.1",
-        deps = _jupyter_client_8_3_1_deps,
-        wheel = "@poetry_lock_wheel_jupyter_client_8.3.1_py3_none_any//file",
+        name = "jupyter_client_8.4.0",
+        deps = _jupyter_client_8_4_0_deps,
+        wheel = "@poetry_lock_wheel_jupyter_client_8.4.0_py3_none_any//file",
     )
 
-    _jupyter_core_5_3_1_deps = [
-        ":platformdirs_3.10.0",
-        ":traitlets_5.9.0",
+    _jupyter_core_5_4_0_deps = [
+        ":platformdirs_3.11.0",
+        ":traitlets_5.11.2",
     ]
 
     pycross_wheel_library(
-        name = "jupyter_core_5.3.1",
-        deps = _jupyter_core_5_3_1_deps,
-        wheel = "@poetry_lock_wheel_jupyter_core_5.3.1_py3_none_any//file",
+        name = "jupyter_core_5.4.0",
+        deps = _jupyter_core_5_4_0_deps,
+        wheel = "@poetry_lock_wheel_jupyter_core_5.4.0_py3_none_any//file",
+    )
+
+    _jupyter_events_0_8_0_deps = [
+        ":jsonschema_4.19.1",
+        ":python_json_logger_2.0.7",
+        ":pyyaml_6.0.1",
+        ":referencing_0.30.2",
+        ":rfc3339_validator_0.1.4",
+        ":rfc3986_validator_0.1.1",
+        ":traitlets_5.11.2",
+    ]
+
+    pycross_wheel_library(
+        name = "jupyter_events_0.8.0",
+        deps = _jupyter_events_0_8_0_deps,
+        wheel = "@poetry_lock_wheel_jupyter_events_0.8.0_py3_none_any//file",
+    )
+
+    _jupyter_lsp_2_2_0_deps = [
+        ":importlib_metadata_6.8.0",
+        ":jupyter_server_2.8.0",
+    ]
+
+    pycross_wheel_library(
+        name = "jupyter_lsp_2.2.0",
+        deps = _jupyter_lsp_2_2_0_deps,
+        wheel = "@poetry_lock_wheel_jupyter_lsp_2.2.0_py3_none_any//file",
+    )
+
+    _jupyter_server_2_8_0_deps = [
+        ":anyio_4.0.0",
+        ":argon2_cffi_23.1.0",
+        ":jinja2_3.1.2",
+        ":jupyter_client_8.4.0",
+        ":jupyter_core_5.4.0",
+        ":jupyter_events_0.8.0",
+        ":jupyter_server_terminals_0.4.4",
+        ":nbconvert_7.9.2",
+        ":nbformat_5.9.2",
+        ":overrides_7.4.0",
+        ":packaging_23.2",
+        ":prometheus_client_0.17.1",
+        ":pyzmq_25.1.1",
+        ":send2trash_1.8.2",
+        ":terminado_0.17.1",
+        ":tornado_6.3.3",
+        ":traitlets_5.11.2",
+        ":websocket_client_1.6.4",
+    ]
+
+    pycross_wheel_library(
+        name = "jupyter_server_2.8.0",
+        deps = _jupyter_server_2_8_0_deps,
+        wheel = "@poetry_lock_wheel_jupyter_server_2.8.0_py3_none_any//file",
+    )
+
+    _jupyter_server_terminals_0_4_4_deps = [
+        ":terminado_0.17.1",
+    ]
+
+    pycross_wheel_library(
+        name = "jupyter_server_terminals_0.4.4",
+        deps = _jupyter_server_terminals_0_4_4_deps,
+        wheel = "@poetry_lock_wheel_jupyter_server_terminals_0.4.4_py3_none_any//file",
+    )
+
+    _jupyterlab_4_0_7_deps = [
+        ":async_lru_2.0.4",
+        ":importlib_metadata_6.8.0",
+        ":ipykernel_6.25.2",
+        ":jinja2_3.1.2",
+        ":jupyter_core_5.4.0",
+        ":jupyter_lsp_2.2.0",
+        ":jupyter_server_2.8.0",
+        ":jupyterlab_server_2.25.0",
+        ":notebook_shim_0.2.3",
+        ":packaging_23.2",
+        ":tomli_2.0.1",
+        ":tornado_6.3.3",
+        ":traitlets_5.11.2",
+    ]
+
+    pycross_wheel_library(
+        name = "jupyterlab_4.0.7",
+        deps = _jupyterlab_4_0_7_deps,
+        wheel = "@poetry_lock_wheel_jupyterlab_4.0.7_py3_none_any//file",
     )
 
     pycross_wheel_library(
         name = "jupyterlab_pygments_0.2.2",
         wheel = "@poetry_lock_wheel_jupyterlab_pygments_0.2.2_py2.py3_none_any//file",
+    )
+
+    _jupyterlab_server_2_25_0_deps = [
+        ":babel_2.13.0",
+        ":importlib_metadata_6.8.0",
+        ":jinja2_3.1.2",
+        ":json5_0.9.14",
+        ":jsonschema_4.19.1",
+        ":jupyter_server_2.8.0",
+        ":packaging_23.2",
+        ":requests_2.31.0",
+    ]
+
+    pycross_wheel_library(
+        name = "jupyterlab_server_2.25.0",
+        deps = _jupyterlab_server_2_25_0_deps,
+        wheel = "@poetry_lock_wheel_jupyterlab_server_2.25.0_py3_none_any//file",
     )
 
     pycross_wheel_library(
@@ -473,7 +690,7 @@ def targets():
     )
 
     _matplotlib_inline_0_1_6_deps = [
-        ":traitlets_5.9.0",
+        ":traitlets_5.11.2",
     ]
 
     pycross_wheel_library(
@@ -483,8 +700,8 @@ def targets():
     )
 
     pycross_wheel_library(
-        name = "mistune_3.0.1",
-        wheel = "@poetry_lock_wheel_mistune_3.0.1_py3_none_any//file",
+        name = "mistune_3.0.2",
+        wheel = "@poetry_lock_wheel_mistune_3.0.2_py3_none_any//file",
     )
 
     pycross_wheel_library(
@@ -493,10 +710,10 @@ def targets():
     )
 
     _nbclient_0_8_0_deps = [
-        ":jupyter_client_8.3.1",
-        ":jupyter_core_5.3.1",
+        ":jupyter_client_8.4.0",
+        ":jupyter_core_5.4.0",
         ":nbformat_5.9.2",
-        ":traitlets_5.9.0",
+        ":traitlets_5.11.2",
     ]
 
     pycross_wheel_library(
@@ -505,36 +722,36 @@ def targets():
         wheel = "@poetry_lock_wheel_nbclient_0.8.0_py3_none_any//file",
     )
 
-    _nbconvert_7_8_0_deps = [
+    _nbconvert_7_9_2_deps = [
         ":beautifulsoup4_4.12.2",
-        ":bleach_6.0.0",
+        ":bleach_6.1.0",
         ":defusedxml_0.7.1",
         ":importlib_metadata_6.8.0",
         ":jinja2_3.1.2",
-        ":jupyter_core_5.3.1",
+        ":jupyter_core_5.4.0",
         ":jupyterlab_pygments_0.2.2",
         ":markupsafe_2.1.3",
-        ":mistune_3.0.1",
+        ":mistune_3.0.2",
         ":nbclient_0.8.0",
         ":nbformat_5.9.2",
-        ":packaging_23.1",
+        ":packaging_23.2",
         ":pandocfilters_1.5.0",
         ":pygments_2.16.1",
         ":tinycss2_1.2.1",
-        ":traitlets_5.9.0",
+        ":traitlets_5.11.2",
     ]
 
     pycross_wheel_library(
-        name = "nbconvert_7.8.0",
-        deps = _nbconvert_7_8_0_deps,
-        wheel = "@poetry_lock_wheel_nbconvert_7.8.0_py3_none_any//file",
+        name = "nbconvert_7.9.2",
+        deps = _nbconvert_7_9_2_deps,
+        wheel = "@poetry_lock_wheel_nbconvert_7.9.2_py3_none_any//file",
     )
 
     _nbformat_5_9_2_deps = [
-        ":fastjsonschema_2.18.0",
-        ":jsonschema_4.19.0",
-        ":jupyter_core_5.3.1",
-        ":traitlets_5.9.0",
+        ":fastjsonschema_2.18.1",
+        ":jsonschema_4.19.1",
+        ":jupyter_core_5.4.0",
+        ":traitlets_5.11.2",
     ]
 
     pycross_wheel_library(
@@ -544,12 +761,12 @@ def targets():
     )
 
     pycross_wheel_library(
-        name = "nest_asyncio_1.5.7",
-        wheel = "@poetry_lock_wheel_nest_asyncio_1.5.7_py3_none_any//file",
+        name = "nest_asyncio_1.5.8",
+        wheel = "@poetry_lock_wheel_nest_asyncio_1.5.8_py3_none_any//file",
     )
 
     _nodeenv_1_8_0_deps = [
-        ":setuptools_68.1.2",
+        ":setuptools_68.2.2",
     ]
 
     pycross_wheel_library(
@@ -558,28 +775,28 @@ def targets():
         wheel = "@poetry_lock_wheel_nodeenv_1.8.0_py2.py3_none_any//file",
     )
 
-    _notebook_6_4_11_deps = [
-        ":argon2_cffi_23.1.0",
-        ":ipykernel_6.25.2",
-        ":ipython_genutils_0.2.0",
-        ":jinja2_3.1.2",
-        ":jupyter_client_8.3.1",
-        ":jupyter_core_5.3.1",
-        ":nbconvert_7.8.0",
-        ":nbformat_5.9.2",
-        ":nest_asyncio_1.5.7",
-        ":prometheus_client_0.17.1",
-        ":pyzmq_25.1.1",
-        ":send2trash_1.8.2",
-        ":terminado_0.17.1",
+    _notebook_7_0_6_deps = [
+        ":jupyter_server_2.8.0",
+        ":jupyterlab_4.0.7",
+        ":jupyterlab_server_2.25.0",
+        ":notebook_shim_0.2.3",
         ":tornado_6.3.3",
-        ":traitlets_5.9.0",
     ]
 
     pycross_wheel_library(
-        name = "notebook_6.4.11",
-        deps = _notebook_6_4_11_deps,
-        wheel = "@poetry_lock_wheel_notebook_6.4.11_py3_none_any//file",
+        name = "notebook_7.0.6",
+        deps = _notebook_7_0_6_deps,
+        wheel = "@poetry_lock_wheel_notebook_7.0.6_py3_none_any//file",
+    )
+
+    _notebook_shim_0_2_3_deps = [
+        ":jupyter_server_2.8.0",
+    ]
+
+    pycross_wheel_library(
+        name = "notebook_shim_0.2.3",
+        deps = _notebook_shim_0_2_3_deps,
+        wheel = "@poetry_lock_wheel_notebook_shim_0.2.3_py3_none_any//file",
     )
 
     pycross_wheel_library(
@@ -592,8 +809,13 @@ def targets():
     )
 
     pycross_wheel_library(
-        name = "packaging_23.1",
-        wheel = "@poetry_lock_wheel_packaging_23.1_py3_none_any//file",
+        name = "overrides_7.4.0",
+        wheel = "@poetry_lock_wheel_overrides_7.4.0_py3_none_any//file",
+    )
+
+    pycross_wheel_library(
+        name = "packaging_23.2",
+        wheel = "@poetry_lock_wheel_packaging_23.2_py3_none_any//file",
     )
 
     pycross_wheel_library(
@@ -627,16 +849,16 @@ def targets():
     )
 
     pycross_wheel_library(
-        name = "platformdirs_3.10.0",
-        wheel = "@poetry_lock_wheel_platformdirs_3.10.0_py3_none_any//file",
+        name = "platformdirs_3.11.0",
+        wheel = "@poetry_lock_wheel_platformdirs_3.11.0_py3_none_any//file",
     )
 
     _pre_commit_3_3_3_deps = [
         ":cfgv_3.4.0",
-        ":identify_2.5.27",
+        ":identify_2.5.30",
         ":nodeenv_1.8.0",
         ":pyyaml_6.0.1",
-        ":virtualenv_20.24.4",
+        ":virtualenv_20.24.5",
     ]
 
     pycross_wheel_library(
@@ -651,7 +873,7 @@ def targets():
     )
 
     _prompt_toolkit_3_0_39_deps = [
-        ":wcwidth_0.2.6",
+        ":wcwidth_0.2.8",
     ]
 
     pycross_wheel_library(
@@ -661,11 +883,11 @@ def targets():
     )
 
     pycross_wheel_library(
-        name = "psutil_5.9.5",
+        name = "psutil_5.9.6",
         wheel = select({
-            ":_env_python_darwin_arm64": "@poetry_lock_wheel_psutil_5.9.5_cp38_abi3_macosx_11_0_arm64//file",
-            ":_env_python_darwin_x86_64": "@poetry_lock_wheel_psutil_5.9.5_cp36_abi3_macosx_10_9_x86_64//file",
-            ":_env_python_linux_x86_64": "@poetry_lock_wheel_psutil_5.9.5_cp36_abi3_manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64//file",
+            ":_env_python_darwin_arm64": "@poetry_lock_wheel_psutil_5.9.6_cp38_abi3_macosx_11_0_arm64//file",
+            ":_env_python_darwin_x86_64": "@poetry_lock_wheel_psutil_5.9.6_cp36_abi3_macosx_10_9_x86_64//file",
+            ":_env_python_linux_x86_64": "@poetry_lock_wheel_psutil_5.9.6_cp36_abi3_manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64//file",
         }),
     )
 
@@ -700,6 +922,11 @@ def targets():
     )
 
     pycross_wheel_library(
+        name = "python_json_logger_2.0.7",
+        wheel = "@poetry_lock_wheel_python_json_logger_2.0.7_py3_none_any//file",
+    )
+
+    pycross_wheel_library(
         name = "pyyaml_6.0.1",
         wheel = select({
             ":_env_python_darwin_arm64": "@poetry_lock_wheel_pyyaml_6.0.1_cp39_cp39_macosx_11_0_arm64//file",
@@ -719,7 +946,7 @@ def targets():
 
     _referencing_0_30_2_deps = [
         ":attrs_23.1.0",
-        ":rpds_py_0.10.2",
+        ":rpds_py_0.10.6",
     ]
 
     pycross_wheel_library(
@@ -728,12 +955,40 @@ def targets():
         wheel = "@poetry_lock_wheel_referencing_0.30.2_py3_none_any//file",
     )
 
+    _requests_2_31_0_deps = [
+        ":certifi_2023.7.22",
+        ":charset_normalizer_3.3.0",
+        ":idna_3.4",
+        ":urllib3_2.0.7",
+    ]
+
     pycross_wheel_library(
-        name = "rpds_py_0.10.2",
+        name = "requests_2.31.0",
+        deps = _requests_2_31_0_deps,
+        wheel = "@poetry_lock_wheel_requests_2.31.0_py3_none_any//file",
+    )
+
+    _rfc3339_validator_0_1_4_deps = [
+        ":six_1.16.0",
+    ]
+
+    pycross_wheel_library(
+        name = "rfc3339_validator_0.1.4",
+        deps = _rfc3339_validator_0_1_4_deps,
+        wheel = "@poetry_lock_wheel_rfc3339_validator_0.1.4_py2.py3_none_any//file",
+    )
+
+    pycross_wheel_library(
+        name = "rfc3986_validator_0.1.1",
+        wheel = "@poetry_lock_wheel_rfc3986_validator_0.1.1_py2.py3_none_any//file",
+    )
+
+    pycross_wheel_library(
+        name = "rpds_py_0.10.6",
         wheel = select({
-            ":_env_python_darwin_arm64": "@poetry_lock_wheel_rpds_py_0.10.2_cp39_cp39_macosx_11_0_arm64//file",
-            ":_env_python_darwin_x86_64": "@poetry_lock_wheel_rpds_py_0.10.2_cp39_cp39_macosx_10_7_x86_64//file",
-            ":_env_python_linux_x86_64": "@poetry_lock_wheel_rpds_py_0.10.2_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
+            ":_env_python_darwin_arm64": "@poetry_lock_wheel_rpds_py_0.10.6_cp39_cp39_macosx_11_0_arm64//file",
+            ":_env_python_darwin_x86_64": "@poetry_lock_wheel_rpds_py_0.10.6_cp39_cp39_macosx_10_7_x86_64//file",
+            ":_env_python_linux_x86_64": "@poetry_lock_wheel_rpds_py_0.10.6_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64//file",
         }),
     )
 
@@ -743,8 +998,8 @@ def targets():
     )
 
     pycross_wheel_library(
-        name = "setuptools_68.1.2",
-        wheel = "@poetry_lock_wheel_setuptools_68.1.2_py3_none_any//file",
+        name = "setuptools_68.2.2",
+        wheel = "@poetry_lock_wheel_setuptools_68.2.2_py3_none_any//file",
     )
 
     pycross_wheel_library(
@@ -753,20 +1008,25 @@ def targets():
     )
 
     pycross_wheel_library(
+        name = "sniffio_1.3.0",
+        wheel = "@poetry_lock_wheel_sniffio_1.3.0_py3_none_any//file",
+    )
+
+    pycross_wheel_library(
         name = "soupsieve_2.5",
         wheel = "@poetry_lock_wheel_soupsieve_2.5_py3_none_any//file",
     )
 
-    _stack_data_0_6_2_deps = [
+    _stack_data_0_6_3_deps = [
         ":asttokens_2.4.0",
-        ":executing_1.2.0",
+        ":executing_2.0.0",
         ":pure_eval_0.2.2",
     ]
 
     pycross_wheel_library(
-        name = "stack_data_0.6.2",
-        deps = _stack_data_0_6_2_deps,
-        wheel = "@poetry_lock_wheel_stack_data_0.6.2_py3_none_any//file",
+        name = "stack_data_0.6.3",
+        deps = _stack_data_0_6_3_deps,
+        wheel = "@poetry_lock_wheel_stack_data_0.6.3_py3_none_any//file",
     )
 
     _terminado_0_17_1_deps = [
@@ -810,30 +1070,50 @@ def targets():
     )
 
     pycross_wheel_library(
-        name = "traitlets_5.9.0",
-        wheel = "@poetry_lock_wheel_traitlets_5.9.0_py3_none_any//file",
+        name = "traitlets_5.11.2",
+        wheel = "@poetry_lock_wheel_traitlets_5.11.2_py3_none_any//file",
     )
 
     pycross_wheel_library(
-        name = "typing_extensions_4.7.1",
-        wheel = "@poetry_lock_wheel_typing_extensions_4.7.1_py3_none_any//file",
+        name = "types_python_dateutil_2.8.19.14",
+        wheel = "@poetry_lock_wheel_types_python_dateutil_2.8.19.14_py3_none_any//file",
     )
 
-    _virtualenv_20_24_4_deps = [
+    pycross_wheel_library(
+        name = "typing_extensions_4.8.0",
+        wheel = "@poetry_lock_wheel_typing_extensions_4.8.0_py3_none_any//file",
+    )
+
+    pycross_wheel_library(
+        name = "uri_template_1.3.0",
+        wheel = "@poetry_lock_wheel_uri_template_1.3.0_py3_none_any//file",
+    )
+
+    pycross_wheel_library(
+        name = "urllib3_2.0.7",
+        wheel = "@poetry_lock_wheel_urllib3_2.0.7_py3_none_any//file",
+    )
+
+    _virtualenv_20_24_5_deps = [
         ":distlib_0.3.7",
-        ":filelock_3.12.3",
-        ":platformdirs_3.10.0",
+        ":filelock_3.12.4",
+        ":platformdirs_3.11.0",
     ]
 
     pycross_wheel_library(
-        name = "virtualenv_20.24.4",
-        deps = _virtualenv_20_24_4_deps,
-        wheel = "@poetry_lock_wheel_virtualenv_20.24.4_py3_none_any//file",
+        name = "virtualenv_20.24.5",
+        deps = _virtualenv_20_24_5_deps,
+        wheel = "@poetry_lock_wheel_virtualenv_20.24.5_py3_none_any//file",
     )
 
     pycross_wheel_library(
-        name = "wcwidth_0.2.6",
-        wheel = "@poetry_lock_wheel_wcwidth_0.2.6_py2.py3_none_any//file",
+        name = "wcwidth_0.2.8",
+        wheel = "@poetry_lock_wheel_wcwidth_0.2.8_py2.py3_none_any//file",
+    )
+
+    pycross_wheel_library(
+        name = "webcolors_1.13",
+        wheel = "@poetry_lock_wheel_webcolors_1.13_py3_none_any//file",
     )
 
     pycross_wheel_library(
@@ -842,11 +1122,26 @@ def targets():
     )
 
     pycross_wheel_library(
-        name = "zipp_3.16.2",
-        wheel = "@poetry_lock_wheel_zipp_3.16.2_py3_none_any//file",
+        name = "websocket_client_1.6.4",
+        wheel = "@poetry_lock_wheel_websocket_client_1.6.4_py3_none_any//file",
+    )
+
+    pycross_wheel_library(
+        name = "zipp_3.17.0",
+        wheel = "@poetry_lock_wheel_zipp_3.17.0_py3_none_any//file",
     )
 
 def repositories():
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_anyio_4.0.0_py3_none_any",
+        package_name = "anyio",
+        package_version = "4.0.0",
+        filename = "anyio-4.0.0-py3-none-any.whl",
+        sha256 = "cfdb2b588b9fc25ede96d8db56ed50848b0b649dca3dd1df0b11f683bb9e0b5f",
+        index = "https://pypi.org",
+    )
+
     maybe(
         pypi_file,
         name = "poetry_lock_wheel_appnope_0.1.3_py2.py3_none_any",
@@ -889,6 +1184,16 @@ def repositories():
 
     maybe(
         pypi_file,
+        name = "poetry_lock_wheel_arrow_1.3.0_py3_none_any",
+        package_name = "arrow",
+        package_version = "1.3.0",
+        filename = "arrow-1.3.0-py3-none-any.whl",
+        sha256 = "c728b120ebc00eb84e01882a6f5e7927a53960aa990ce7dd2b10f39005a67f80",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
         name = "poetry_lock_wheel_asttokens_2.4.0_py2.py3_none_any",
         package_name = "asttokens",
         package_version = "2.4.0",
@@ -899,11 +1204,31 @@ def repositories():
 
     maybe(
         pypi_file,
+        name = "poetry_lock_wheel_async_lru_2.0.4_py3_none_any",
+        package_name = "async-lru",
+        package_version = "2.0.4",
+        filename = "async_lru-2.0.4-py3-none-any.whl",
+        sha256 = "ff02944ce3c288c5be660c42dbcca0742b32c3b279d6dceda655190240b99224",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
         name = "poetry_lock_wheel_attrs_23.1.0_py3_none_any",
         package_name = "attrs",
         package_version = "23.1.0",
         filename = "attrs-23.1.0-py3-none-any.whl",
         sha256 = "1f28b4522cdc2fb4256ac1a020c78acf9cba2c6b461ccd2c126f3aa8e8335d04",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_babel_2.13.0_py3_none_any",
+        package_name = "babel",
+        package_version = "2.13.0",
+        filename = "Babel-2.13.0-py3-none-any.whl",
+        sha256 = "fbfcae1575ff78e26c7449136f1abbefc3c13ce542eeb13d43d50d8b047216ec",
         index = "https://pypi.org",
     )
 
@@ -959,41 +1284,51 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_bleach_6.0.0_py3_none_any",
+        name = "poetry_lock_wheel_bleach_6.1.0_py3_none_any",
         package_name = "bleach",
-        package_version = "6.0.0",
-        filename = "bleach-6.0.0-py3-none-any.whl",
-        sha256 = "33c16e3353dbd13028ab4799a0f89a83f113405c766e9c122df8a06f5b85b3f4",
+        package_version = "6.1.0",
+        filename = "bleach-6.1.0-py3-none-any.whl",
+        sha256 = "3225f354cfc436b9789c66c4ee030194bee0568fbf9cbdad3bc8b5c26c5f12b6",
         index = "https://pypi.org",
     )
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_cffi_1.15.1_cp39_cp39_macosx_10_9_x86_64",
-        package_name = "cffi",
-        package_version = "1.15.1",
-        filename = "cffi-1.15.1-cp39-cp39-macosx_10_9_x86_64.whl",
-        sha256 = "54a2db7b78338edd780e7ef7f9f6c442500fb0d41a5a4ea24fff1c929d5af585",
+        name = "poetry_lock_wheel_certifi_2023.7.22_py3_none_any",
+        package_name = "certifi",
+        package_version = "2023.7.22",
+        filename = "certifi-2023.7.22-py3-none-any.whl",
+        sha256 = "92d6037539857d8206b8f6ae472e8b77db8058fec5937a1ef3f54304089edbb9",
         index = "https://pypi.org",
     )
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_cffi_1.15.1_cp39_cp39_macosx_11_0_arm64",
+        name = "poetry_lock_wheel_cffi_1.16.0_cp39_cp39_macosx_10_9_x86_64",
         package_name = "cffi",
-        package_version = "1.15.1",
-        filename = "cffi-1.15.1-cp39-cp39-macosx_11_0_arm64.whl",
-        sha256 = "fcd131dd944808b5bdb38e6f5b53013c5aa4f334c5cad0c72742f6eba4b73db0",
+        package_version = "1.16.0",
+        filename = "cffi-1.16.0-cp39-cp39-macosx_10_9_x86_64.whl",
+        sha256 = "582215a0e9adbe0e379761260553ba11c58943e4bbe9c36430c4ca6ac74b15ed",
         index = "https://pypi.org",
     )
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_cffi_1.15.1_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64",
+        name = "poetry_lock_wheel_cffi_1.16.0_cp39_cp39_macosx_11_0_arm64",
         package_name = "cffi",
-        package_version = "1.15.1",
-        filename = "cffi-1.15.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
-        sha256 = "5d598b938678ebf3c67377cdd45e09d431369c3b1a5b331058c338e201f12b27",
+        package_version = "1.16.0",
+        filename = "cffi-1.16.0-cp39-cp39-macosx_11_0_arm64.whl",
+        sha256 = "b29ebffcf550f9da55bec9e02ad430c992a87e5f512cd63388abb76f1036d8d2",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_cffi_1.16.0_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64",
+        package_name = "cffi",
+        package_version = "1.16.0",
+        filename = "cffi-1.16.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        sha256 = "8f8e709127c6c77446a8c0a8c8bf3c8ee706a06cd44b1e827c3e6a2ee6b8c098",
         index = "https://pypi.org",
     )
 
@@ -1004,6 +1339,36 @@ def repositories():
         package_version = "3.4.0",
         filename = "cfgv-3.4.0-py2.py3-none-any.whl",
         sha256 = "b7265b1f29fd3316bfcd2b330d63d024f2bfd8bcb8b0272f8e19a504856c48f9",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_charset_normalizer_3.3.0_cp39_cp39_macosx_10_9_x86_64",
+        package_name = "charset-normalizer",
+        package_version = "3.3.0",
+        filename = "charset_normalizer-3.3.0-cp39-cp39-macosx_10_9_x86_64.whl",
+        sha256 = "09c77f964f351a7369cc343911e0df63e762e42bac24cd7d18525961c81754f4",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_charset_normalizer_3.3.0_cp39_cp39_macosx_11_0_arm64",
+        package_name = "charset-normalizer",
+        package_version = "3.3.0",
+        filename = "charset_normalizer-3.3.0-cp39-cp39-macosx_11_0_arm64.whl",
+        sha256 = "12ebea541c44fdc88ccb794a13fe861cc5e35d64ed689513a5c03d05b53b7c82",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_charset_normalizer_3.3.0_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64",
+        package_name = "charset-normalizer",
+        package_version = "3.3.0",
+        filename = "charset_normalizer-3.3.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        sha256 = "619d1c96099be5823db34fe89e2582b336b5b074a7f47f819d6b3a57ff7bdb86",
         index = "https://pypi.org",
     )
 
@@ -1039,31 +1404,31 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_debugpy_1.6.7.post1_cp39_cp39_macosx_11_0_x86_64",
+        name = "poetry_lock_wheel_debugpy_1.8.0_cp39_cp39_macosx_11_0_x86_64",
         package_name = "debugpy",
-        package_version = "1.6.7.post1",
-        filename = "debugpy-1.6.7.post1-cp39-cp39-macosx_11_0_x86_64.whl",
-        sha256 = "38651c3639a4e8bbf0ca7e52d799f6abd07d622a193c406be375da4d510d968d",
+        package_version = "1.8.0",
+        filename = "debugpy-1.8.0-cp39-cp39-macosx_11_0_x86_64.whl",
+        sha256 = "61eab4a4c8b6125d41a34bad4e5fe3d2cc145caecd63c3fe953be4cc53e65bf8",
         index = "https://pypi.org",
     )
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_debugpy_1.6.7.post1_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64",
+        name = "poetry_lock_wheel_debugpy_1.8.0_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64",
         package_name = "debugpy",
-        package_version = "1.6.7.post1",
-        filename = "debugpy-1.6.7.post1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
-        sha256 = "038c51268367c9c935905a90b1c2d2dbfe304037c27ba9d19fe7409f8cdc710c",
+        package_version = "1.8.0",
+        filename = "debugpy-1.8.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        sha256 = "125b9a637e013f9faac0a3d6a82bd17c8b5d2c875fb6b7e2772c5aba6d082332",
         index = "https://pypi.org",
     )
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_debugpy_1.6.7.post1_py2.py3_none_any",
+        name = "poetry_lock_wheel_debugpy_1.8.0_py2.py3_none_any",
         package_name = "debugpy",
-        package_version = "1.6.7.post1",
-        filename = "debugpy-1.6.7.post1-py2.py3-none-any.whl",
-        sha256 = "1093a5c541af079c13ac8c70ab8b24d1d35c8cacb676306cf11e57f699c02926",
+        package_version = "1.8.0",
+        filename = "debugpy-1.8.0-py2.py3-none-any.whl",
+        sha256 = "9c9b0ac1ce2a42888199df1a1906e45e6f3c9555497643a85e0bf2406e3ffbc4",
         index = "https://pypi.org",
     )
 
@@ -1099,41 +1464,71 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_executing_1.2.0_py2.py3_none_any",
+        name = "poetry_lock_wheel_exceptiongroup_1.1.3_py3_none_any",
+        package_name = "exceptiongroup",
+        package_version = "1.1.3",
+        filename = "exceptiongroup-1.1.3-py3-none-any.whl",
+        sha256 = "343280667a4585d195ca1cf9cef84a4e178c4b6cf2274caef9859782b567d5e3",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_executing_2.0.0_py2.py3_none_any",
         package_name = "executing",
-        package_version = "1.2.0",
-        filename = "executing-1.2.0-py2.py3-none-any.whl",
-        sha256 = "0314a69e37426e3608aada02473b4161d4caf5a4b244d1d0c48072b8fee7bacc",
+        package_version = "2.0.0",
+        filename = "executing-2.0.0-py2.py3-none-any.whl",
+        sha256 = "06df6183df67389625f4e763921c6cf978944721abf3e714000200aab95b0657",
         index = "https://pypi.org",
     )
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_fastjsonschema_2.18.0_py3_none_any",
+        name = "poetry_lock_wheel_fastjsonschema_2.18.1_py3_none_any",
         package_name = "fastjsonschema",
-        package_version = "2.18.0",
-        filename = "fastjsonschema-2.18.0-py3-none-any.whl",
-        sha256 = "128039912a11a807068a7c87d0da36660afbfd7202780db26c4aa7153cfdc799",
+        package_version = "2.18.1",
+        filename = "fastjsonschema-2.18.1-py3-none-any.whl",
+        sha256 = "aec6a19e9f66e9810ab371cc913ad5f4e9e479b63a7072a2cd060a9369e329a8",
         index = "https://pypi.org",
     )
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_filelock_3.12.3_py3_none_any",
+        name = "poetry_lock_wheel_filelock_3.12.4_py3_none_any",
         package_name = "filelock",
-        package_version = "3.12.3",
-        filename = "filelock-3.12.3-py3-none-any.whl",
-        sha256 = "f067e40ccc40f2b48395a80fcbd4728262fab54e232e090a4063ab804179efeb",
+        package_version = "3.12.4",
+        filename = "filelock-3.12.4-py3-none-any.whl",
+        sha256 = "08c21d87ded6e2b9da6728c3dff51baf1dcecf973b768ef35bcbc3447edb9ad4",
         index = "https://pypi.org",
     )
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_identify_2.5.27_py2.py3_none_any",
+        name = "poetry_lock_wheel_fqdn_1.5.1_py3_none_any",
+        package_name = "fqdn",
+        package_version = "1.5.1",
+        filename = "fqdn-1.5.1-py3-none-any.whl",
+        sha256 = "3a179af3761e4df6eb2e026ff9e1a3033d3587bf980a0b1b2e1e5d08d7358014",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_identify_2.5.30_py2.py3_none_any",
         package_name = "identify",
-        package_version = "2.5.27",
-        filename = "identify-2.5.27-py2.py3-none-any.whl",
-        sha256 = "fdb527b2dfe24602809b2201e033c2a113d7bdf716db3ca8e3243f735dcecaba",
+        package_version = "2.5.30",
+        filename = "identify-2.5.30-py2.py3-none-any.whl",
+        sha256 = "afe67f26ae29bab007ec21b03d4114f41316ab9dd15aa8736a167481e108da54",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_idna_3.4_py3_none_any",
+        package_name = "idna",
+        package_version = "3.4",
+        filename = "idna-3.4-py3-none-any.whl",
+        sha256 = "90b77e79eaa3eba6de819a0c442c0b4ceefc341a7a2ab77d7562bf49f425c5c2",
         index = "https://pypi.org",
     )
 
@@ -1169,21 +1564,21 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_ipython_genutils_0.2.0_py2.py3_none_any",
-        package_name = "ipython-genutils",
-        package_version = "0.2.0",
-        filename = "ipython_genutils-0.2.0-py2.py3-none-any.whl",
-        sha256 = "72dd37233799e619666c9f639a9da83c34013a73e8bbc79a7a6348d93c61fab8",
+        name = "poetry_lock_wheel_isoduration_20.11.0_py3_none_any",
+        package_name = "isoduration",
+        package_version = "20.11.0",
+        filename = "isoduration-20.11.0-py3-none-any.whl",
+        sha256 = "b2904c2a4228c3d44f409c8ae8e2370eb21a26f7ac2ec5446df141dde3452042",
         index = "https://pypi.org",
     )
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_jedi_0.19.0_py2.py3_none_any",
+        name = "poetry_lock_wheel_jedi_0.19.1_py2.py3_none_any",
         package_name = "jedi",
-        package_version = "0.19.0",
-        filename = "jedi-0.19.0-py2.py3-none-any.whl",
-        sha256 = "cb8ce23fbccff0025e9386b5cf85e892f94c9b822378f8da49970471335ac64e",
+        package_version = "0.19.1",
+        filename = "jedi-0.19.1-py2.py3-none-any.whl",
+        sha256 = "e983c654fe5c02867aef4cdfce5a2fbb4a50adc0af145f70504238f18ef5e7e0",
         index = "https://pypi.org",
     )
 
@@ -1199,11 +1594,31 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_jsonschema_4.19.0_py3_none_any",
+        name = "poetry_lock_wheel_json5_0.9.14_py2.py3_none_any",
+        package_name = "json5",
+        package_version = "0.9.14",
+        filename = "json5-0.9.14-py2.py3-none-any.whl",
+        sha256 = "740c7f1b9e584a468dbb2939d8d458db3427f2c93ae2139d05f47e453eae964f",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_jsonpointer_2.4_py2.py3_none_any",
+        package_name = "jsonpointer",
+        package_version = "2.4",
+        filename = "jsonpointer-2.4-py2.py3-none-any.whl",
+        sha256 = "15d51bba20eea3165644553647711d150376234112651b4f1811022aecad7d7a",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_jsonschema_4.19.1_py3_none_any",
         package_name = "jsonschema",
-        package_version = "4.19.0",
-        filename = "jsonschema-4.19.0-py3-none-any.whl",
-        sha256 = "043dc26a3845ff09d20e4420d6012a9c91c9aa8999fa184e7efcfeccb41e32cb",
+        package_version = "4.19.1",
+        filename = "jsonschema-4.19.1-py3-none-any.whl",
+        sha256 = "cd5f1f9ed9444e554b38ba003af06c0a8c2868131e56bfbef0550fb450c0330e",
         index = "https://pypi.org",
     )
 
@@ -1229,21 +1644,71 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_jupyter_client_8.3.1_py3_none_any",
+        name = "poetry_lock_wheel_jupyter_client_8.4.0_py3_none_any",
         package_name = "jupyter-client",
-        package_version = "8.3.1",
-        filename = "jupyter_client-8.3.1-py3-none-any.whl",
-        sha256 = "5eb9f55eb0650e81de6b7e34308d8b92d04fe4ec41cd8193a913979e33d8e1a5",
+        package_version = "8.4.0",
+        filename = "jupyter_client-8.4.0-py3-none-any.whl",
+        sha256 = "6a2a950ec23a8f62f9e4c66acec7f0ea6c7d1f80ba0992e747b10c56ce2e6dbe",
         index = "https://pypi.org",
     )
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_jupyter_core_5.3.1_py3_none_any",
+        name = "poetry_lock_wheel_jupyter_core_5.4.0_py3_none_any",
         package_name = "jupyter-core",
-        package_version = "5.3.1",
-        filename = "jupyter_core-5.3.1-py3-none-any.whl",
-        sha256 = "ae9036db959a71ec1cac33081eeb040a79e681f08ab68b0883e9a676c7a90dce",
+        package_version = "5.4.0",
+        filename = "jupyter_core-5.4.0-py3-none-any.whl",
+        sha256 = "66e252f675ac04dcf2feb6ed4afb3cd7f68cf92f483607522dc251f32d471571",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_jupyter_events_0.8.0_py3_none_any",
+        package_name = "jupyter-events",
+        package_version = "0.8.0",
+        filename = "jupyter_events-0.8.0-py3-none-any.whl",
+        sha256 = "81f07375c7673ff298bfb9302b4a981864ec64edaed75ca0fe6f850b9b045525",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_jupyter_lsp_2.2.0_py3_none_any",
+        package_name = "jupyter-lsp",
+        package_version = "2.2.0",
+        filename = "jupyter_lsp-2.2.0-py3-none-any.whl",
+        sha256 = "9e06b8b4f7dd50300b70dd1a78c0c3b0c3d8fa68e0f2d8a5d1fbab62072aca3f",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_jupyter_server_2.8.0_py3_none_any",
+        package_name = "jupyter-server",
+        package_version = "2.8.0",
+        filename = "jupyter_server-2.8.0-py3-none-any.whl",
+        sha256 = "c57270faa6530393ae69783a2d2f1874c718b9f109080581ea076b05713249fa",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_jupyter_server_terminals_0.4.4_py3_none_any",
+        package_name = "jupyter-server-terminals",
+        package_version = "0.4.4",
+        filename = "jupyter_server_terminals-0.4.4-py3-none-any.whl",
+        sha256 = "75779164661cec02a8758a5311e18bb8eb70c4e86c6b699403100f1585a12a36",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_jupyterlab_4.0.7_py3_none_any",
+        package_name = "jupyterlab",
+        package_version = "4.0.7",
+        filename = "jupyterlab-4.0.7-py3-none-any.whl",
+        sha256 = "08683045117cc495531fdb39c22ababb9aaac6977a45e67cfad20046564c9c7c",
         index = "https://pypi.org",
     )
 
@@ -1254,6 +1719,16 @@ def repositories():
         package_version = "0.2.2",
         filename = "jupyterlab_pygments-0.2.2-py2.py3-none-any.whl",
         sha256 = "2405800db07c9f770863bcf8049a529c3dd4d3e28536638bd7c1c01d2748309f",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_jupyterlab_server_2.25.0_py3_none_any",
+        package_name = "jupyterlab-server",
+        package_version = "2.25.0",
+        filename = "jupyterlab_server-2.25.0-py3-none-any.whl",
+        sha256 = "c9f67a98b295c5dee87f41551b0558374e45d449f3edca153dd722140630dcb2",
         index = "https://pypi.org",
     )
 
@@ -1299,11 +1774,11 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_mistune_3.0.1_py3_none_any",
+        name = "poetry_lock_wheel_mistune_3.0.2_py3_none_any",
         package_name = "mistune",
-        package_version = "3.0.1",
-        filename = "mistune-3.0.1-py3-none-any.whl",
-        sha256 = "b9b3e438efbb57c62b5beb5e134dab664800bdf1284a7ee09e8b12b13eb1aac6",
+        package_version = "3.0.2",
+        filename = "mistune-3.0.2-py3-none-any.whl",
+        sha256 = "71481854c30fdbc938963d3605b72501f5c10a9320ecd412c121c163a1c7d205",
         index = "https://pypi.org",
     )
 
@@ -1329,11 +1804,11 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_nbconvert_7.8.0_py3_none_any",
+        name = "poetry_lock_wheel_nbconvert_7.9.2_py3_none_any",
         package_name = "nbconvert",
-        package_version = "7.8.0",
-        filename = "nbconvert-7.8.0-py3-none-any.whl",
-        sha256 = "aec605e051fa682ccc7934ccc338ba1e8b626cfadbab0db592106b630f63f0f2",
+        package_version = "7.9.2",
+        filename = "nbconvert-7.9.2-py3-none-any.whl",
+        sha256 = "39fe4b8bdd1b0104fdd86fc8a43a9077ba64c720bda4c6132690d917a0a154ee",
         index = "https://pypi.org",
     )
 
@@ -1349,11 +1824,11 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_nest_asyncio_1.5.7_py3_none_any",
+        name = "poetry_lock_wheel_nest_asyncio_1.5.8_py3_none_any",
         package_name = "nest-asyncio",
-        package_version = "1.5.7",
-        filename = "nest_asyncio-1.5.7-py3-none-any.whl",
-        sha256 = "5301c82941b550b3123a1ea772ba9a1c80bad3a182be8c1a5ae6ad3be57a9657",
+        package_version = "1.5.8",
+        filename = "nest_asyncio-1.5.8-py3-none-any.whl",
+        sha256 = "accda7a339a70599cb08f9dd09a67e0c2ef8d8d6f4c07f96ab203f2ae254e48d",
         index = "https://pypi.org",
     )
 
@@ -1369,11 +1844,21 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_notebook_6.4.11_py3_none_any",
+        name = "poetry_lock_wheel_notebook_7.0.6_py3_none_any",
         package_name = "notebook",
-        package_version = "6.4.11",
-        filename = "notebook-6.4.11-py3-none-any.whl",
-        sha256 = "b4a6baf2eba21ce67a0ca11a793d1781b06b8078f34d06c710742e55f3eee505",
+        package_version = "7.0.6",
+        filename = "notebook-7.0.6-py3-none-any.whl",
+        sha256 = "0fe8f67102fea3744fedf652e4c15339390902ca70c5a31c4f547fa23da697cc",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_notebook_shim_0.2.3_py3_none_any",
+        package_name = "notebook-shim",
+        package_version = "0.2.3",
+        filename = "notebook_shim-0.2.3-py3-none-any.whl",
+        sha256 = "a83496a43341c1674b093bfcebf0fe8e74cbe7eda5fd2bbc56f8e39e1486c0c7",
         index = "https://pypi.org",
     )
 
@@ -1409,11 +1894,21 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_packaging_23.1_py3_none_any",
+        name = "poetry_lock_wheel_overrides_7.4.0_py3_none_any",
+        package_name = "overrides",
+        package_version = "7.4.0",
+        filename = "overrides-7.4.0-py3-none-any.whl",
+        sha256 = "3ad24583f86d6d7a49049695efe9933e67ba62f0c7625d53c59fa832ce4b8b7d",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_packaging_23.2_py3_none_any",
         package_name = "packaging",
-        package_version = "23.1",
-        filename = "packaging-23.1-py3-none-any.whl",
-        sha256 = "994793af429502c4ea2ebf6bf664629d07c1a9fe974af92966e4b8d2df7edc61",
+        package_version = "23.2",
+        filename = "packaging-23.2-py3-none-any.whl",
+        sha256 = "8c491190033a9af7e1d931d0b5dacc2ef47509b34dd0de67ed209b5203fc88c7",
         index = "https://pypi.org",
     )
 
@@ -1469,11 +1964,11 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_platformdirs_3.10.0_py3_none_any",
+        name = "poetry_lock_wheel_platformdirs_3.11.0_py3_none_any",
         package_name = "platformdirs",
-        package_version = "3.10.0",
-        filename = "platformdirs-3.10.0-py3-none-any.whl",
-        sha256 = "d7c24979f292f916dc9cbf8648319032f551ea8c49a4c9bf2fb556a02070ec1d",
+        package_version = "3.11.0",
+        filename = "platformdirs-3.11.0-py3-none-any.whl",
+        sha256 = "e9d171d00af68be50e9202731309c4e658fd8bc76f55c11c7dd760d023bda68e",
         index = "https://pypi.org",
     )
 
@@ -1509,31 +2004,31 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_psutil_5.9.5_cp36_abi3_macosx_10_9_x86_64",
+        name = "poetry_lock_wheel_psutil_5.9.6_cp36_abi3_macosx_10_9_x86_64",
         package_name = "psutil",
-        package_version = "5.9.5",
-        filename = "psutil-5.9.5-cp36-abi3-macosx_10_9_x86_64.whl",
-        sha256 = "3c6f686f4225553615612f6d9bc21f1c0e305f75d7d8454f9b46e901778e7217",
+        package_version = "5.9.6",
+        filename = "psutil-5.9.6-cp36-abi3-macosx_10_9_x86_64.whl",
+        sha256 = "c69596f9fc2f8acd574a12d5f8b7b1ba3765a641ea5d60fb4736bf3c08a8214a",
         index = "https://pypi.org",
     )
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_psutil_5.9.5_cp36_abi3_manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64",
+        name = "poetry_lock_wheel_psutil_5.9.6_cp36_abi3_manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64",
         package_name = "psutil",
-        package_version = "5.9.5",
-        filename = "psutil-5.9.5-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
-        sha256 = "89518112647f1276b03ca97b65cc7f64ca587b1eb0278383017c2a0dcc26cbe4",
+        package_version = "5.9.6",
+        filename = "psutil-5.9.6-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        sha256 = "748c9dd2583ed86347ed65d0035f45fa8c851e8d90354c122ab72319b5f366f4",
         index = "https://pypi.org",
     )
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_psutil_5.9.5_cp38_abi3_macosx_11_0_arm64",
+        name = "poetry_lock_wheel_psutil_5.9.6_cp38_abi3_macosx_11_0_arm64",
         package_name = "psutil",
-        package_version = "5.9.5",
-        filename = "psutil-5.9.5-cp38-abi3-macosx_11_0_arm64.whl",
-        sha256 = "c607bb3b57dc779d55e1554846352b4e358c10fff3abf3514a7a6601beebdb30",
+        package_version = "5.9.6",
+        filename = "psutil-5.9.6-cp38-abi3-macosx_11_0_arm64.whl",
+        sha256 = "daecbcbd29b289aac14ece28eca6a3e60aa361754cf6da3dfb20d4d32b6c7f57",
         index = "https://pypi.org",
     )
 
@@ -1584,6 +2079,16 @@ def repositories():
         package_version = "2.8.2",
         filename = "python_dateutil-2.8.2-py2.py3-none-any.whl",
         sha256 = "961d03dc3453ebbc59dbdea9e4e11c5651520a876d0f4db161e8674aae935da9",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_python_json_logger_2.0.7_py3_none_any",
+        package_name = "python-json-logger",
+        package_version = "2.0.7",
+        filename = "python_json_logger-2.0.7-py3-none-any.whl",
+        sha256 = "f380b826a991ebbe3de4d897aeec42760035ac760345e57b812938dc8b35e2bd",
         index = "https://pypi.org",
     )
 
@@ -1649,31 +2154,61 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_rpds_py_0.10.2_cp39_cp39_macosx_10_7_x86_64",
-        package_name = "rpds-py",
-        package_version = "0.10.2",
-        filename = "rpds_py-0.10.2-cp39-cp39-macosx_10_7_x86_64.whl",
-        sha256 = "2a55631b93e47956fbc97d69ba2054a8c6a4016f9a3064ec4e031f5f1030cb90",
+        name = "poetry_lock_wheel_requests_2.31.0_py3_none_any",
+        package_name = "requests",
+        package_version = "2.31.0",
+        filename = "requests-2.31.0-py3-none-any.whl",
+        sha256 = "58cd2187c01e70e6e26505bca751777aa9f2ee0b7f4300988b709f44e013003f",
         index = "https://pypi.org",
     )
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_rpds_py_0.10.2_cp39_cp39_macosx_11_0_arm64",
-        package_name = "rpds-py",
-        package_version = "0.10.2",
-        filename = "rpds_py-0.10.2-cp39-cp39-macosx_11_0_arm64.whl",
-        sha256 = "2ffbf1b38c88d0466de542e91b08225d51782282512f8e2b11715126c41fda48",
+        name = "poetry_lock_wheel_rfc3339_validator_0.1.4_py2.py3_none_any",
+        package_name = "rfc3339-validator",
+        package_version = "0.1.4",
+        filename = "rfc3339_validator-0.1.4-py2.py3-none-any.whl",
+        sha256 = "24f6ec1eda14ef823da9e36ec7113124b39c04d50a4d3d3a3c2859577e7791fa",
         index = "https://pypi.org",
     )
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_rpds_py_0.10.2_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64",
+        name = "poetry_lock_wheel_rfc3986_validator_0.1.1_py2.py3_none_any",
+        package_name = "rfc3986-validator",
+        package_version = "0.1.1",
+        filename = "rfc3986_validator-0.1.1-py2.py3-none-any.whl",
+        sha256 = "2f235c432ef459970b4306369336b9d5dbdda31b510ca1e327636e01f528bfa9",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_rpds_py_0.10.6_cp39_cp39_macosx_10_7_x86_64",
         package_name = "rpds-py",
-        package_version = "0.10.2",
-        filename = "rpds_py-0.10.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
-        sha256 = "b8578fc6c8bdd0201327503720fa581000b4bd3934abbf07e2628d1ad3de157d",
+        package_version = "0.10.6",
+        filename = "rpds_py-0.10.6-cp39-cp39-macosx_10_7_x86_64.whl",
+        sha256 = "0898173249141ee99ffcd45e3829abe7bcee47d941af7434ccbf97717df020e5",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_rpds_py_0.10.6_cp39_cp39_macosx_11_0_arm64",
+        package_name = "rpds-py",
+        package_version = "0.10.6",
+        filename = "rpds_py-0.10.6-cp39-cp39-macosx_11_0_arm64.whl",
+        sha256 = "9e9184fa6c52a74a5521e3e87badbf9692549c0fcced47443585876fcc47e469",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_rpds_py_0.10.6_cp39_cp39_manylinux_2_17_x86_64.manylinux2014_x86_64",
+        package_name = "rpds-py",
+        package_version = "0.10.6",
+        filename = "rpds_py-0.10.6-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        sha256 = "b2039f8d545f20c4e52713eea51a275e62153ee96c8035a32b2abb772b6fc9e5",
         index = "https://pypi.org",
     )
 
@@ -1689,11 +2224,11 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_setuptools_68.1.2_py3_none_any",
+        name = "poetry_lock_wheel_setuptools_68.2.2_py3_none_any",
         package_name = "setuptools",
-        package_version = "68.1.2",
-        filename = "setuptools-68.1.2-py3-none-any.whl",
-        sha256 = "3d8083eed2d13afc9426f227b24fd1659489ec107c0e86cec2ffdde5c92e790b",
+        package_version = "68.2.2",
+        filename = "setuptools-68.2.2-py3-none-any.whl",
+        sha256 = "b454a35605876da60632df1a60f736524eb73cc47bbc9f3f1ef1b644de74fd2a",
         index = "https://pypi.org",
     )
 
@@ -1709,6 +2244,16 @@ def repositories():
 
     maybe(
         pypi_file,
+        name = "poetry_lock_wheel_sniffio_1.3.0_py3_none_any",
+        package_name = "sniffio",
+        package_version = "1.3.0",
+        filename = "sniffio-1.3.0-py3-none-any.whl",
+        sha256 = "eecefdce1e5bbfb7ad2eeaabf7c1eeb404d7757c379bd1f7e5cce9d8bf425384",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
         name = "poetry_lock_wheel_soupsieve_2.5_py3_none_any",
         package_name = "soupsieve",
         package_version = "2.5",
@@ -1719,11 +2264,11 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_stack_data_0.6.2_py3_none_any",
+        name = "poetry_lock_wheel_stack_data_0.6.3_py3_none_any",
         package_name = "stack-data",
-        package_version = "0.6.2",
-        filename = "stack_data-0.6.2-py3-none-any.whl",
-        sha256 = "cbb2a53eb64e5785878201a97ed7c7b94883f48b87bfb0bbe8b623c74679e4a8",
+        package_version = "0.6.3",
+        filename = "stack_data-0.6.3-py3-none-any.whl",
+        sha256 = "d5558e0c25a4cb0853cddad3d77da9891a08cb85dd9f9f91b9f8cd66e511e695",
         index = "https://pypi.org",
     )
 
@@ -1799,41 +2344,81 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_traitlets_5.9.0_py3_none_any",
+        name = "poetry_lock_wheel_traitlets_5.11.2_py3_none_any",
         package_name = "traitlets",
-        package_version = "5.9.0",
-        filename = "traitlets-5.9.0-py3-none-any.whl",
-        sha256 = "9e6ec080259b9a5940c797d58b613b5e31441c2257b87c2e795c5228ae80d2d8",
+        package_version = "5.11.2",
+        filename = "traitlets-5.11.2-py3-none-any.whl",
+        sha256 = "98277f247f18b2c5cabaf4af369187754f4fb0e85911d473f72329db8a7f4fae",
         index = "https://pypi.org",
     )
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_typing_extensions_4.7.1_py3_none_any",
+        name = "poetry_lock_wheel_types_python_dateutil_2.8.19.14_py3_none_any",
+        package_name = "types-python-dateutil",
+        package_version = "2.8.19.14",
+        filename = "types_python_dateutil-2.8.19.14-py3-none-any.whl",
+        sha256 = "f977b8de27787639986b4e28963263fd0e5158942b3ecef91b9335c130cb1ce9",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_typing_extensions_4.8.0_py3_none_any",
         package_name = "typing-extensions",
-        package_version = "4.7.1",
-        filename = "typing_extensions-4.7.1-py3-none-any.whl",
-        sha256 = "440d5dd3af93b060174bf433bccd69b0babc3b15b1a8dca43789fd7f61514b36",
+        package_version = "4.8.0",
+        filename = "typing_extensions-4.8.0-py3-none-any.whl",
+        sha256 = "8f92fc8806f9a6b641eaa5318da32b44d401efaac0f6678c9bc448ba3605faa0",
         index = "https://pypi.org",
     )
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_virtualenv_20.24.4_py3_none_any",
+        name = "poetry_lock_wheel_uri_template_1.3.0_py3_none_any",
+        package_name = "uri-template",
+        package_version = "1.3.0",
+        filename = "uri_template-1.3.0-py3-none-any.whl",
+        sha256 = "a44a133ea12d44a0c0f06d7d42a52d71282e77e2f937d8abd5655b8d56fc1363",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_urllib3_2.0.7_py3_none_any",
+        package_name = "urllib3",
+        package_version = "2.0.7",
+        filename = "urllib3-2.0.7-py3-none-any.whl",
+        sha256 = "fdb6d215c776278489906c2f8916e6e7d4f5a9b602ccbcfdf7f016fc8da0596e",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_virtualenv_20.24.5_py3_none_any",
         package_name = "virtualenv",
-        package_version = "20.24.4",
-        filename = "virtualenv-20.24.4-py3-none-any.whl",
-        sha256 = "29c70bb9b88510f6414ac3e55c8b413a1f96239b6b789ca123437d5e892190cb",
+        package_version = "20.24.5",
+        filename = "virtualenv-20.24.5-py3-none-any.whl",
+        sha256 = "b80039f280f4919c77b30f1c23294ae357c4c8701042086e3fc005963e4e537b",
         index = "https://pypi.org",
     )
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_wcwidth_0.2.6_py2.py3_none_any",
+        name = "poetry_lock_wheel_wcwidth_0.2.8_py2.py3_none_any",
         package_name = "wcwidth",
-        package_version = "0.2.6",
-        filename = "wcwidth-0.2.6-py2.py3-none-any.whl",
-        sha256 = "795b138f6875577cd91bba52baf9e445cd5118fd32723b460e30a0af30ea230e",
+        package_version = "0.2.8",
+        filename = "wcwidth-0.2.8-py2.py3-none-any.whl",
+        sha256 = "77f719e01648ed600dfa5402c347481c0992263b81a027344f3e1ba25493a704",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_webcolors_1.13_py3_none_any",
+        package_name = "webcolors",
+        package_version = "1.13",
+        filename = "webcolors-1.13-py3-none-any.whl",
+        sha256 = "29bc7e8752c0a1bd4a1f03c14d6e6a72e93d82193738fa860cbff59d0fcc11bf",
         index = "https://pypi.org",
     )
 
@@ -1849,11 +2434,21 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_zipp_3.16.2_py3_none_any",
+        name = "poetry_lock_wheel_websocket_client_1.6.4_py3_none_any",
+        package_name = "websocket-client",
+        package_version = "1.6.4",
+        filename = "websocket_client-1.6.4-py3-none-any.whl",
+        sha256 = "084072e0a7f5f347ef2ac3d8698a5e0b4ffbfcab607628cadabc650fc9a83a24",
+        index = "https://pypi.org",
+    )
+
+    maybe(
+        pypi_file,
+        name = "poetry_lock_wheel_zipp_3.17.0_py3_none_any",
         package_name = "zipp",
-        package_version = "3.16.2",
-        filename = "zipp-3.16.2-py3-none-any.whl",
-        sha256 = "679e51dd4403591b2d6838a48de3d283f3d188412a9782faadf845f298736ba0",
+        package_version = "3.17.0",
+        filename = "zipp-3.17.0-py3-none-any.whl",
+        sha256 = "0e923e726174922dce09c53c59ad483ff7bbb8e572e00c7f7c46b88556409f31",
         index = "https://pypi.org",
     )
 

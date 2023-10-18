@@ -1,9 +1,0 @@
-{
-    "homepage": "https://github.com/uber/hermetic_cc_toolchain",
-    "maintainers": [],
-    "repository": ["github:uber/hermetic_cc_toolchain"],
-    "versions": [
-        "2.0.0"
-    ],
-    "yanked_versions": {}
-}

@@ -1,7 +1,0 @@
-{
-    "integrity": "sha256-/I18vw3hw2VtHiwRmP50pPf4by+Z9g1CyCcgTCICXXA=",
-    "patch_strip": 1,
-    "patches": {},
-    "strip_prefix": "hermetic_cc_toolchain-9a7a9e09bc7c23d603e3cca17d27d0da74e73266",
-    "url": "https://github.com/uber/hermetic_cc_toolchain/archive/9a7a9e09bc7c23d603e3cca17d27d0da74e73266.tar.gz"
-}

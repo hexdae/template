@@ -3,7 +3,7 @@ load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 git_repository(
     name = "jvolkman_rules_pycross",
     remote = "https://github.com/jvolkman/rules_pycross",
-    commit = "757033ff8afeb5f7090b1320759f6f03d9c4615c",
+    commit = "c6923332dacb3ef5c4df172155be526981a140ab",
 )
 
 load("@jvolkman_rules_pycross//pycross:repositories.bzl", "rules_pycross_dependencies")
