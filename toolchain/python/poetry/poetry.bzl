@@ -11,7 +11,7 @@ RELEASES = {
             "constraints": ["@platforms//os:macos", "@platforms//cpu:x86_64"],
         },
         "x86_64-unknown-linux-gnu": {
-            "sha256": "03ee204da7cd2161e6a7ae6041b129f9f1f62ec713d42879babfcc8ee22b05c6s",
+            "sha256": "03ee204da7cd2161e6a7ae6041b129f9f1f62ec713d42879babfcc8ee22b05c6",
             "constraints": ["@platforms//os:linux", "@platforms//cpu:x86_64"],
         },
         "aarch64-unknown-linux-gnu": {
