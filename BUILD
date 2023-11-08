@@ -1,4 +1,3 @@
-
 alias(
     name = "black",
     actual = "//tools/black",

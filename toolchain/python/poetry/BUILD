@@ -16,7 +16,6 @@ pycross_target_environment(
     visibility = ["//visibility:public"],
 )
 
-
 pycross_target_environment(
     name = "python_darwin_x86_64",
     abis = ["cp39"],
@@ -86,8 +85,8 @@ sh_binary(
     name = "update",
     srcs = ["update.sh"],
     data = [
-        "@poetry_bin//:poetry",
         ":lock.bzl",
+        "@poetry_bin//:poetry",
     ],
     visibility = ["//visibility:public"],
 )
@@ -111,10 +110,10 @@ sh_binary(
     name = "poetry",
     srcs = ["poetry.sh"],
     data = [
-        "@poetry_bin//:poetry",
         ":lock.bzl",
-        ":pyproject.toml",
         ":poetry.lock",
+        ":pyproject.toml",
+        "@poetry_bin//:poetry",
     ],
     visibility = ["//visibility:public"],
 )
