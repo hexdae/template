@@ -5,13 +5,12 @@ description = "python toolchain dependencies"
 authors = []
 
 [tool.poetry.dependencies]
-python = "~=3.9"
+python = "~=3.11"
 
 ipython = "=8.0.1"
-numpy = "=1.25.2"
+numpy = "^1.25.0"
 notebook = "^7.0.6"
 pre-commit = "=3.3.3"
 black = "=23.7.0"
 jupyter-black = "=0.3.4"
 cpplint = "=1.6.1"
-importlib-metadata = "^6.8.0"

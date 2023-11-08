@@ -30,14 +30,12 @@ PINS = {
     "decorator": "decorator_5.1.1",
     "defusedxml": "defusedxml_0.7.1",
     "distlib": "distlib_0.3.7",
-    "exceptiongroup": "exceptiongroup_1.1.3",
     "executing": "executing_2.0.1",
     "fastjsonschema": "fastjsonschema_2.18.1",
     "filelock": "filelock_3.13.1",
     "fqdn": "fqdn_1.5.1",
     "identify": "identify_2.5.31",
     "idna": "idna_3.4",
-    "importlib_metadata": "importlib_metadata_6.8.0",
     "ipykernel": "ipykernel_6.26.0",
     "ipython": "ipython_8.0.1",
     "isoduration": "isoduration_20.11.0",
@@ -103,11 +101,9 @@ PINS = {
     "terminado": "terminado_0.17.1",
     "tinycss2": "tinycss2_1.2.1",
     "tokenize_rt": "tokenize_rt_5.2.0",
-    "tomli": "tomli_2.0.1",
     "tornado": "tornado_6.3.3",
     "traitlets": "traitlets_5.13.0",
     "types_python_dateutil": "types_python_dateutil_2.8.19.14",
-    "typing_extensions": "typing_extensions_4.8.0",
     "uri_template": "uri_template_1.3.0",
     "urllib3": "urllib3_2.0.7",
     "virtualenv": "virtualenv_20.24.6",
@@ -115,7 +111,6 @@ PINS = {
     "webcolors": "webcolors_1.13",
     "webencodings": "webencodings_0.5.1",
     "websocket_client": "websocket_client_1.6.4",
-    "zipp": "zipp_3.17.0",
 }
 
 def targets():
@@ -156,7 +151,6 @@ def targets():
     })
 
     _anyio_4_0_0_deps = [
-        ":exceptiongroup_1.1.3",
         ":idna_3.4",
         ":sniffio_1.3.0",
     ]
@@ -217,13 +211,8 @@ def targets():
         wheel = "@poetry_lock_wheel_asttokens_2.4.1_py2.py3_none_any//file",
     )
 
-    _async_lru_2_0_4_deps = [
-        ":typing_extensions_4.8.0",
-    ]
-
     pycross_wheel_library(
         name = "async_lru_2.0.4",
-        deps = _async_lru_2_0_4_deps,
         wheel = "@poetry_lock_wheel_async_lru_2.0.4_py3_none_any//file",
     )
 
@@ -258,8 +247,6 @@ def targets():
         ":packaging_23.2",
         ":pathspec_0.11.2",
         ":platformdirs_3.11.0",
-        ":tomli_2.0.1",
-        ":typing_extensions_4.8.0",
     ]
 
     pycross_wheel_library(
@@ -361,11 +348,6 @@ def targets():
     )
 
     pycross_wheel_library(
-        name = "exceptiongroup_1.1.3",
-        wheel = "@poetry_lock_wheel_exceptiongroup_1.1.3_py3_none_any//file",
-    )
-
-    pycross_wheel_library(
         name = "executing_2.0.1",
         wheel = "@poetry_lock_wheel_executing_2.0.1_py2.py3_none_any//file",
     )
@@ -393,16 +375,6 @@ def targets():
     pycross_wheel_library(
         name = "idna_3.4",
         wheel = "@poetry_lock_wheel_idna_3.4_py3_none_any//file",
-    )
-
-    _importlib_metadata_6_8_0_deps = [
-        ":zipp_3.17.0",
-    ]
-
-    pycross_wheel_library(
-        name = "importlib_metadata_6.8.0",
-        deps = _importlib_metadata_6_8_0_deps,
-        wheel = "@poetry_lock_wheel_importlib_metadata_6.8.0_py3_none_any//file",
     )
 
     _ipykernel_6_26_0_deps = [
@@ -547,7 +519,6 @@ def targets():
     )
 
     _jupyter_client_8_6_0_deps = [
-        ":importlib_metadata_6.8.0",
         ":jupyter_core_5.5.0",
         ":python_dateutil_2.8.2",
         ":pyzmq_25.1.1",
@@ -589,7 +560,6 @@ def targets():
     )
 
     _jupyter_lsp_2_2_0_deps = [
-        ":importlib_metadata_6.8.0",
         ":jupyter_server_2.10.0",
     ]
 
@@ -638,7 +608,6 @@ def targets():
 
     _jupyterlab_4_0_8_deps = [
         ":async_lru_2.0.4",
-        ":importlib_metadata_6.8.0",
         ":ipykernel_6.26.0",
         ":jinja2_3.1.2",
         ":jupyter_core_5.5.0",
@@ -647,7 +616,6 @@ def targets():
         ":jupyterlab_server_2.25.1",
         ":notebook_shim_0.2.3",
         ":packaging_23.2",
-        ":tomli_2.0.1",
         ":tornado_6.3.3",
         ":traitlets_5.13.0",
     ]
@@ -665,7 +633,6 @@ def targets():
 
     _jupyterlab_server_2_25_1_deps = [
         ":babel_2.13.1",
-        ":importlib_metadata_6.8.0",
         ":jinja2_3.1.2",
         ":json5_0.9.14",
         ":jsonschema_4.19.2",
@@ -726,7 +693,6 @@ def targets():
         ":beautifulsoup4_4.12.2",
         ":bleach_6.1.0",
         ":defusedxml_0.7.1",
-        ":importlib_metadata_6.8.0",
         ":jinja2_3.1.2",
         ":jupyter_core_5.5.0",
         ":jupyterlab_pygments_0.2.2",
@@ -1056,11 +1022,6 @@ def targets():
     )
 
     pycross_wheel_library(
-        name = "tomli_2.0.1",
-        wheel = "@poetry_lock_wheel_tomli_2.0.1_py3_none_any//file",
-    )
-
-    pycross_wheel_library(
         name = "tornado_6.3.3",
         wheel = select({
             ":_env_python_darwin_arm64": "@poetry_lock_wheel_tornado_6.3.3_cp38_abi3_macosx_10_9_universal2//file",
@@ -1077,11 +1038,6 @@ def targets():
     pycross_wheel_library(
         name = "types_python_dateutil_2.8.19.14",
         wheel = "@poetry_lock_wheel_types_python_dateutil_2.8.19.14_py3_none_any//file",
-    )
-
-    pycross_wheel_library(
-        name = "typing_extensions_4.8.0",
-        wheel = "@poetry_lock_wheel_typing_extensions_4.8.0_py3_none_any//file",
     )
 
     pycross_wheel_library(
@@ -1124,11 +1080,6 @@ def targets():
     pycross_wheel_library(
         name = "websocket_client_1.6.4",
         wheel = "@poetry_lock_wheel_websocket_client_1.6.4_py3_none_any//file",
-    )
-
-    pycross_wheel_library(
-        name = "zipp_3.17.0",
-        wheel = "@poetry_lock_wheel_zipp_3.17.0_py3_none_any//file",
     )
 
 def repositories():
@@ -1464,16 +1415,6 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_exceptiongroup_1.1.3_py3_none_any",
-        package_name = "exceptiongroup",
-        package_version = "1.1.3",
-        filename = "exceptiongroup-1.1.3-py3-none-any.whl",
-        sha256 = "343280667a4585d195ca1cf9cef84a4e178c4b6cf2274caef9859782b567d5e3",
-        index = "https://pypi.org",
-    )
-
-    maybe(
-        pypi_file,
         name = "poetry_lock_wheel_executing_2.0.1_py2.py3_none_any",
         package_name = "executing",
         package_version = "2.0.1",
@@ -1529,16 +1470,6 @@ def repositories():
         package_version = "3.4",
         filename = "idna-3.4-py3-none-any.whl",
         sha256 = "90b77e79eaa3eba6de819a0c442c0b4ceefc341a7a2ab77d7562bf49f425c5c2",
-        index = "https://pypi.org",
-    )
-
-    maybe(
-        pypi_file,
-        name = "poetry_lock_wheel_importlib_metadata_6.8.0_py3_none_any",
-        package_name = "importlib-metadata",
-        package_version = "6.8.0",
-        filename = "importlib_metadata-6.8.0-py3-none-any.whl",
-        sha256 = "3ebb78df84a805d7698245025b975d9d67053cd94c79245ba4b3eb694abe68bb",
         index = "https://pypi.org",
     )
 
@@ -2304,16 +2235,6 @@ def repositories():
 
     maybe(
         pypi_file,
-        name = "poetry_lock_wheel_tomli_2.0.1_py3_none_any",
-        package_name = "tomli",
-        package_version = "2.0.1",
-        filename = "tomli-2.0.1-py3-none-any.whl",
-        sha256 = "939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc",
-        index = "https://pypi.org",
-    )
-
-    maybe(
-        pypi_file,
         name = "poetry_lock_wheel_tornado_6.3.3_cp38_abi3_macosx_10_9_universal2",
         package_name = "tornado",
         package_version = "6.3.3",
@@ -2359,16 +2280,6 @@ def repositories():
         package_version = "2.8.19.14",
         filename = "types_python_dateutil-2.8.19.14-py3-none-any.whl",
         sha256 = "f977b8de27787639986b4e28963263fd0e5158942b3ecef91b9335c130cb1ce9",
-        index = "https://pypi.org",
-    )
-
-    maybe(
-        pypi_file,
-        name = "poetry_lock_wheel_typing_extensions_4.8.0_py3_none_any",
-        package_name = "typing-extensions",
-        package_version = "4.8.0",
-        filename = "typing_extensions-4.8.0-py3-none-any.whl",
-        sha256 = "8f92fc8806f9a6b641eaa5318da32b44d401efaac0f6678c9bc448ba3605faa0",
         index = "https://pypi.org",
     )
 
@@ -2439,16 +2350,6 @@ def repositories():
         package_version = "1.6.4",
         filename = "websocket_client-1.6.4-py3-none-any.whl",
         sha256 = "084072e0a7f5f347ef2ac3d8698a5e0b4ffbfcab607628cadabc650fc9a83a24",
-        index = "https://pypi.org",
-    )
-
-    maybe(
-        pypi_file,
-        name = "poetry_lock_wheel_zipp_3.17.0_py3_none_any",
-        package_name = "zipp",
-        package_version = "3.17.0",
-        filename = "zipp-3.17.0-py3-none-any.whl",
-        sha256 = "0e923e726174922dce09c53c59ad483ff7bbb8e572e00c7f7c46b88556409f31",
         index = "https://pypi.org",
     )
 
