@@ -1,4 +1,5 @@
-load("@rules_python//python:defs.bzl", "py_library", "py_binary")
+load("@rules_python//python:defs.bzl", "py_binary", "py_library", "py_test")
+load("@poetry//:requirements.bzl", "requirement")
 
 py_library(
     name = "library",
@@ -8,7 +9,18 @@ py_library(
 
 py_binary(
     name = "binary",
-    main = "main.py",
     srcs = ["main.py"],
+    main = "main.py",
+    deps = [":library"],
     visibility = ["//visibility:public"],
+)
+
+py_test(
+    name = "test",
+    srcs = ["test.py"],
+    deps = [
+
+        requirement("numpy"),
+
+    ],
 )
