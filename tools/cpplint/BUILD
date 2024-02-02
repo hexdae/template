@@ -1,4 +1,3 @@
-load("@poetry//:requirements.bzl", "requirement")
 load("@rules_python//python:defs.bzl", "py_binary")
 
 py_binary(
@@ -6,6 +5,6 @@ py_binary(
     srcs = ["cpplint.py"],
     visibility = ["//visibility:public"],
     deps = [
-        requirement("cpplint"),
+        "@poetry//:cpplint",
     ],
 )

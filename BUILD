@@ -13,10 +13,10 @@ alias(
     actual = "//toolchain/python:ipython",
 )
 
-alias(
-    name = "poetry",
-    actual = "//toolchain/python/poetry",
-)
+# alias(
+#     name = "poetry",
+#     actual = "//toolchain/python/poetry",
+# )
 
 alias(
     name = "pre-commit",
