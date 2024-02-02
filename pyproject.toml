@@ -4,12 +4,13 @@ version = "0.1"
 description = "python toolchain dependencies"
 authors = []
 
+
 [tool.poetry.dependencies]
 python = "~=3.9"
 
 ipython = "=8.0.1"
 numpy = "=1.25.2"
-notebook = "=5.6.0"
+notebook = "^7.0.1"
 pre-commit = "=3.3.3"
 black = "=23.7.0"
 jupyter-black = "=0.3.4"

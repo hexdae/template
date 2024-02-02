@@ -41,8 +41,8 @@ lock_import = use_extension("@rules_pycross//pycross/extensions:lock_import.bzl"
 
 # Import from Poetry
 lock_import.import_poetry(
-    lock_file = "//toolchain/python/poetry:poetry.lock",
-    project_file = "//toolchain/python/poetry:pyproject.toml",
+    lock_file = "//:poetry.lock",
+    project_file = "//:pyproject.toml",
     repo = "pip",
 )
 
@@ -53,6 +53,6 @@ use_repo(lock_repos, "pip")
 lock_file = use_extension("@rules_pycross//pycross/extensions:lock_file.bzl", "lock_file")
 lock_file.instantiate(
     name = "poetry_lock_file",
-    lock_file = "//toolchain/python/poetry:poetry_lock.bzl",
+    lock_file = "//:poetry_lock.bzl",
 )
 use_repo(lock_file, "poetry_lock_file")
