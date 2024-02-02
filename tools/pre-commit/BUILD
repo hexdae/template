@@ -5,6 +5,6 @@ py_binary(
     srcs = ["pre-commit.py"],
     visibility = ["//visibility:public"],
     deps = [
-        "@poetry//:pre-commit",
+        "@pip//:pre-commit",
     ],
 )

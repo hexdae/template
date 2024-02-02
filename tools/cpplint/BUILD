@@ -5,6 +5,6 @@ py_binary(
     srcs = ["cpplint.py"],
     visibility = ["//visibility:public"],
     deps = [
-        "@poetry//:cpplint",
+        "@pip//:cpplint",
     ],
 )

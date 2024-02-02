@@ -18,7 +18,7 @@ def jupyter_notebook(name, notebook, deps = [], data = [], **kwargs):
         main = "//toolchain/python:tools/jupyter.py",
         srcs = ["//toolchain/python:tools/jupyter.py"],
         args = ["$(location {})".format(notebook)],
-        deps = deps + ["@poetry//:notebook"],
+        deps = deps + ["@pip//:notebook"],
         data = data + [notebook],
         **kwargs
     )

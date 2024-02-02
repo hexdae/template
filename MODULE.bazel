@@ -43,23 +43,12 @@ lock_import = use_extension("@rules_pycross//pycross/extensions:lock_import.bzl"
 lock_import.import_poetry(
     lock_file = "//toolchain/python/poetry:poetry.lock",
     project_file = "//toolchain/python/poetry:pyproject.toml",
-    repo = "poetry",
+    repo = "pip",
 )
-
-# Specify per-package overrides. Here we say that we want to build ipython from an sdist.
-# lock_import.package(
-#     name = "ipython",
-#     always_build = True,
-#     build_dependencies = [
-#         "setuptools",
-#         "wheel",
-#     ],
-#     repo = "pdm_deps",
-# )
 
 # The actual repos are loaded from the lock_repos extension.
 lock_repos = use_extension("@rules_pycross//pycross/extensions:lock_repos.bzl", "lock_repos")
-use_repo(lock_repos, "poetry")
+use_repo(lock_repos, "pip")
 
 lock_file = use_extension("@rules_pycross//pycross/extensions:lock_file.bzl", "lock_file")
 lock_file.instantiate(

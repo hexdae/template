@@ -17,5 +17,5 @@ py_binary(
 py_test(
     name = "test",
     srcs = ["test.py"],
-    deps = ["@poetry//:numpy"],
+    deps = ["@pip//:numpy"],
 )
