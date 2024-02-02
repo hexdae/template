@@ -14,11 +14,6 @@ alias(
 )
 
 alias(
-    name = "poetry",
-    actual = "//toolchain/python/poetry",
-)
-
-alias(
     name = "pre-commit",
     actual = "//tools/pre-commit",
 )

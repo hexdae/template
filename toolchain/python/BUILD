@@ -1,11 +1,11 @@
-load("@poetry//:requirements.bzl", "all_requirements")
+# load("@pip//:requirements.bzl", "all_requirements")
 
 py_binary(
     name = "python",
     srcs = ["tools/python.py"],
     main = "tools/python.py",
     visibility = ["//visibility:public"],
-    deps = all_requirements,
+    # deps = ["@pip//:all"],
 )
 
 py_binary(
@@ -13,7 +13,7 @@ py_binary(
     srcs = ["tools/ipython.py"],
     main = "tools/ipython.py",
     visibility = ["//visibility:public"],
-    deps = all_requirements,
+    deps = ["@pip//:ipython"],
 )
 
 exports_files([
