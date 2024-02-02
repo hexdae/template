@@ -7,7 +7,7 @@ import stat
 
 
 def parse():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(add_help=False)
     parser.add_argument("command", default="run", nargs="?")
     return parser.parse_known_args()
 
