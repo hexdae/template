@@ -20,4 +20,4 @@ repos:
         entry: bazel run buildifier
         description: "Lint Bazel Files"
         language: python
-        files: (BUILD|MODULE|)(.bazel|.bzl)$
+        files: (BUILD|)(.bazel|.bzl)$

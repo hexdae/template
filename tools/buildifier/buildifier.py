@@ -1,6 +1,5 @@
 import subprocess
 import argparse
-import sys
 import os
 import pathlib
 
@@ -20,5 +19,5 @@ if __name__ == "__main__":
     workspace = package.parent.parent
 
     os.chdir(workspace)
-    result = subprocess.run(["buildifier"] + options)
+    result = subprocess.run([buildifier] + options)
     exit(result.returncode)
