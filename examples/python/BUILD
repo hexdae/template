@@ -10,8 +10,8 @@ py_binary(
     name = "binary",
     srcs = ["main.py"],
     main = "main.py",
-    deps = [":library"],
     visibility = ["//visibility:public"],
+    deps = [":library"],
 )
 
 py_test(
