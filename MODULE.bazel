@@ -10,6 +10,7 @@ bazel_dep(name = "rules_cc", version = "0.0.9")
 bazel_dep(name = "rules_python", version = "0.29.0")
 bazel_dep(name = "rules_rust", version = "0.38.0")
 bazel_dep(name = "rules_pycross", version = "0.5.1")
+bazel_dep(name = "buildifier_prebuilt", version = "6.4.0")
 
 cc = use_extension("@hermetic_cc_toolchain//toolchain:ext.bzl", "toolchains")
 
