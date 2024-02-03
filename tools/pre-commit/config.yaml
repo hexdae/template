@@ -15,3 +15,9 @@ repos:
         description: "Static code analysis of C/C++ files"
         language: python
         files: \.(h\+\+|h|hh|hxx|hpp|cuh|c|cc|cpp|cu|c\+\+|cxx|tpp|txx)$
+      - id: buildfier
+        name: buildfier
+        entry: bazel run buildifier
+        description: "Lint Bazel Files"
+        language: python
+        files: (BUILD|)(.bazel|.bzl)$

@@ -1,6 +1,8 @@
+"""Bazel Module"""
+
 git_override(
-    commit = "ed894bafe820bc4cc5e97ed8bc4ed61c44949e28",
     module_name = "rules_pycross",
+    commit = "ed894bafe820bc4cc5e97ed8bc4ed61c44949e28",
     remote = "https://github.com/jvolkman/rules_pycross",
 )
 
@@ -10,9 +12,9 @@ bazel_dep(name = "rules_cc", version = "0.0.9")
 bazel_dep(name = "rules_python", version = "0.29.0")
 bazel_dep(name = "rules_rust", version = "0.38.0")
 bazel_dep(name = "rules_pycross", version = "0.5.1")
+bazel_dep(name = "buildifier_prebuilt", version = "6.4.0")
 
 cc = use_extension("@hermetic_cc_toolchain//toolchain:ext.bzl", "toolchains")
-
 use_repo(
     cc,
     cc_toolchains = "zig_sdk",
@@ -21,20 +23,17 @@ use_repo(
 register_toolchains("@cc_toolchains//toolchain:all")
 
 python = use_extension("@rules_python//python/extensions:python.bzl", "python")
-
 python.toolchain(
     is_default = True,
     python_version = "3.9",
 )
 
 rust = use_extension("@rules_rust//rust:extensions.bzl", "rust")
-
 rust.toolchain(
     edition = "2021",
     extra_target_triples = [],
     versions = ["1.75.0"],
 )
-
 use_repo(rust, "rust_toolchains")
 
 register_toolchains(
@@ -45,7 +44,6 @@ crate = use_extension(
     "@rules_rust//crate_universe:extension.bzl",
     "crate",
 )
-
 crate.from_cargo(
     name = "crates",
     cargo_lockfile = "//:Cargo.lock",
@@ -54,15 +52,12 @@ crate.from_cargo(
         "//examples/rust:Cargo.toml",
     ],
 )
-
 use_repo(crate, "crates")
 
 env = use_extension("@rules_pycross//pycross/extensions:environments.bzl", "environments")
-
 use_repo(env, "pycross_environments")
 
 lock_import = use_extension("@rules_pycross//pycross/extensions:lock_import.bzl", "lock_import")
-
 lock_import.import_poetry(
     lock_file = "//:poetry.lock",
     project_file = "//:pyproject.toml",
@@ -70,14 +65,11 @@ lock_import.import_poetry(
 )
 
 lock_repos = use_extension("@rules_pycross//pycross/extensions:lock_repos.bzl", "lock_repos")
-
 use_repo(lock_repos, "pip")
 
 lock_file = use_extension("@rules_pycross//pycross/extensions:lock_file.bzl", "lock_file")
-
 lock_file.instantiate(
     name = "poetry_lock_file",
     lock_file = "//:poetry_lock.bzl",
 )
-
 use_repo(lock_file, "poetry_lock_file")

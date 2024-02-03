@@ -19,6 +19,11 @@ alias(
 )
 
 alias(
+    name = "buildifier",
+    actual = "//tools/buildifier",
+)
+
+alias(
     name = "cpplint",
     actual = "//tools/cpplint",
 )
