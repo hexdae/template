@@ -25,7 +25,7 @@ register_toolchains("@cc_toolchains//toolchain:all")
 python = use_extension("@rules_python//python/extensions:python.bzl", "python")
 python.toolchain(
     is_default = True,
-    python_version = "3.9",
+    python_version = "3.11",
 )
 
 rust = use_extension("@rules_rust//rust:extensions.bzl", "rust")

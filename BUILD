@@ -35,7 +35,7 @@ alias(
 
 alias(
     name = "poetry",
-    actual = "@poetry_bin//:poetry",
+    actual = "//tools/poetry",
 )
 
 alias(
@@ -46,4 +46,9 @@ alias(
 alias(
     name = "python",
     actual = "//toolchain/python",
+)
+
+alias(
+    name = "rustfmt",
+    actual = "//tools/rustfmt",
 )
