@@ -1,6 +1,4 @@
-
-
-pub fn function () -> i32 {
+pub fn function() -> i32 {
     return 42;
 }
 
@@ -9,7 +7,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_function () {
+    fn test_function() {
         assert_eq!(function(), 42);
     }
 }
