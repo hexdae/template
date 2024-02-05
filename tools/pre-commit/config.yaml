@@ -27,3 +27,9 @@ repos:
         description: "Lint Rist Files"
         language: rust
         files: (.rs)$
+      - id: mdformat
+        name: mdformat
+        entry: bazel run --config=quiet mdformat
+        description: "Lint Bazel Files"
+        language: python
+        files: \.(md)$
