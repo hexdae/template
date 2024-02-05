@@ -7,19 +7,17 @@
 
 # Bazel template
 
-A template to start a bazel project.
+A template to start a `bazel` project.
 
 ## Toolchains
 
-- C/C++ (hermetic toolchain)
-- Python (hermetic toolchain)
-- Jupyter (hermetic pip dep)
-- Rust (hermetic toolchain)
+- C/C++
+- Rust
+- Python
+- Jupyter Notebook
+- OCI Containers
 
-## Tools
+# Tools
 
-- Black (Python): `bazel run black`
-- Buildifier: `bazel run buildifier`
-- Cpplint (C/C++): `bazel run cpplint`
-- Pre Commit: `bazel run pre-commit`
-- Poetry: `bazel run poetry`
+Convenience tools for linting and developer experience are bundled under the
+[tools](./tools/) directory
