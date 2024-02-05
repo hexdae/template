@@ -9,6 +9,10 @@ constraints = struct(
         "@platforms//os:macos",
         "@platforms//cpu:arm64",
     ],
+    linux_arm64 = [
+        "@platforms//os:linux",
+        "@platforms//cpu:arm64",
+    ],
     linux_x86_64 = [
         "@platforms//os:linux",
         "@platforms//cpu:x86_64",

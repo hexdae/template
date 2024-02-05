@@ -6,6 +6,11 @@ platform(
 )
 
 platform(
+    name = "linux_arm64",
+    constraint_values = constraints.linux_arm64,
+)
+
+platform(
     name = "darwin_x86_64",
     constraint_values = constraints.darwin_x86_64,
 )
