@@ -1,20 +1,23 @@
 [tool.poetry]
-name = "python_toolchain"
+name = "template"
 version = "0.1"
-description = "python toolchain dependencies"
+description = "python dependencies"
 authors = []
 
 
 [tool.poetry.dependencies]
+# Python dependencies
 python = "~=3.9"
-
 ipython = "^8.10.0"
-numpy = "=1.25.2"
-notebook = "^7.0.1"
+wheel = "^0.42.0"
+importlib-metadata = "^6.8.0"
+typing-extensions = "^4.8.0"
+notebook = "^6.4.0"
+# Tools dependencies
 pre-commit = "=3.3.3"
 black = "=23.7.0"
 jupyter-black = "=0.3.4"
 cpplint = "=1.6.1"
-importlib-metadata = "^6.8.0"
-typing-extensions = "^4.8.0"
 mdformat = "^0.7.17"
+# Project dependencies
+numpy = "=1.25.2"
