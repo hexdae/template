@@ -30,7 +30,7 @@ alias(
 
 alias(
     name = "ipython",
-    actual = "//toolchain/python:ipython",
+    actual = "//tools/ipython",
 )
 
 alias(
@@ -50,7 +50,7 @@ alias(
 
 alias(
     name = "python",
-    actual = "//toolchain/python",
+    actual = "//tools/python",
 )
 
 alias(

@@ -1,6 +1,6 @@
-load("//toolchain/python:jupyter.bzl", "jupyter_notebook")
+load("//tools/jupyter:jupyter.bzl", "jupyter")
 
-jupyter_notebook(
+jupyter.notebook(
     name = "notebook",
     notebook = "notebook.ipynb",
     deps = [
