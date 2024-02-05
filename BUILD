@@ -34,6 +34,11 @@ alias(
 )
 
 alias(
+    name = "mdformat",
+    actual = "//tools/mdformat",
+)
+
+alias(
     name = "poetry",
     actual = "//tools/poetry",
 )

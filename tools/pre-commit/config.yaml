@@ -1,4 +1,15 @@
+
 repos:
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+    - id: end-of-file-fixer
+    - id: trailing-whitespace
+    - id: check-merge-conflict
+    - id: check-yaml
+    - id: check-toml
+
   - repo: local
     hooks:
       - id: black
@@ -24,6 +35,12 @@ repos:
       - id: rustfmt
         name: rustfmt
         entry: bazel run --config=quiet rustfmt
-        description: "Lint Rist Files"
+        description: "Lint Rust Files"
         language: rust
         files: (.rs)$
+      - id: mdformat
+        name: mdformat
+        entry: bazel run --config=quiet mdformat
+        description: "Lint Bazel Files"
+        language: python
+        files: \.(md)$
