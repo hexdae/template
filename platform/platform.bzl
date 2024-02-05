@@ -11,7 +11,7 @@ constraints = struct(
     ],
     linux_arm64 = [
         "@platforms//os:linux",
-        "@platforms//cpu:arm64",
+        "@platforms//cpu:aarch64",
     ],
     linux_x86_64 = [
         "@platforms//os:linux",
