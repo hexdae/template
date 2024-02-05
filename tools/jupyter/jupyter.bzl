@@ -16,10 +16,14 @@ def jupyter_notebook(name, notebook, deps = [], data = [], **kwargs):
 
     py_binary(
         name = name,
-        main = "//toolchain/python:tools/jupyter.py",
-        srcs = ["//toolchain/python:tools/jupyter.py"],
+        main = "//tools/jupyter:jupyter.py",
+        srcs = ["//tools/jupyter:jupyter.py"],
         args = ["$(location {})".format(notebook)],
         deps = deps + all_requirements,
         data = data + [notebook],
         **kwargs
     )
+
+jupyter = struct(
+    notebook = jupyter_notebook,
+)
