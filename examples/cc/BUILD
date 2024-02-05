@@ -16,5 +16,6 @@ cc_binary(
 cc_binary(
     name = "cc",
     srcs = ["main.cc"],
+    visibility = ["//visibility:public"],
     deps = [":lib"],
 )
