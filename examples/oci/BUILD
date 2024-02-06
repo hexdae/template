@@ -9,11 +9,9 @@ pkg_tar(
 
 oci_image(
     name = "image",
-    base = "@ubuntu",
-    entrypoint = ["bash"],
-    tars = [
-        ":tar_cc",
-    ],
+    base = "@distroless_base",
+    entrypoint = ["/usr/local/bin/cc"],
+    tars = [":tar_cc"],
 )
 
 oci_tarball(
