@@ -1,7 +1,7 @@
 """Rules to launch IPython shells and Jupyter notebooks"""
 
 load("@pip//:requirements.bzl", "all_requirements")
-load("@rules_python//python:defs.bzl", "py_binary")
+load("@aspect_rules_py//py:defs.bzl", "py_binary")
 
 def jupyter_notebook(name, notebook, deps = [], data = [], **kwargs):
     """ Creates a Macro to launch a Jupyter notebook.
