@@ -1,4 +1,11 @@
+load("@aspect_rules_py//py:defs.bzl", "py_venv")
+load("@pip//:requirements.bzl", "all_requirements")
 load("@rules_pycross//pycross:defs.bzl", "pycross_lock_file", "pycross_poetry_lock_model")
+
+py_venv(
+    name = "venv",
+    deps = all_requirements,
+)
 
 pycross_poetry_lock_model(
     name = "lock_model",
