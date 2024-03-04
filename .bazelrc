@@ -1,4 +1,5 @@
 common --enable_bzlmod
+common --@aspect_rules_py//py:interpreter_version=3.11.4
 
 build --incompatible_strict_action_env
 build --incompatible_enable_cc_toolchain_resolution
