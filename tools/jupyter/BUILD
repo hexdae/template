@@ -1,5 +1,5 @@
-load("@pip//:requirements.bzl", "all_requirements")
 load("@aspect_rules_py//py:defs.bzl", "py_binary")
+load("@pip//:requirements.bzl", "all_requirements")
 
 py_binary(
     name = "jupyter",
