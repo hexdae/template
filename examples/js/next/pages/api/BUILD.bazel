@@ -1,0 +1,12 @@
+load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
+
+ts_project(
+    name = "api",
+    srcs = ["hello.ts"],
+    declaration = True,
+    resolve_json_module = True,
+    transpiler = "tsc",
+    tsconfig = "//examples/js/next:tsconfig",
+    visibility = ["//examples/js/next/pages:__subpackages__"],
+    deps = ["//examples/js/next:node_modules/next"],
+)

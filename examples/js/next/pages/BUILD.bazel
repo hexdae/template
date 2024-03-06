@@ -1,0 +1,58 @@
+load("@aspect_rules_jest//jest:defs.bzl", "jest_test")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
+
+SRCS = [
+    "_app.tsx",
+    "index.tsx",
+]
+
+SPECS = [
+    "index.test.tsx",
+]
+
+ts_project(
+    name = "pages",
+    srcs = SRCS,
+    declaration = True,
+    resolve_json_module = True,
+    transpiler = "tsc",
+    tsconfig = "//examples/js/next:tsconfig",
+    visibility = ["//examples/js/next:__subpackages__"],
+    deps = [
+        "//examples/js/next:node_modules/@types/is-even",
+        "//examples/js/next:node_modules/@types/react",
+        "//examples/js/next:node_modules/@types/react-dom",
+        "//examples/js/next:node_modules/next",
+        "//examples/js/next/pages/api",
+    ],
+)
+
+ts_project(
+    name = "specs",
+    srcs = SPECS,
+    declaration = True,
+    resolve_json_module = True,
+    transpiler = "tsc",
+    tsconfig = "//examples/js/next:tsconfig",
+    deps = [
+        "//examples/js/next:node_modules/@testing-library/jest-dom",
+        "//examples/js/next:node_modules/@testing-library/react",
+        "//examples/js/next:node_modules/@types/jest",
+        "//examples/js/next/pages",
+    ],
+)
+
+jest_test(
+    name = "jest_test",
+    config = "//examples/js/next:jest_config",
+    data = [
+        ":specs",
+        "//examples/js/next:node_modules/is-even",
+        "//examples/js/next:node_modules/jest-environment-jsdom",
+        "//examples/js/next:node_modules/jest-transform-stub",
+        "//examples/js/next:node_modules/react",
+        "//examples/js/next:package_json",
+        "//examples/js/next/styles",
+    ],
+    node_modules = "//examples/js/next:node_modules",
+)

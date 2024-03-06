@@ -1,0 +1,3 @@
+packages:
+    - examples/js/next
+    - examples/js/webpack
