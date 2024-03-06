@@ -1,6 +1,7 @@
 load("@aspect_bazel_lib//lib:transitions.bzl", "platform_transition_binary")
 load("@rules_oci//oci:defs.bzl", "oci_image", "oci_tarball")
 load("@rules_pkg//:pkg.bzl", "pkg_tar")
+load(":py_layer.bzl", "py_layers")
 
 pkg_tar(
     name = "tar_cc",
@@ -14,11 +15,9 @@ pkg_tar(
     package_dir = "usr/local/bin",
 )
 
-pkg_tar(
+py_layers(
     name = "tar_python",
-    srcs = ["//examples/python"],
-    include_runfiles = True,
-    package_dir = "usr/local/bin",
+    binary = "//examples/python",
 )
 
 oci_image(
@@ -28,7 +27,9 @@ oci_image(
     tars = [
         ":tar_cc",
         ":tar_rust",
-        ":tar_python",
+        ":tar_python.interpreter_layer",
+        ":tar_python.packages_layer",
+        ":tar_python.app_layer",
     ],
 )
 
