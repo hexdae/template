@@ -1,5 +1,6 @@
 """Native bazel python library"""
 
 
-def function():
-    import this
+def function() -> int:
+    """Return a number."""
+    return 42

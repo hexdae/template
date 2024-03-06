@@ -11,11 +11,12 @@ rust_test(
 )
 
 rust_binary(
-    name = "bin",
+    name = "rust",
     srcs = [
         "src/foo.rs",
         "src/main.rs",
     ],
+    visibility = ["//visibility:public"],
     deps = [
         "@crates//:anyhow",
     ],

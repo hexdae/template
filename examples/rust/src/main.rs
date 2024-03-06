@@ -9,9 +9,10 @@ fn get_file() -> Result<String> {
 }
 
 fn main() -> Result<()> {
-    println!("Hello, world! {}", function());
+    println!("Hello, world! Rust {}", function());
+    println!("Sum: {}", 3 + 3);
 
-    let info = get_file()?;
-    println!("This is an error: {}", info);
+    let info = get_file();
+    println!("This is an error: {:?}", info);
     Ok(())
 }

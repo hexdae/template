@@ -1,6 +1,7 @@
 load("@aspect_bazel_lib//lib:transitions.bzl", "platform_transition_binary")
 load("@rules_oci//oci:defs.bzl", "oci_image", "oci_tarball")
 load("@rules_pkg//:pkg.bzl", "pkg_tar")
+load(":py_layer.bzl", "py_layers")
 
 pkg_tar(
     name = "tar_cc",
@@ -8,11 +9,28 @@ pkg_tar(
     package_dir = "usr/local/bin",
 )
 
+pkg_tar(
+    name = "tar_rust",
+    srcs = ["//examples/rust"],
+    package_dir = "usr/local/bin",
+)
+
+py_layers(
+    name = "tar_python",
+    binary = "//examples/python",
+)
+
 oci_image(
     name = "image",
     base = "@distroless_base",
-    entrypoint = ["/usr/local/bin/cc"],
-    tars = [":tar_cc"],
+    entrypoint = ["/busybox/sh"],
+    tars = [
+        ":tar_cc",
+        ":tar_rust",
+        ":tar_python.interpreter_layer",
+        ":tar_python.packages_layer",
+        ":tar_python.app_layer",
+    ],
 )
 
 oci_tarball(

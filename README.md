@@ -16,6 +16,16 @@ A template to start a `bazel` project.
 - Python
 - Jupyter Notebook
 - OCI Containers
+- Node (JS) + Next + Webpack
+
+# Cross compilation
+
+The repo natively support cross compilation wherever possible. This is handy
+for building docker containers on MacOS.
+
+- Python (rules_pycross)
+- C/C++ (hermetic_cc_toolchain)
+- Rust (extra_target_toolchains)
 
 # Tools
 

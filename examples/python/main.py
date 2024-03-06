@@ -1,8 +1,10 @@
-import library
+import examples.python.library as library
 
 
 def main():
-    library.function()
+    """Main function."""
+    print("Hello World! Python:", library.function())
+    print("Sum:", 3 + 3)
 
 
 if __name__ == "__main__":
