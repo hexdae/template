@@ -8,11 +8,20 @@ pkg_tar(
     package_dir = "usr/local/bin",
 )
 
+pkg_tar(
+    name = "tar_rust",
+    srcs = ["//examples/rust"],
+    package_dir = "usr/local/bin",
+)
+
 oci_image(
     name = "image",
     base = "@distroless_base",
-    entrypoint = ["/usr/local/bin/cc"],
-    tars = [":tar_cc"],
+    entrypoint = ["/busybox/sh"],
+    tars = [
+        ":tar_cc",
+        ":tar_rust",
+    ],
 )
 
 oci_tarball(
