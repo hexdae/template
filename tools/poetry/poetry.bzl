@@ -1,6 +1,43 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 RELEASES = {
+    "1.8.2-1": {
+        "aarch64-apple-darwin": {
+            "sha256": "1437934592f5e5858bc11eb504b14674ad06cc9d80a3703f2a4513ca7aef0734",
+            "constraints": [
+                "@platforms//os:macos",
+                "@platforms//cpu:arm64",
+            ],
+        },
+        "x86_64-apple-darwin": {
+            "sha256": "d873b04295bcb9492c26bb0d2aad4bb43bba6da9627f6b7098da06e2e1a03cfe",
+            "constraints": [
+                "@platforms//os:macos",
+                "@platforms//cpu:x86_64",
+            ],
+        },
+        "x86_64-unknown-linux-gnu": {
+            "sha256": "9979dca4e2479496b6dbc4b821b79e7fceecf26897a43da25841e5a521b3d8e1",
+            "constraints": [
+                "@platforms//os:linux",
+                "@platforms//cpu:x86_64",
+            ],
+        },
+        "aarch64-unknown-linux-gnu": {
+            "sha256": "9ed2155066c4445f35184ef740f6e349afb0fdb8b5ff9b7a0cef8fa28ca2fc41",
+            "constraints": [
+                "@platforms//os:linux",
+                "@platforms//cpu:arm64",
+            ],
+        },
+        "x86_64-pc-windows-msvc": {
+            "sha256": "60dad16e9587eba92a67fad2c993452f9a21e883ca2968ec8fd01670a08f4188",
+            "constraints": [
+                "@platforms//os:windows",
+                "@platforms//cpu:x86_64",
+            ],
+        },
+    },
     "1.7.0-1": {
         "aarch64-apple-darwin": {
             "sha256": "b529726b5d32cabd353f09da31b680059868d80e46dfeb5cc83c75e4d0ae969d",
@@ -90,7 +127,7 @@ poetry_bin_repo = repository_rule(
     },
 )
 
-def poetry_bin_workspace(name = "poetry_bin", version = "1.7.0-1", releases = RELEASES, template = None):
+def poetry_bin_workspace(name = "poetry_bin", version = "1.8.2-1", releases = RELEASES, template = None):
     """Add all the workspace dependencies for poetry binaries.
 
     Args:

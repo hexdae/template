@@ -21,3 +21,4 @@ cpplint = "=1.6.1"
 mdformat = "^0.7.17"
 # Project dependencies
 numpy = "=1.25.2"
+requests = "^2.31.0"
