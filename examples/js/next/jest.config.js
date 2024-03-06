@@ -5,7 +5,7 @@ const nextJest = require('next/jest');
 const createJestConfig = nextJest({
   // Provide the path to your Next.js app to load next.config.js and .env files in your test environment.
   // This path is relative to the WORKSPACE file when testing under Bazel.
-  dir: './next.js',
+  dir: './examples/js/next',
 });
 
 // Add any custom config to be passed to Jest
