@@ -1,10 +1,10 @@
 """Bazel Module"""
 
 bazel_dep(name = "aspect_bazel_lib", version = "2.5.1")
-bazel_dep(name = "aspect_rules_jest", version = "0.19.6")
+bazel_dep(name = "aspect_rules_jest", version = "0.20.0")
 bazel_dep(name = "aspect_rules_js", version = "1.38.0")
-bazel_dep(name = "aspect_rules_swc", version = "1.1.0")
-bazel_dep(name = "aspect_rules_ts", version = "2.1.1")
+bazel_dep(name = "aspect_rules_swc", version = "1.2.2")
+bazel_dep(name = "aspect_rules_ts", version = "2.2.0")
 bazel_dep(name = "aspect_rules_webpack", version = "0.14.0")
 bazel_dep(name = "bazel_skylib", version = "1.5.0")
 bazel_dep(name = "buildifier_prebuilt", version = "6.4.0")
@@ -75,13 +75,6 @@ lock_import.import_poetry(
 
 lock_repos = use_extension("@rules_pycross//pycross/extensions:lock_repos.bzl", "lock_repos")
 use_repo(lock_repos, "pip")
-
-lock_file = use_extension("@rules_pycross//pycross/extensions:lock_file.bzl", "lock_file")
-lock_file.instantiate(
-    name = "poetry_lock_file",
-    lock_file = "//:poetry_lock.bzl",
-)
-use_repo(lock_file, "poetry_lock_file")
 
 # OCI toolchain
 oci = use_extension("@rules_oci//oci:extensions.bzl", "oci")
