@@ -22,8 +22,8 @@ py_layers(
 
 oci_image(
     name = "image",
-    base = "@distroless_base",
-    entrypoint = ["/busybox/sh"],
+    base = "@ubuntu",
+    entrypoint = ["/bin/bash"],
     tars = [
         ":tar_cc",
         ":tar_rust",
@@ -36,7 +36,7 @@ oci_image(
 oci_tarball(
     name = "tarball",
     image = ":image",
-    repo_tags = ["example:oci_image"],
+    repo_tags = ["example:oci"],
 )
 
 platform_transition_binary(

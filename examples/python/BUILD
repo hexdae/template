@@ -5,7 +5,10 @@ py_binary(
     srcs = ["main.py"],
     main = "main.py",
     visibility = ["//visibility:public"],
-    deps = [":library"],
+    deps = [
+        ":library",
+        "@pip//:numpy",
+    ],
 )
 
 py_library(
